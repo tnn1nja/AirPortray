@@ -1,12 +1,19 @@
 APPNAME = main
 
-MAINSRC = src/main.cpp
-MAINOBJ = build/main.o
-TESTSRC = src/test.cpp
-TESTOBJ = build/test.o
+BUILDDIR = build
+SRCDIR = src
 
-$(APPNAME): $(MAINOBJ) $(TESTOBJ)
+MAINSRC = $(SRCDIR)/main.cpp
+MAINOBJ = $(BUILDDIR)/main.o
+TESTSRC = $(SRCDIR)/test.cpp
+TESTOBJ = $(BUILDDIR)/test.o
+
+
+$(APPNAME): build $(MAINOBJ) $(TESTOBJ)
 	$(CXX) $(MAINOBJ) $(TESTOBJ) -o $(APPNAME)
+
+$(BUILDDIR):
+	mkdir $(BUILDDIR)
 
 $(MAINOBJ): $(MAINSRC)
 	$(CXX) -c $(MAINSRC) -o $(MAINOBJ)
