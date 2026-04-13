@@ -1,15 +1,15 @@
-app_name = main
+APPNAME = main
 
-main_src = src/main.cpp
-main_obj = build/main.o
-test_src = src/test.cpp
-test_obj = build/test.o
+MAINSRC = src/main.cpp
+MAINOBJ = build/main.o
+TESTSRC = src/test.cpp
+TESTOBJ = build/test.o
 
-$(app_name): $(main_obj) $(test_obj)
-	$(CXX) $(main_obj) $(test_obj) -o $(app_name)
+$(APPNAME): $(MAINOBJ) $(TESTOBJ)
+	$(CXX) $(MAINOBJ) $(TESTOBJ) -o $(APPNAME)
 
-$(main_obj): $(main_src)
-	$(CXX) -c $(main_src) -o $(main_obj)
+$(MAINOBJ): $(MAINSRC)
+	$(CXX) -c $(MAINSRC) -o $(MAINOBJ)
 
-$(test_obj): $(test_src)
-	$(CXX) -c $(test_src) -o $(test_obj)
+$(TESTOBJ): $(TESTSRC)
+	$(CXX) -c $(TESTSRC) -o $(TESTOBJ)
