@@ -2,7 +2,7 @@ app_name = main
 
 main_src = src/main.cpp
 main_obj = build/main.o
-test_src = src/test.o
+test_src = src/test.cpp
 test_obj = build/test.o
 
 $(app_name): $(main_obj) $(test_obj)
