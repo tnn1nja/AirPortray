@@ -10,7 +10,6 @@ with open("airports.csv", "r", encoding="utf-8") as f:
         for c in lines[i]:
             if c == "\"":
                 inQuotes = not inQuotes
-                continue
             
             if not inQuotes and c == ",":
                 fields.append(field)
