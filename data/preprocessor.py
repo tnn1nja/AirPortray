@@ -14,13 +14,14 @@ with open("airports.csv", "r", encoding="utf-8") as f:
             
             if not inQuotes and c == ",":
                 fields.append(field)
-                field == ""
+                field = ""
             else:
                 field += c
         data.append(fields)
 
-for i in range(10):
+for i in range(100):
     print(data[i])
+    print("\n")
 
 """
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
