@@ -3,35 +3,35 @@ APPNAME = AirPortray
 BUILDDIR = build
 SRCDIR = src
 
-MAIN_SRC = $(SRCDIR)/main.cpp
-MAIN_OBJ = $(BUILDDIR)/main.o
-AIRPORT_SRC = $(SRCDIR)/Airport.cpp
-AIRPORT_OBJ = $(BUILDDIR)/Airport.o
-AIRPORTDATA_SRC = $(SRCDIR)/AirportData.cpp
-AIRPORTDATA_OBJ = $(BUILDDIR)/AirportData.o
-AIRPORTREPOSITORY_SRC = $(SRCDIR)/AirportRepository.cpp
-AIRPORTREPOSITORY_OBJ = $(BUILDDIR)/AirportRepository.o
-AIRPORTRAY_SRC = $(SRCDIR)/AirPortray.cpp
-AIRPORTRAY_OBJ = $(BUILDDIR)/AirPortray.o
+M_SRC = $(SRCDIR)/main.cpp
+M_OBJ = $(BUILDDIR)/main.o
+A_SRC = $(SRCDIR)/Airport.cpp
+A_OBJ = $(BUILDDIR)/Airport.o
+AD_SRC = $(SRCDIR)/AirportData.cpp
+AD_OBJ = $(BUILDDIR)/AirportData.o
+AR_SRC = $(SRCDIR)/AirportRepository.cpp
+AR_OBJ = $(BUILDDIR)/AirportRepository.o
+AP_SRC = $(SRCDIR)/AirPortray.cpp
+AP_OBJ = $(BUILDDIR)/AirPortray.o
 
 
-$(APPNAME): $(BUILDDIR) $(MAIN_OBJ) $(AIRPORT_OBJ) $(AIRPORTDATA_OBJ) $(AIRPORTREPOSITORY_OBJ) $(AIRPORTRAY)
-	$(CXX) $(MAIN_OBJ) $(AIRPORT_OBJ) $(AIRPORTDATA_OBJ) $(AIRPORTREPOSITORY_OBJ) $(AIRPORTRAY)
+$(APPNAME): $(BUILDDIR) $(M_OBJ) $(A_OBJ) $(AD_OBJ) $(AR_OBJ) $(AP_OBJ)
+	$(CXX) $(M_OBJ) $(AP_OBJ) $(AD_OBJ) $(AR_OBJ) $(AP_OBJ)
 
 $(BUILDDIR):
 	mkdir $(BUILDDIR)
 
-$(MAIN_OBJ): $(MAIN_SRC)
-	$(CXX) -c $(MAIN_SRC) -o $(MAIN_OBJ)
+$(M_OBJ): $(M_SRC)
+	$(CXX) -c $(M_SRC) -o $(M_OBJ)
 
-$(AIRPORT_OBJ): $(AIRPORT_SRC)
-	$(CXX) -c $(AIRPORT_SRC) -o $(AIRPORT_OBJ)
+$(AP_OBJ): $(AP_SRC)
+	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)
 
-$(AIRPORTDATA_OBJ): $(AIRPORTDATA_SRC)
-	$(CXX) -c $(AIRPORTDATA_SRC) -o $(AIRPORTDATA_OBJ)
+$(AD_OBJ): $(AD_SRC)
+	$(CXX) -c $(AD_SRC) -o $(AD_OBJ)
 
-$(AIRPORTREPOSITORY_OBJ): $(AIRPORTREPOSITORY_SRC)
-	$(CXX) -c $(AIRPORTREPOSITORY_SRC) -o $(AIRPORTREPOSITORY_OBJ)
+$(AR_OBJ): $(AR_SRC)
+	$(CXX) -c $(AR_SRC) -o $(AR_OBJ)
 
-$(AIRPORTRAY_OBJ): $(AIRPORTRAY_SRC)
-	$(CXX) -c $(AIRPORTRAY_SRC) -o $(AIRPORTRAY_OBJ)
+$(AP_OBJ): $(AP_SRC)
+	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)
