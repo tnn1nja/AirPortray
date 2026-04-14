@@ -1,7 +1,7 @@
 lines = []
 
-with open("airports.csv", "r") as f:
+with open("airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
-with open("processed_airports.csv", "w") as f:
+with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.writelines(lines)
