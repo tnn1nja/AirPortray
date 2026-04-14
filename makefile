@@ -34,4 +34,9 @@ $(AR_OBJ): $(AR_SRC)
 	$(CXX) -c $(AR_SRC) -o $(AR_OBJ)
 
 $(AP_OBJ): $(AP_SRC)
-	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)
+	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)del
+
+
+clean:
+	rd /s /q $(BUILDDIR)
+	del ${APPNAME}.exe
