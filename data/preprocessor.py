@@ -19,9 +19,8 @@ with open("airports.csv", "r", encoding="utf-8") as f:
                 field += c
         data.append(fields)
 
-for i in range(100):
-    print(data[i])
-    print("\n")
+print(data[214])
+print(data[2434])
 
 """
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
