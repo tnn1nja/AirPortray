@@ -1,4 +1,3 @@
-lines = []
 data = []
 
 with open("airports.csv", "r", encoding="utf-8") as f:
@@ -18,13 +17,21 @@ with open("airports.csv", "r", encoding="utf-8") as f:
                 field += c
         data.append(fields)
 
-length = len(data[0])
-for datum in data:
-    if len(datum) != length:
-        print(datum)
-print("complete")
-    
+for i in range(len(data)):
+    types = [
+        "balloonport", 
+        "closed",
+        "heliport",
+        "large_airport",
+        "medium_airport",
+        "seaplane_base",
+        "small_airport"
+    ]
+    data[i][0] = types.index(data[i][0])
 
+for i in range(10):
+    print(data[i])
+    
 """
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.writelines(lines)
