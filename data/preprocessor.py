@@ -18,8 +18,12 @@ with open("airports.csv", "r", encoding="utf-8") as f:
                 field += c
         data.append(fields)
 
-print(data[214])
-print(data[2434])
+length = len(data[0])
+for datum in data:
+    if len(datum) != length:
+        print(datum)
+print("complete")
+    
 
 """
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
