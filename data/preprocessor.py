@@ -1,3 +1,4 @@
+#File data container
 data = []
 
 #Read file
@@ -21,6 +22,7 @@ with open("airports.csv", "r", encoding="utf-8") as f:
 
 #Process file
 for i in range(len(data)):
+    #Replace airport type with int for use with enum
     types = [
         "balloonport", 
         "closed",
@@ -31,6 +33,11 @@ for i in range(len(data)):
         "small_airport"
     ]
     data[i][0] = types.index(data[i][0])
+
+    #Add quotes to all airport names
+    if not data[i][1].startswith("\""):
+        data[i][1] = "\"" + data[i][1] + "\""
+
 
 for i in range(10):
     print(data[i])
