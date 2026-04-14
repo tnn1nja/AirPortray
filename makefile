@@ -16,7 +16,7 @@ AP_OBJ = $(BUILDDIR)/AirPortray.o
 
 
 $(APPNAME): $(BUILDDIR) $(M_OBJ) $(A_OBJ) $(AD_OBJ) $(AR_OBJ) $(AP_OBJ)
-	$(CXX) $(M_OBJ) $(AP_OBJ) $(AD_OBJ) $(AR_OBJ) $(AP_OBJ)
+	$(CXX) $(M_OBJ) $(AP_OBJ) $(AD_OBJ) $(AR_OBJ) $(AP_OBJ) -o $(APPNAME)
 
 $(BUILDDIR):
 	mkdir $(BUILDDIR)
