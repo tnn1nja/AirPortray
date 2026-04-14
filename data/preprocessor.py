@@ -1,9 +1,11 @@
 #File data container
+titles = []
 data = []
 
 #Read file
 with open("airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
+    titles = lines[0].split(",")
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
         fields = []
@@ -47,3 +49,5 @@ for i in range(10):
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.writelines(lines)
 """
+
+print(titles)
