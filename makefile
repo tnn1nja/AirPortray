@@ -24,8 +24,8 @@ $(BUILDDIR):
 $(M_OBJ): $(M_SRC)
 	$(CXX) -c $(M_SRC) -o $(M_OBJ)
 
-$(AP_OBJ): $(AP_SRC)
-	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)
+$(A_OBJ): $(A_SRC)
+	$(CXX) -c $(A_SRC) -o $(A_OBJ)
 
 $(AD_OBJ): $(AD_SRC)
 	$(CXX) -c $(AD_SRC) -o $(AD_OBJ)
