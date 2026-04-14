@@ -1,7 +1,9 @@
 data = []
 
+#Read file
 with open("airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
+    #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
         fields = []
         field = ""
@@ -17,6 +19,7 @@ with open("airports.csv", "r", encoding="utf-8") as f:
                 field += c
         data.append(fields)
 
+#Process file
 for i in range(len(data)):
     types = [
         "balloonport", 
@@ -32,6 +35,7 @@ for i in range(len(data)):
 for i in range(10):
     print(data[i])
     
+#Write file
 """
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.writelines(lines)
