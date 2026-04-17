@@ -1,4 +1,5 @@
-#pragma once
+#ifndef AIRPORTDATAFILE_H
+#define AIRPORTDATAFILE_H
 
 #include <list>
 #include <string>
@@ -13,3 +14,5 @@ class AirportDataFile{
         void load(std::list<Airport>&);
         void save(std::list<Airport>&);
 };
+
+#endif
