@@ -11,6 +11,7 @@ class AirportRepository{
         bool dirty;
 
     public:
-        AirportRepository();
+        AirportRepository(std::string);
+        ~AirportRepository();
         void saveIfDirty();
 };
