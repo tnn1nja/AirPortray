@@ -26,7 +26,7 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
 #Process file
 for i in range(len(data)):
     #Remove ident collum
-    titles.replace("ident,", "")
+    titles = titles.replace("ident,", "")
     data[i].pop(0)
 
     #Replace airport type with int for use with enum
