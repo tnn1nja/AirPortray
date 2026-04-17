@@ -36,9 +36,10 @@ for i in range(len(data)):
     ]
     data[i][0] = types.index(data[i][0])
 
-    #Add quotes to all airport names
-    if not data[i][1].startswith("\""):
-        data[i][1] = "\"" + data[i][1] + "\""
+    #Add quotes to all airport and municiplaity names for easier parsing
+    for j in (1,6):
+        if not data[i][j].startswith("\""):
+            data[i][j] = "\"" + data[i][j] + "\""
 
 
 for i in range(10):
