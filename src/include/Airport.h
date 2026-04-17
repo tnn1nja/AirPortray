@@ -14,9 +14,9 @@ class Airport {
         std::string country;
         std::string region;
         std::string municipality;
-        std::string icaoCode;
-        std::string iataCode;
-        std::string gpsCode;
+        std::string ICAOCode;
+        std::string IATACode;
+        std::string GPSCode;
         std::string localCode;
         double coordinates[2];
 
@@ -32,9 +32,9 @@ class Airport {
         void setCountry(std::string);
         void setRegion(std::string);
         void setMunicipality(std::string);
-        void setIcao(std::string);
-        void setIata(std::string);
-        void setGpsCode(std::string);
+        void setICAO(std::string);
+        void setIATA(std::string);
+        void setGPSCode(std::string);
         void setLocalCode(std::string);
         void setCoordinates(double[2]);
 
@@ -46,9 +46,9 @@ class Airport {
         std::string getCountry();
         std::string getRegion();
         std::string getMunicipality();
-        std::string getIcao();
-        std::string getIata();
-        std::string getGpsCode();
+        std::string getICAO();
+        std::string getIATA();
+        std::string getGPSCode();
         std::string getLocalCode();
         std::string getCoordinates();
 };
