@@ -37,6 +37,12 @@ $(AP_OBJ): $(AP_SRC)
 	$(CXX) -c $(AP_SRC) -o $(AP_OBJ)
 
 
+.PHONY: clean
 clean:
 	rd /s /q $(BUILDDIR)
 	del ${APPNAME}.exe
+	
+.PHONY: run
+run: $(APPNAME)
+	./$(APPNAME).exe
+	
