@@ -41,13 +41,8 @@ for i in range(len(data)):
         if not data[i][j].startswith("\""):
             data[i][j] = "\"" + data[i][j] + "\""
 
-
-for i in range(10):
-    print(data[i])
-print(data[2434])
-    
 #Write file
-"""
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.writelines(lines)
-"""
+
+print("file processed")
