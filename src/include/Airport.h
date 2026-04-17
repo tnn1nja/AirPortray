@@ -1,5 +1,4 @@
-#ifndef AIRPORT_H
-#define AIRPORT_H
+#pragma once
 
 #include <string>
 
@@ -53,5 +52,3 @@ class Airport {
         std::string getLocalCode();
         std::string getCoordinates();
 };
-
-#endif

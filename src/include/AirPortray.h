@@ -1,5 +1,4 @@
-#ifndef AIRPORTRAY_H
-#define AIRPORTRAY_H
+#pragma once
 
 #include <string>
 #include "AirportRepository.h"
@@ -11,5 +10,3 @@ class AirPortray{
         AirPortray(std::string);
         void run();
 };
-
-#endif

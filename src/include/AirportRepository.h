@@ -1,5 +1,4 @@
-#ifndef AIRPORTREPOSITORY_H
-#define AIRPORTREPOSITORY_H
+#pragma once
 
 #include <list>
 #include "Airport.h"
@@ -16,5 +15,3 @@ class AirportRepository{
         ~AirportRepository();
         void saveIfDirty();
 };
-
-#endif
