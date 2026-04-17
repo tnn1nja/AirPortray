@@ -20,6 +20,7 @@ with open("airports.csv", "r", encoding="utf-8") as f:
                 field = ""
             else:
                 field += c
+        fields.append(field)
         data.append(fields)
 
 #Process file
@@ -46,7 +47,7 @@ def toLine(arr):
     output = ""
     for i in range(len(arr)-1):
         output += str(arr[i]) + ","
-    output += arr[-1] + "\n"
+    output += arr[-1]
     return output
 
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
