@@ -1,3 +1,8 @@
+"""
+'airport.csv' data file pre-processor, requires specific formatting
+MAY NOT WORK ON FUTURE VERSION OF THE FILE WITHOUT ALTERATION!
+"""
+
 #File data container
 titles = []
 data = []
@@ -47,16 +52,13 @@ for i in range(len(data)):
             data[i][j] = "\"" + data[i][j] + "\""
 
 #Write file
-def toLine(arr):
-    output = ""
-    for i in range(len(arr)-1):
-        output += str(arr[i]) + ","
-    output += arr[-1]
-    return output
-
 with open("data/airports.csv", "w", encoding="utf-8") as f:
     f.write(titles)
     for datum in data:
-        f.write(toLine(datum))
+        output = ""
+        for i in range(len(datum)-1):
+            output += str(datum[i]) + ","
+        output += datum[-1]
+        f.write(output)
 
-print("file processed")
+print("File processing complete!")
