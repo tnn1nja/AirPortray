@@ -5,7 +5,7 @@ data = []
 #Read file
 with open("airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
-    titles = lines[0].split(",")
+    titles = lines[0]
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
         fields = []
@@ -50,7 +50,7 @@ def toLine(arr):
     return output
 
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
-    f.write(",".join(titles))
+    f.write(titles)
     for datum in data:
         f.write(toLine(datum))
 
