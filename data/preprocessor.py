@@ -44,5 +44,7 @@ for i in range(len(data)):
 #Write file
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.write(",".join(titles))
+    for datum in data:
+        f.write(",".join(datum))
 
 print("file processed")
