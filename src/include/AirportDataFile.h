@@ -9,6 +9,7 @@ class AirportDataFile{
         std::string filePath;
 
     public:
+        AirportDataFile(std::string filePath);
         void load(std::list<Airport>&);
         void save(std::list<Airport>&);
 };
