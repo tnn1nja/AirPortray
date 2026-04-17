@@ -7,7 +7,7 @@
 class AirportRepository{
     private:
         std::list<Airport> airports;
-        AirportDataFile dataFile;
+        AirportDataFile *dataFile;
         bool dirty;
 
     public:

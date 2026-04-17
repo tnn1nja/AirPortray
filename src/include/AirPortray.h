@@ -5,7 +5,7 @@
 
 class AirPortray{
     private:
-        AirportRepository airportRepository;
+        AirportRepository *airportRepository;
     public:
         AirPortray(std::string);
         void run();
