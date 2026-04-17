@@ -43,6 +43,6 @@ for i in range(len(data)):
 
 #Write file
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
-    f.writelines(lines)
+    f.write(titles)
 
 print("file processed")
