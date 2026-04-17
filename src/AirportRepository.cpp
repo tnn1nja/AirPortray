@@ -2,4 +2,5 @@
 
 AirportRepository::AirportRepository(std::string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
+    dataFile->load(airports);
 }
