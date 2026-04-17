@@ -42,9 +42,16 @@ for i in range(len(data)):
             data[i][j] = "\"" + data[i][j] + "\""
 
 #Write file
+def toLine(arr):
+    output = ""
+    for i in range(len(arr)-1):
+        output += str(arr[i]) + ","
+    output += arr[-1] + "\n"
+    return output
+
 with open("processed_airports.csv", "w", encoding="utf-8") as f:
     f.write(",".join(titles))
     for datum in data:
-        f.write(",".join(datum))
+        f.write(toLine(datum))
 
 print("file processed")
