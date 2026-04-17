@@ -2,7 +2,7 @@
 
 #include <string>
 
-enum AirportType;
+enum class AirportType;
 
 class Airport {
     private:
@@ -21,6 +21,9 @@ class Airport {
         double coordinates[2];
 
     public:
+        //Constructor(s)
+        Airport();
+
         //Setters
         void setAirportType(AirportType);
         void setName(std::string);
