@@ -4,6 +4,7 @@
 AirPortray::AirPortray(std::string dataFilePath){
     airportRepository = new AirportRepository(dataFilePath);
 }
+
 void AirPortray::run(){
     std::cout << "AirPortray running!\n";
 }

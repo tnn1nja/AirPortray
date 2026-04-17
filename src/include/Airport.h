@@ -2,7 +2,15 @@
 
 #include <string>
 
-enum class AirportType;
+enum class AirportType{
+    BALLOONPORT,
+    CLOSED,
+    HELIPORT,
+    LARGE_AIRPORT,
+    MEDIUM_AIRPORT,
+    SEAPLANE_BASE,
+    SMALL_AIRPORT
+};
 
 class Airport {
     private:
