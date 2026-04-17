@@ -3,7 +3,7 @@ titles = []
 data = []
 
 #Read file
-with open("airports.csv", "r", encoding="utf-8") as f:
+with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
     titles = lines[0]
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
@@ -25,6 +25,10 @@ with open("airports.csv", "r", encoding="utf-8") as f:
 
 #Process file
 for i in range(len(data)):
+    #Remove ident collum
+    titles.replace("ident,", "")
+    data[i].pop(0)
+
     #Replace airport type with int for use with enum
     types = [
         "balloonport", 
@@ -50,7 +54,7 @@ def toLine(arr):
     output += arr[-1]
     return output
 
-with open("processed_airports.csv", "w", encoding="utf-8") as f:
+with open("data/airports.csv", "w", encoding="utf-8") as f:
     f.write(titles)
     for datum in data:
         f.write(toLine(datum))
