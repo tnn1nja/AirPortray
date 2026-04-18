@@ -107,6 +107,17 @@ void AirportDataFile::save(const list<Airport>& airports){
         string longitude = (a.getLongitude() == NULL) ? "" : to_string(a.getLongitude());
 
         file << static_cast<int>(a.getType()) << ","
-             << encodeString(a.getName());
+             << encodeString(a.getName()) << ","
+             << elevation << ","
+             << a.getContinent() << ","
+             << a.getCountry() << ","
+             << a.getRegion() << ","
+             << encodeString(a.getMunicipality()) << ","
+             << a.getICAOCode() << ","
+             << a.getIATACode() << ","
+             << a.getGPSCode() << ","
+             << a.getLocalCode() << ","
+             << latitude << ","
+             << longitude << endl;
     }
 }
