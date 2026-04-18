@@ -1,7 +1,22 @@
 #include "include/Airport.h"
+#include <stdexcept>
 
+//Constructor(s)
 Airport::Airport(){};
 
+//Setters
+void Airport::setAirportType(AirportType type){
+    this->type = type;
+}
+void Airport::setName(std::string name){
+    if(containsIllegalChars(name)){
+        this->name = name;
+    }else{
+        throw std::invalid_argument("Cannot contain backslashes");
+    }
+}
+
+//Getters
 AirportType Airport::getAirportType(){ return type; }
 std::string Airport::getName(){ return name; }
 short Airport::getElevation(){return elevation; }
