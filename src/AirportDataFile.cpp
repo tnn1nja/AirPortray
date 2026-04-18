@@ -28,6 +28,15 @@ void AirportDataFile::splitCSVLine(string(&fields)[13], string line){
     fields[fieldIndex] = field.str();
 }
 
+string AirportDataFile::decodeString(string s){
+    s.erase(0, 1);
+    s.erase(s.length()-1, 1);
+    while(int i = s.find("\"\"") != string::npos){
+        s.erase(i, 1);
+    }
+    return s;
+}
+
 void AirportDataFile::load(list<Airport>& airports){
     //Open file
     ifstream file(filePath);
@@ -60,6 +69,7 @@ void AirportDataFile::load(list<Airport>& airports){
             a.setLocalCode(fields[field]); field++;
             if(fields[field] != ""){ a.setLatitude(stod(fields[field])); } field++;
             if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
+            airports.push_back(a);
         }catch (invalid_argument& e){
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
