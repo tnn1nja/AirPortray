@@ -9,5 +9,4 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     cout << "AirPortray running!\n";
-    airportRepository->test();
 }
