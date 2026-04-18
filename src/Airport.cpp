@@ -87,7 +87,6 @@ void Airport::setCoordinates(double latitude, double longitude){
 }
 
 
-
 //Getters
 AirportType Airport::getAirportType(){ return type; }
 std::string Airport::getName(){ return name; }
