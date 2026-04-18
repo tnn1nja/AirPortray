@@ -4,13 +4,13 @@ MAY NOT WORK ON FUTURE VERSION OF THE FILE WITHOUT ALTERATION!
 """
 
 #File data container
-titles = []
+headers = []
 data = []
 
 #Read file
 with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
-    titles = lines[0]
+    headers = lines[0]
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
         fields = []
@@ -31,7 +31,7 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
 #Process file
 for i in range(len(data)):
     #Remove ident collum
-    titles = titles.replace("ident,", "")
+    headers = headers.replace("ident,", "")
     data[i].pop(0)
 
     #Replace airport type with int for use with enum
@@ -53,7 +53,7 @@ for i in range(len(data)):
 
 #Write file
 with open("data/airports.csv", "w", encoding="utf-8") as f:
-    f.write(titles)
+    f.write(headers)
     for datum in data:
         output = ""
         for i in range(len(datum)-1):
