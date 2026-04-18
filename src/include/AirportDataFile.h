@@ -11,7 +11,7 @@ class AirportDataFile{
         std::string headers;
 
         //Private Methods
-        void splitCSVLine(std::string(&)[12], std::string);
+        void splitCSVLine(std::string(&)[13], std::string);
 
     public:
         //Public Methods

@@ -8,7 +8,7 @@ using namespace std;
 
 AirportDataFile::AirportDataFile(string filePath) : filePath(filePath) {}
 
-void AirportDataFile::splitCSVLine(string(&fields)[12], string line){
+void AirportDataFile::splitCSVLine(string(&fields)[13], string line){
     int fieldIndex = 0;
     ostringstream field;
     bool inQuotes = false;
@@ -40,7 +40,7 @@ void AirportDataFile::load(list<Airport>& airports){
     string line;
     getline(file, headers);
     while(getline(file, line)){
-        string fields[12];
+        string fields[13];
         splitCSVLine(fields, line);
         try{
             Airport a;
@@ -55,7 +55,8 @@ void AirportDataFile::load(list<Airport>& airports){
             a.setIATACode(fields[8]);
             a.setGPSCode(fields[9]);
             a.setLocalCode(fields[10]);
-            a.setCoordinates();
+            a.setLatitude(stod(fields[11]));
+            a.setLongitude(stod(fields[12]));
         }catch (invalid_argument& e){
             cout << e.what();
         }
