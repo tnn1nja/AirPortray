@@ -13,6 +13,14 @@ void Airport::assertNoBackslash(std::string s){
     }
 }
 
+void Airport::assertLength(std::string s, int i){
+    if(s.length() == i){
+        throw std::invalid_argument(
+            std::string("Must be ") + std::to_string(i) + " characters long"
+        );
+    }
+}
+
 
 //Setters
 void Airport::setAirportType(AirportType type){
@@ -30,20 +38,14 @@ void Airport::setElevation(short elevation){
 
 void Airport::setContinent(std::string continent){
     assertNoBackslash(continent);
-    if(continent.length() == 2){
-        this->continent = continent;
-    }else{
-        throw std::invalid_argument("Continent code must be 2 characters long");
-    }
+    assertLength(continent, 2);
+    this->continent = continent;
 }
 
 void Airport::setCountry(std::string country){
     assertNoBackslash(country);
-    if(country.length() == 2){
-        this->country = country;
-    }else{
-        throw std::invalid_argument("Country code must be 2 characters long");
-    }
+    assertLength(country, 2);
+    this->country = country;
 }
 
 void Airport::setRegion(std::string region){
@@ -54,6 +56,29 @@ void Airport::setRegion(std::string region){
 void Airport::setMunicipality(std::string name){
     assertNoBackslash(municipality);
     this->municipality = municipality;
+}
+
+void Airport::setICAOCode(std::string ICAOCode){
+    assertNoBackslash(ICAOCode);
+    assertLength(ICAOCode, 4);
+    this->ICAOCode = ICAOCode;
+}
+
+void Airport::setIATACode(std::string IATACode){
+    assertNoBackslash(IATACode);
+    assertLength(IATACode, 3);
+    this->IATACode = IATACode;
+}
+
+void Airport::setGPSCode(std::string GPSCode){
+    assertNoBackslash(GPSCode);
+    assertLength(GPSCode, 4);
+    this->GPSCode = GPSCode;
+}
+
+void Airport::setLocalCode(std::string localCode){
+    assertNoBackslash(localCode);
+    this->localCode = localCode;
 }
 
 

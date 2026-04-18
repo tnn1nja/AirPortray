@@ -23,6 +23,7 @@ class Airport {
 
         //Private Methods
         void assertNoBackslash(std::string);
+        void assertLength(std::string, int);
 
     public:
         //Constructor(s)
@@ -36,8 +37,8 @@ class Airport {
         void setCountry(std::string);
         void setRegion(std::string);
         void setMunicipality(std::string);
-        void setICAO(std::string);
-        void setIATA(std::string);
+        void setICAOCode(std::string);
+        void setIATACode(std::string);
         void setGPSCode(std::string);
         void setLocalCode(std::string);
         void setCoordinates(double*);
