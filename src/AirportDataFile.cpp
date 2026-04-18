@@ -44,39 +44,25 @@ void AirportDataFile::load(list<Airport>& airports){
     while(getline(file, line)){
         string fields[13];
         splitCSVLine(fields, line);
-        int fieldIndex = 0;
+        int field = 0;
         try{
             Airport a;
-            a.setType(static_cast<AirportType>(stoi(fields[0])));
-            fieldIndex++;
-            a.setName(fields[1]);
-            fieldIndex++;
-            a.setElevation(stoi(fields[2]));
-            fieldIndex++;
-            a.setContinent(fields[3]);
-            fieldIndex++;
-            a.setCountry(fields[4]);
-            fieldIndex++;
-            a.setRegion(fields[5]);
-            fieldIndex++;
-            a.setMunicipality(fields[6]);
-            fieldIndex++;
-            cout << fields[7].length();
-            a.setICAOCode(fields[7]);
-            fieldIndex++;
-            a.setIATACode(fields[8]);
-            fieldIndex++;
-            a.setGPSCode(fields[9]);
-            fieldIndex++;
-            a.setLocalCode(fields[10]);
-            fieldIndex++;
-            a.setLatitude(stod(fields[11]));
-            fieldIndex++;
-            a.setLongitude(stod(fields[12]));
-            fieldIndex++;
+            a.setType(static_cast<AirportType>(stoi(fields[0]))); field++;
+            a.setName(fields[1]); field++;
+            a.setElevation(stoi(fields[2])); field++;
+            a.setContinent(fields[3]); field++;
+            a.setCountry(fields[4]); field++;
+            a.setRegion(fields[5]); field++;
+            a.setMunicipality(fields[6]); field++;
+            a.setICAOCode(fields[7]); field++;
+            a.setIATACode(fields[8]); field++;
+            a.setGPSCode(fields[9]); field++;
+            a.setLocalCode(fields[10]); field++;
+            a.setLatitude(stod(fields[11])); field++;
+            a.setLongitude(stod(fields[12])); field++;
         }catch (invalid_argument& e){
             cout << "Failed to read Airport at line " << lineCount 
-                 << " field " << fieldIndex << ": " << e.what() << "!\n";
+                 << ", field " << field << ": " << e.what() << "!\n";
         }
         lineCount++;
     }
