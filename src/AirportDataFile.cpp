@@ -38,7 +38,7 @@ string AirportDataFile::decodeString(string s){
 }
 
 string AirportDataFile::encodeString(string s){
-    for(int i=0; i<s.size(); i++){
+    for(unsigned int i=0; i<s.size(); i++){
         if(s.at(i)=='\"'){
             s.insert(i, "\"");
             i++;
