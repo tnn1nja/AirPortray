@@ -25,7 +25,7 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
                 field = ""
             else:
                 field += c
-        fields.extend(field.strip("").split(",")) #split coordinates
+        fields.extend(field.strip("\"").split(",")) #split coordinates
         data.append(fields)
 
 #Update headers
