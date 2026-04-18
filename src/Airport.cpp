@@ -90,7 +90,6 @@ void Airport::setIATACode(string IATACode){
 
 void Airport::setGPSCode(string GPSCode){
     assertNoBackslash(GPSCode);
-    assertLength(GPSCode, 4);
     this->GPSCode = GPSCode;
 }
 
