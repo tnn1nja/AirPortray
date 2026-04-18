@@ -37,11 +37,23 @@ string AirportDataFile::decodeString(string s){
     return s;
 }
 
+string AirportDataFile::encodeString(string s){
+    for(int i=0; i<s.size(); i++){
+        if(s.at(i)=='\"'){
+            s.insert(i, "\"");
+            i++;
+        }
+    }
+    s.insert(0, "\"");
+    s.insert(s.size(), "\"");
+    return s;
+}
+
 void AirportDataFile::load(list<Airport>& airports){
     //Open file
     ifstream file(filePath);
     if(!file.is_open()){
-        cout << "Unable to open file: " << filePath << endl;
+        cout << "Unable to read file: " << filePath << endl;
         return;
     }
 
@@ -80,5 +92,17 @@ void AirportDataFile::load(list<Airport>& airports){
 }
 
 void AirportDataFile::save(const list<Airport>& airports){
+    //Open file
+    ofstream file(filePath);
+    if(!file.is_open()){
+        cout << "Unable to write file: " << filePath << endl;
+        return;
+    }
 
+    //Write data
+    file << headers << endl;
+    for(Airport a: airports){
+        file << static_cast<int>(a.getType()) << ","
+             << a.getName();
+    }
 }
