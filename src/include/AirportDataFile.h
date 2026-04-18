@@ -6,11 +6,16 @@
 
 class AirportDataFile{
     private:
+        //Attributes
         std::string filePath;
-        std::string headers[12];
+        std::string headers;
+
+        //Private Methods
+        void splitCSVLine(std::string(&)[], std::string);
 
     public:
-        AirportDataFile(std::string filePath);
+        //Public Methods
+        AirportDataFile(std::string);
         void load(std::list<Airport>&);
         void save(std::list<Airport>&);
 };
