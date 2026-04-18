@@ -1,5 +1,6 @@
 #include "include/Airport.h"
 #include <stdexcept>
+#include <iostream>
 
 //Constructor(s)
 Airport::Airport(){};
@@ -12,7 +13,8 @@ void Airport::setName(std::string name){
     if(name.find("\\") != std::string::npos){
         this->name = name;
     }else{
-        throw std::invalid_argument("Cannot contain backslashes");
+        std::cout << "Exception";
+        //throw std::invalid_argument("Cannot contain backslashes");
     }
 }
 
