@@ -1,6 +1,5 @@
 #include "include/Airport.h"
 #include <stdexcept>
-#include <climits>
 #include <cmath>
 
 using namespace std;
@@ -17,7 +16,7 @@ Airport::Airport(){
     IATACode = "";
     GPSCode = "";
     localCode = "";
-    elevation = SHRT_MIN; //using min as a null
+    elevation = SHRT_NULL;
     latitude = NAN;
     longitude = NAN;
 }

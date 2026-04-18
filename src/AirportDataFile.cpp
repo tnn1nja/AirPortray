@@ -102,7 +102,11 @@ void AirportDataFile::save(const list<Airport>& airports){
     //Write data
     file << headers << endl;
     for(Airport a: airports){
+        string elevation = (a.getElevation() == SHRT_NULL) ? "" : to_string(a.getElevation());
+        string latitude = (a.getLatitude() == NULL) ? "" : to_string(a.getLatitude());
+        string longitude = (a.getLongitude() == NULL) ? "" : to_string(a.getLongitude());
+
         file << static_cast<int>(a.getType()) << ","
-             << a.getName();
+             << encodeString(a.getName());
     }
 }
