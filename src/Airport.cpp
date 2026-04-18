@@ -10,10 +10,10 @@ void Airport::setAirportType(AirportType type){
     this->type = type;
 }
 void Airport::setName(std::string name){
-    if(name.find("\\") != std::string::npos){
+    if(name.find("\\") == std::string::npos){
         this->name = name;
     }else{
-        std::cout << "Exception";
+        std::cout << "Exception\n";
         //throw std::invalid_argument("Cannot contain backslashes");
     }
 }
