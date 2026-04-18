@@ -17,7 +17,7 @@ AP_OBJ = $(BUILDDIR)/AirPortray.o
 CXXWFLAGS = $(CXX) -std=c++17 -Wall
 
 $(APPNAME): $(BUILDDIR) $(M_OBJ) $(A_OBJ) $(ADF_OBJ) $(AR_OBJ) $(AP_OBJ)
-	$(CXXWFLASGS) $(M_OBJ) $(A_OBJ) $(ADF_OBJ) $(AR_OBJ) $(AP_OBJ) -o $(APPNAME)
+	$(CXXWFLAGS) $(M_OBJ) $(A_OBJ) $(ADF_OBJ) $(AR_OBJ) $(AP_OBJ) -o $(APPNAME)
 
 $(BUILDDIR):
 	mkdir $(BUILDDIR)
