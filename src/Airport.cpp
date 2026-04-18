@@ -7,13 +7,13 @@ Airport::Airport(){};
 
 
 //Private Methods
-void Airport::assertNoBackslash(std::string s){
+void Airport::assertNoBackslash(const std::string& s){
     if(s.find("\\") != std::string::npos){
         throw std::invalid_argument("Cannot contain backslashes");
     }
 }
 
-void Airport::assertLength(std::string s, int i){
+void Airport::assertLength(const std::string& s, int i){
     if(s.length() == i){
         throw std::invalid_argument(
             std::string("Must be ") + std::to_string(i) + " characters long"

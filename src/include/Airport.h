@@ -22,8 +22,8 @@ class Airport {
         double coordinates[2];
 
         //Private Methods
-        void assertNoBackslash(std::string);
-        void assertLength(std::string, int);
+        void assertNoBackslash(const std::string&);
+        void assertLength(const std::string&, int);
 
     public:
         //Constructor(s)
