@@ -9,5 +9,9 @@ AirportRepository::AirportRepository(string dataFilePath){
 }
 
 void AirportRepository::test(){
-    cout << airports.front().getName() << endl;
+    Airport* a = &airports.front();
+    cout << static_cast<int>(a->getType()) << " " << a->getName() << " " << a->getElevation()
+         << " " << a->getContinent() << " " << a->getRegion() << " " << a->getMunicipality()
+         << " " << a->getICAOCode() << " " << a->getIATACode() << " " << a->getGPSCode()
+         << " " << a->getLocalCode() << " " << a->getLatitude() << " " << a->getLongitude();
 }
