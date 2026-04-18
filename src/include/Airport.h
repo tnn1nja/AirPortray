@@ -9,7 +9,8 @@ enum class AirportType{
     LARGE_AIRPORT,
     MEDIUM_AIRPORT,
     SEAPLANE_BASE,
-    SMALL_AIRPORT
+    SMALL_AIRPORT,
+    UNKNOWN
 };
 
 class Airport {
@@ -26,6 +27,9 @@ class Airport {
         void assertLength(const std::string&, unsigned int);
 
     public:
+        //Constructor
+        Airport();
+
         //Setters
         void setType(AirportType);
         void setName(std::string);

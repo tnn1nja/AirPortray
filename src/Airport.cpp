@@ -4,6 +4,24 @@
 
 using namespace std;
 
+//Constructor
+Airport::Airport(){
+    type = AirportType::UNKNOWN;
+    name = "";
+    continent = "";
+    country = "";
+    region = "";
+    municipality = "";
+    ICAOCode = "";
+    IATACode = "";
+    GPSCode = "";
+    localCode = "";
+    elevation = SHRT_MIN; //using min as a null
+    latitude = NAN;
+    longitude = NAN;
+}
+
+
 //Private Methods
 void Airport::assertNoBackslash(const string& s){
     if(s.find("\\") != string::npos){
