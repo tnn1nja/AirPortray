@@ -8,16 +8,9 @@ class Airport {
     private:
         //Attributes
         AirportType type;
-        std::string name;
+        std::string name, continent, country, region, municipality,
+                    ICAOCode, IATACode, GPSCode, localCode;
         short elevation;
-        std::string continent;
-        std::string country;
-        std::string region;
-        std::string municipality;
-        std::string ICAOCode;
-        std::string IATACode;
-        std::string GPSCode;
-        std::string localCode;
         double coordinates[2];
 
     public:
