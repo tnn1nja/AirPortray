@@ -13,6 +13,9 @@ void AirportDataFile::splitCSVLine(string(&fields)[12], string line){
     bool inQuotes = false;
 
     for(char c: line){
+        if(c == '\n' || c == '\r'){ //ignore newline characters
+            continue;
+        }
         if(c == '\"'){
             inQuotes = !inQuotes;
         }
@@ -40,6 +43,7 @@ void AirportDataFile::load(list<Airport>& airports){
 
     //Read file data
     string line;
+    int count = 0;
     while(getline(file, line)){
         string fields[12];
         splitCSVLine(fields, line);
