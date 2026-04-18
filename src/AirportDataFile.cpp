@@ -78,3 +78,7 @@ void AirportDataFile::load(list<Airport>& airports){
         lineCount++;
     }
 }
+
+void AirportDataFile::save(const list<Airport>& airports){
+
+}

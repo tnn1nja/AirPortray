@@ -19,5 +19,5 @@ class AirportDataFile{
         //Public Methods
         AirportDataFile(std::string);
         void load(std::list<Airport>&);
-        void save(std::list<Airport>&);
+        void save(const std::list<Airport>&);
 };
