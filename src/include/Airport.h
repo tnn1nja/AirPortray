@@ -26,9 +26,6 @@ class Airport {
         void assertLength(const std::string&, int);
 
     public:
-        //Constructor(s)
-        Airport();
-
         //Setters
         void setAirportType(AirportType);
         void setName(std::string);

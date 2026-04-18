@@ -2,10 +2,6 @@
 #include <stdexcept>
 #include <iostream>
 
-//Constructor(s)
-Airport::Airport(){};
-
-
 //Private Methods
 void Airport::assertNoBackslash(const std::string& s){
     if(s.find("\\") != std::string::npos){
