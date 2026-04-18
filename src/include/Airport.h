@@ -21,6 +21,9 @@ class Airport {
         short elevation;
         double coordinates[2];
 
+        //Private Methods
+        void assertNoBackslash(std::string);
+
     public:
         //Constructor(s)
         Airport();

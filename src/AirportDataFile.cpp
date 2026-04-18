@@ -6,7 +6,5 @@ AirportDataFile::AirportDataFile(std::string filePath){
 }
 
 void AirportDataFile::load(std::list<Airport>& airports){
-    Airport test;
-    test.setName("test");
     std::cout << "Data file loaded\n";
 }

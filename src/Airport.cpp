@@ -5,18 +5,57 @@
 //Constructor(s)
 Airport::Airport(){};
 
+
+//Private Methods
+void Airport::assertNoBackslash(std::string s){
+    if(s.find("\\") != std::string::npos){
+        throw std::invalid_argument("Cannot contain backslashes");
+    }
+}
+
+
 //Setters
 void Airport::setAirportType(AirportType type){
     this->type = type;
 }
+
 void Airport::setName(std::string name){
-    if(name.find("\\") == std::string::npos){
-        this->name = name;
+    assertNoBackslash(name);
+    this->name = name;
+}
+
+void Airport::setElevation(short elevation){
+    this->elevation = elevation;
+}
+
+void Airport::setContinent(std::string continent){
+    assertNoBackslash(continent);
+    if(continent.length() == 2){
+        this->continent = continent;
     }else{
-        std::cout << "Exception\n";
-        //throw std::invalid_argument("Cannot contain backslashes");
+        throw std::invalid_argument("Continent code must be 2 characters long");
     }
 }
+
+void Airport::setCountry(std::string country){
+    assertNoBackslash(country);
+    if(country.length() == 2){
+        this->country = country;
+    }else{
+        throw std::invalid_argument("Country code must be 2 characters long");
+    }
+}
+
+void Airport::setRegion(std::string region){
+    assertNoBackslash(country);
+    this->region = region;
+}
+
+void Airport::setMunicipality(std::string name){
+    assertNoBackslash(municipality);
+    this->municipality = municipality;
+}
+
 
 //Getters
 AirportType Airport::getAirportType(){ return type; }
