@@ -23,7 +23,7 @@ class Airport {
 
         //Private Methods
         void assertNoBackslash(const std::string&);
-        void assertLength(const std::string&, int);
+        void assertLength(const std::string&, unsigned int);
 
     public:
         //Setters

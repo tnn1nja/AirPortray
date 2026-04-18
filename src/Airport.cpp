@@ -9,7 +9,7 @@ void Airport::assertNoBackslash(const std::string& s){
     }
 }
 
-void Airport::assertLength(const std::string& s, int i){
+void Airport::assertLength(const std::string& s, unsigned int i){
     if(s.length() == i){
         throw std::invalid_argument(
             std::string("Must be ") + std::to_string(i) + " characters long"
