@@ -79,9 +79,12 @@ void Airport::setLocalCode(string localCode){
     this->localCode = localCode;
 }
 
-void Airport::setCoordinates(double latitude, double longitude){
-    this->coordinates[0] = latitude;
-    this->coordinates[1] = longitude;
+void Airport::setLatitude(double latitude){
+    this->latitude = latitude;
+}
+
+void Airport::setLongitude(double longitude){
+    this->longitude = longitude;
 }
 
 
@@ -97,4 +100,5 @@ string Airport::getICAOCode(){ return ICAOCode; }
 string Airport::getIATACode(){ return IATACode; }
 string Airport::getGPSCode(){ return GPSCode; }
 string Airport::getLocalCode(){ return localCode; }
-double* Airport::getCoordinates(){ return coordinates; }
+double Airport::getLatitude(){ return latitude; }
+double Airport::getLongitude(){ return longitude; }

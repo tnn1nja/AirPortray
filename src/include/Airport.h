@@ -19,7 +19,7 @@ class Airport {
         std::string name, continent, country, region, municipality,
                     ICAOCode, IATACode, GPSCode, localCode;
         short elevation;
-        double coordinates[2];
+        double latitude, longitude;
 
         //Private Methods
         void assertNoBackslash(const std::string&);
@@ -38,7 +38,8 @@ class Airport {
         void setIATACode(std::string);
         void setGPSCode(std::string);
         void setLocalCode(std::string);
-        void setCoordinates(double latitude, double longitude);
+        void setLatitude(double);
+        void setLongitude(double);
 
         //Getters
         AirportType getType();
@@ -52,5 +53,6 @@ class Airport {
         std::string getIATACode();
         std::string getGPSCode();
         std::string getLocalCode();
-        double* getCoordinates();
+        double getLatitude();
+        double getLongitude();
 };
