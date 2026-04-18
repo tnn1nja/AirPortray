@@ -57,7 +57,7 @@ for i in range(len(data)):
 
 #Write file
 with open("data/airports.csv", "w", encoding="utf-8") as f:
-    f.write(",".join(headers))
+    f.write(",".join(headers) + "\n")
     for datum in data:
         output = ""
         for i in range(len(datum)-1):
