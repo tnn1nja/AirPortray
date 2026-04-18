@@ -13,6 +13,7 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
     headers = lines[0].rstrip("\n").split(",")
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
+        lines[i] = lines[i].rstrip("\n")
         fields = []
         field = ""
         inQuotes = False
@@ -25,7 +26,7 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
                 field = ""
             else:
                 field += c
-        fields.extend(field.strip("\"").split(",")) #split coordinates
+        fields.extend(field.strip("\"").replace(" ", "").split(",")) #split coordinates
         data.append(fields)
 
 #Update headers
@@ -63,6 +64,6 @@ with open("data/airports.csv", "w", encoding="utf-8") as f:
         for i in range(len(datum)-1):
             output += str(datum[i]) + ","
         output += datum[-1]
-        f.write(output)
+        f.write(output + "\n")
 
 print("File processing complete!")
