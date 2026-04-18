@@ -10,7 +10,7 @@ data = []
 #Read file
 with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
     lines = f.readlines()
-    headers = lines[0]
+    headers = lines[0].rstrip("\n").split(",")
     #Split into sections respecting quotes (ignores "" as it isn't relevant)
     for i in range(1, len(lines)):
         fields = []
@@ -25,17 +25,21 @@ with open("data/raw/raw_airports.csv", "r", encoding="utf-8") as f:
                 field = ""
             else:
                 field += c
-        fields.append(field)
+        fields.extend(field.strip("").split(",")) #split coordinates
         data.append(fields)
 
-#Process file
+#Update headers
+headers.pop(0) #remove ident
+headers.pop(-1) #remove coordinates
+headers.extend(["latitude", "longitude"])
+
+#Process file data
 for i in range(len(data)):
     #Remove ident collum
-    headers = headers.replace("ident,", "")
     data[i].pop(0)
 
     #Replace airport type with int for use with enum
-    types = [
+    types = [""
         "balloonport", 
         "closed",
         "heliport",
@@ -53,7 +57,7 @@ for i in range(len(data)):
 
 #Write file
 with open("data/airports.csv", "w", encoding="utf-8") as f:
-    f.write(headers)
+    f.write(",".join(headers))
     for datum in data:
         output = ""
         for i in range(len(datum)-1):
