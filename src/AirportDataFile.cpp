@@ -89,6 +89,10 @@ void AirportDataFile::load(list<Airport>& airports){
         }
         lineCount++;
     }
+
+    //Test encode
+    string s = "test  \" , , string";
+    cout << encodeString(s);
 }
 
 void AirportDataFile::save(const list<Airport>& airports){
