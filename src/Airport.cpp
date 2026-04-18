@@ -21,7 +21,7 @@ void Airport::assertLength(const string& s, unsigned int i){
 
 
 //Setters
-void Airport::setAirportType(AirportType type){
+void Airport::setType(AirportType type){
     this->type = type;
 }
 
@@ -86,7 +86,7 @@ void Airport::setCoordinates(double latitude, double longitude){
 
 
 //Getters
-AirportType Airport::getAirportType(){ return type; }
+AirportType Airport::getType(){ return type; }
 string Airport::getName(){ return name; }
 short Airport::getElevation(){return elevation; }
 string Airport::getContinent(){ return continent; }

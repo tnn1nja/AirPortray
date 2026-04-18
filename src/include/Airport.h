@@ -27,7 +27,7 @@ class Airport {
 
     public:
         //Setters
-        void setAirportType(AirportType);
+        void setType(AirportType);
         void setName(std::string);
         void setElevation(short);
         void setContinent(std::string);
@@ -41,7 +41,7 @@ class Airport {
         void setCoordinates(double latitude, double longitude);
 
         //Getters
-        AirportType getAirportType();
+        AirportType getType();
         std::string getName();
         short getElevation();
         std::string getContinent();

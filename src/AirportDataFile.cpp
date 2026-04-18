@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -35,21 +36,28 @@ void AirportDataFile::load(list<Airport>& airports){
         return;
     }
 
-    //Save headers
-    getline(file, headers);
-
-    //Read file data
+    //Parse file data
     string line;
-    int count = 0;
+    getline(file, headers);
     while(getline(file, line)){
         string fields[12];
         splitCSVLine(fields, line);
-        if(count < 5){
-            for(string field: fields){
-                cout << field << "| ";
-            }
-            cout << endl;
-            count++;
+        try{
+            Airport a;
+            a.setType(static_cast<AirportType>(stoi(fields[0])));
+            a.setName(fields[1]);
+            a.setElevation(stoi(fields[2]));
+            a.setContinent(fields[3]);
+            a.setCountry(fields[4]);
+            a.setRegion(fields[5]);
+            a.setMunicipality(fields[6]);
+            a.setICAOCode(fields[7]);
+            a.setIATACode(fields[8]);
+            a.setGPSCode(fields[9]);
+            a.setLocalCode(fields[10]);
+            a.setCoordinates();
+        }catch (invalid_argument& e){
+            cout << e.what();
         }
     }
 }
