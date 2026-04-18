@@ -62,7 +62,8 @@ void AirportDataFile::load(list<Airport>& airports){
             if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
         }catch (invalid_argument& e){
             cout << "Failed to read Airport at line " << lineCount 
-                 << ", field " << field << ": " << e.what() << "!\n";
+                 << ", field " << field << " (" << fields[field]
+                 << ") : " << e.what() << "!\n";
         }
         lineCount++;
     }
