@@ -71,7 +71,7 @@ void Airport::setRegion(string region){
     this->region = region;
 }
 
-void Airport::setMunicipality(string name){
+void Airport::setMunicipality(string municipality){
     assertNoBackslash(municipality);
     this->municipality = municipality;
 }
