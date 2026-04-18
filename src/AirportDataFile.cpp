@@ -47,19 +47,19 @@ void AirportDataFile::load(list<Airport>& airports){
         int field = 0;
         try{
             Airport a;
-            a.setType(static_cast<AirportType>(stoi(fields[0]))); field++;
-            a.setName(fields[1]); field++;
-            a.setElevation(stoi(fields[2])); field++;
-            a.setContinent(fields[3]); field++;
-            a.setCountry(fields[4]); field++;
-            a.setRegion(fields[5]); field++;
-            a.setMunicipality(fields[6]); field++;
-            a.setICAOCode(fields[7]); field++;
-            a.setIATACode(fields[8]); field++;
-            a.setGPSCode(fields[9]); field++;
-            a.setLocalCode(fields[10]); field++;
-            a.setLatitude(stod(fields[11])); field++;
-            a.setLongitude(stod(fields[12])); field++;
+            a.setType(static_cast<AirportType>(stoi(fields[field]))); field++;
+            a.setName(fields[field]); field++;
+            if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
+            a.setContinent(fields[field]); field++;
+            a.setCountry(fields[field]); field++;
+            a.setRegion(fields[field]); field++;
+            a.setMunicipality(fields[field]); field++;
+            a.setICAOCode(fields[field]); field++;
+            a.setIATACode(fields[field]); field++;
+            a.setGPSCode(fields[field]); field++;
+            a.setLocalCode(fields[field]); field++;
+            if(fields[field] != ""){ a.setLatitude(stod(fields[field])); } field++;
+            if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
         }catch (invalid_argument& e){
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << ": " << e.what() << "!\n";
