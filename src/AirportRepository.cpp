@@ -1,6 +1,8 @@
 #include "include/AirportRepository.h"
 
-AirportRepository::AirportRepository(std::string dataFilePath){
+using namespace std;
+
+AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     dataFile->load(airports);
 }

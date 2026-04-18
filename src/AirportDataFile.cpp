@@ -1,9 +1,14 @@
 #include "include/AirportDataFile.h"
 #include <iostream>
+#include <fstream>
 
-AirportDataFile::AirportDataFile(std::string filePath) : filePath(filePath) {}
+using namespace std;
 
-void AirportDataFile::load(std::list<Airport>& airports){
-    Airport ap;
-    ap.setName("john");
+AirportDataFile::AirportDataFile(string filePath) : filePath(filePath) {}
+
+void AirportDataFile::load(list<Airport>& airports){
+    ifstream file(filePath);
+    if (!file.is_open()){
+        cout <<
+    }
 }
