@@ -41,7 +41,7 @@ class Airport {
         void setIATACode(std::string);
         void setGPSCode(std::string);
         void setLocalCode(std::string);
-        void setCoordinates(double*);
+        void setCoordinates(double latitude, double longitude);
 
         //Getters
         AirportType getAirportType();

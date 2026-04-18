@@ -81,6 +81,12 @@ void Airport::setLocalCode(std::string localCode){
     this->localCode = localCode;
 }
 
+void Airport::setCoordinates(double latitude, double longitude){
+    this->coordinates[0] = latitude;
+    this->coordinates[1] = longitude;
+}
+
+
 
 //Getters
 AirportType Airport::getAirportType(){ return type; }
