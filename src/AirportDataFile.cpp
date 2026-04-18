@@ -57,12 +57,12 @@ void AirportDataFile::load(list<Airport>& airports){
         try{
             Airport a;
             a.setType(static_cast<AirportType>(stoi(fields[field]))); field++;
-            a.setName(fields[field]); field++;
+            a.setName(decodeString(fields[field])); field++;
             if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
             a.setContinent(fields[field]); field++;
             a.setCountry(fields[field]); field++;
             a.setRegion(fields[field]); field++;
-            a.setMunicipality(fields[field]); field++;
+            a.setMunicipality(decodeString(fields[field])); field++;
             a.setICAOCode(fields[field]); field++;
             a.setIATACode(fields[field]); field++;
             a.setGPSCode(fields[field]); field++;
