@@ -12,7 +12,7 @@ void Airport::assertNoBackslash(const string& s){
 }
 
 void Airport::assertLength(const string& s, unsigned int i){
-    if(s.length() == i){
+    if(s.length() != i){
         throw invalid_argument(
             string("Must be ") + to_string(i) + " characters long"
         );

@@ -61,6 +61,7 @@ void AirportDataFile::load(list<Airport>& airports){
             fieldIndex++;
             a.setMunicipality(fields[6]);
             fieldIndex++;
+            cout << fields[7].length();
             a.setICAOCode(fields[7]);
             fieldIndex++;
             a.setIATACode(fields[8]);
@@ -74,7 +75,9 @@ void AirportDataFile::load(list<Airport>& airports){
             a.setLongitude(stod(fields[12]));
             fieldIndex++;
         }catch (invalid_argument& e){
-            cout << "Failed to read Airport at line " << lineCount << ": " << fieldIndex << " " << e.what() << "!\n";
+            cout << "Failed to read Airport at line " << lineCount 
+                 << " field " << fieldIndex << ": " << e.what() << "!\n";
+        }
         lineCount++;
     }
 }
