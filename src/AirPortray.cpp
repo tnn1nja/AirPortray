@@ -4,10 +4,15 @@
 using namespace std;
 
 AirPortray::AirPortray(string dataFilePath){
-    airportRepository = new AirportRepository(dataFilePath);
+    repository = new AirportRepository(dataFilePath);
 }
 
 void AirPortray::run(){
     cout << "AirPortray running!\n";
-    airportRepository->saveIfDirty();
+    displayAirports();
+    repository->saveIfDirty();
+}
+
+void AirPortray::displayAirports(list<Airport&> airports){
+
 }
