@@ -10,8 +10,8 @@ AirportRepository::AirportRepository(string dataFilePath){
 }
 
 bool AirportRepository::saveIfDirty(){
-    if(!dirty){
+    if(dirty){
         dataFile->save(airports);
     }
-    return !dirty;
+    return dirty;
 }

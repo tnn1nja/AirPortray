@@ -94,7 +94,7 @@ void AirportDataFile::load(list<Airport>& airports){
 
 void AirportDataFile::save(const list<Airport>& airports){
     //Open file
-    ofstream file("data/new_airports");
+    ofstream file("data/new_airports.csv");
     if(!file.is_open()){
         cout << "Unable to write file: " << filePath << endl;
         return;
@@ -104,8 +104,8 @@ void AirportDataFile::save(const list<Airport>& airports){
     file << headers << endl;
     for(Airport a: airports){
         string elevation = (a.getElevation() == SHRT_NULL) ? "" : to_string(a.getElevation());
-        string latitude = (a.getLatitude() == NULL) ? "" : to_string(a.getLatitude());
-        string longitude = (a.getLongitude() == NULL) ? "" : to_string(a.getLongitude());
+        string latitude = (a.getLatitude() == NAN) ? "" : to_string(a.getLatitude());
+        string longitude = (a.getLongitude() == NAN) ? "" : to_string(a.getLongitude());
 
         file << static_cast<int>(a.getType()) << ","
              << encodeString(a.getName()) << ","
