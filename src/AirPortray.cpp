@@ -14,15 +14,23 @@ void AirPortray::run(){
     repository->saveIfDirty();
 }
 
+string AirPortray::truncateString(string s, unsigned int i){
+    if(s.length() > i){
+        s.erase(i-3);
+        s = s + "...";
+    }
+    return s;
+}
+
 void AirPortray::displayAirports(list<Airport*> airports){
     cout << left << fixed
-         << setw(15) << "Type" << "| "
-         << setw(32) << "Name" << "| "
+         << setw(14) << "Type" << " | "
+         << setw(32) << "Name" << " | "
          << "Elevation (ft) | "
          << "Continent | "
          << "Country | " 
          << "Region | " 
-         << setw(20) << "Municipality" << "| "
+         << setw(20) << "Municipality" << " | "
          << "ICAO Code | "
          << "IATA Code | " 
          << "GPS Code | " 
@@ -30,17 +38,17 @@ void AirPortray::displayAirports(list<Airport*> airports){
          << "Coordinates"
          << endl;
 
-    cout << setw(15) << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << "| "
-         << setw(32) << "Kitchen Creek Helibase Heliport" << "| "
-         << setw(15) << "32000" << "| "
-         << setw(10) << "NA" << "| "
-         << setw(8) << "US" << "| "
-         << setw(7) << "US-PAU" << "| "
-         << setw(20) << "Altamonte Springs" << "| "
-         << setw(10) << "AAAA" << "| "
-         << setw(10) << "BBB" << "| "
-         << setw(9) << "CCCC" << "| "
-         << setw(11) << "DDDD" << "| "
+    cout << setw(14) << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << " | "
+         << setw(32) << truncateString("Kitchen Creek Helibase Heliport", 32) << " | "
+         << setw(14) << "32000" << " | "
+         << setw(9) << "NA" << " | "
+         << setw(7) << "US" << " | "
+         << setw(6) << "US-PAU" << " | "
+         << setw(20) << truncateString("Altamonte Springs", 20) << " | "
+         << setw(9) << "AAAA" << " | "
+         << setw(9) << "BBB" << " | "
+         << setw(8) << "CCCC" << " | "
+         << setw(10) << "DDDD" << " | "
          << setprecision(3) << -123.456789 << ", "
          << setprecision(3) << -123.456789
          << endl;

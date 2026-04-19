@@ -8,6 +8,7 @@ class AirPortray{
     private:
         AirportRepository* repository;
 
+        std::string truncateString(std::string, unsigned int);
         void displayAirports(std::list<Airport*>);
     public:
         AirPortray(std::string);
