@@ -9,10 +9,10 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     cout << "AirPortray running!\n";
-    displayAirports();
+    displayAirports(repository->getSomeAirports());
     repository->saveIfDirty();
 }
 
 void AirPortray::displayAirports(list<Airport&> airports){
-
+    
 }
