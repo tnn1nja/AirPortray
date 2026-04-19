@@ -6,12 +6,13 @@ using namespace std;
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     dataFile->load(airports);
-    dirty = true;//false;
+    dirty = false;
 }
 
 bool AirportRepository::saveIfDirty(){
     if(dirty){
         dataFile->save(airports);
+        cout << "AirportData altered, saving...\n";
     }
     return dirty;
 }
