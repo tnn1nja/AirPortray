@@ -27,7 +27,7 @@ void AirPortray::displayAirports(list<Airport*> airports){
     cout << left << fixed
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
-         << "Elevation (ft) | "
+         << "Elevation | "
          << "Continent | "
          << "Country | " 
          << "Region | " 
@@ -37,13 +37,13 @@ void AirPortray::displayAirports(list<Airport*> airports){
          << "GPS Code | " 
          << "Local Code | " 
          << "Coordinates"
-         << endl;
+         << endl << "-----------------" << endl;
 
     //Display rows
     for(Airport* a: airports){
         cout << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
-            << setw(14) << a->getElevation() << " | "
+            << setw(5) << a->getElevation() << setw(4) << "ft" << " | "
             << setw(9) << a->getContinent() << " | "
             << setw(7) << a->getCountry() << " | "
             << setw(6) << a->getRegion() << " | "
