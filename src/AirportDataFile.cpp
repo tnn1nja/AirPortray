@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <cmath>
 
 using namespace std;
 
@@ -93,7 +94,7 @@ void AirportDataFile::load(list<Airport>& airports){
 
 void AirportDataFile::save(const list<Airport>& airports){
     //Open file
-    ofstream file(filePath);
+    ofstream file("data/new_airports");
     if(!file.is_open()){
         cout << "Unable to write file: " << filePath << endl;
         return;

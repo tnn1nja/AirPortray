@@ -6,7 +6,7 @@ using namespace std;
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     dataFile->load(airports);
-    dirty = false;
+    dirty = true;//false;
 }
 
 bool AirportRepository::saveIfDirty(){
