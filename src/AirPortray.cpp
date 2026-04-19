@@ -13,6 +13,6 @@ void AirPortray::run(){
     repository->saveIfDirty();
 }
 
-void AirPortray::displayAirports(list<Airport&> airports){
-    
+void AirPortray::displayAirports(list<Airport*> airports){
+
 }

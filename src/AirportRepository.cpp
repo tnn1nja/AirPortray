@@ -18,11 +18,11 @@ bool AirportRepository::saveIfDirty(){
 }
 
 //TEMPORARY
-std::list<Airport&> AirportRepository::getSomeAirports(){
-    list<Airport&> output;
+std::list<Airport*> AirportRepository::getSomeAirports(){
+    list<Airport*> output;
     list<Airport>::iterator a = airports.begin();
     for(int i=0;i<100;i++){
-        output.push_back(*a);
+        output.push_back(&(*a));
     }
     return output;
 }

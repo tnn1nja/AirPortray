@@ -6,9 +6,9 @@
 
 class AirPortray{
     private:
-        AirportRepository *repository;
+        AirportRepository* repository;
 
-        void displayAirports(list<Airport&>);
+        void displayAirports(std::list<Airport*>);
     public:
         AirPortray(std::string);
         void run();
