@@ -69,7 +69,7 @@ void AirportDataFile::load(list<Airport>& airports){
         int field = 0;
         try{
             Airport a;
-            a.setType(static_cast<AirportType>(stoi(fields[field]))); field++;
+            a.setType(static_cast<Airport::Type>(stoi(fields[field]))); field++;
             a.setName(decodeString(fields[field])); field++;
             if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
             a.setContinent(fields[field]); field++;

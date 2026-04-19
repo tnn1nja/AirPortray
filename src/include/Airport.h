@@ -5,21 +5,23 @@
 
 #define SHRT_NULL SHRT_MIN //using min as a null
 
-enum class AirportType{
-    BALLOONPORT,
-    CLOSED,
-    HELIPORT,
-    LARGE_AIRPORT,
-    MEDIUM_AIRPORT,
-    SEAPLANE_BASE,
-    SMALL_AIRPORT,
-    UNKNOWN
-};
-
 class Airport {
+    public: //statics
+        static enum class Type{
+            BALLOONPORT,
+            CLOSED,
+            HELIPORT,
+            LARGE_AIRPORT,
+            MEDIUM_AIRPORT,
+            SEAPLANE_BASE,
+            SMALL_AIRPORT,
+            UNKNOWN
+        };
+        static std::string typeToString(Type);
+
     private:
         //Attributes
-        AirportType type;
+        Type type;
         std::string name, continent, country, region, municipality,
                     ICAOCode, IATACode, GPSCode, localCode;
         short elevation;
@@ -34,7 +36,7 @@ class Airport {
         Airport();
 
         //Setters
-        void setType(AirportType);
+        void setType(Type);
         void setName(std::string);
         void setElevation(short);
         void setContinent(std::string);
@@ -49,7 +51,7 @@ class Airport {
         void setLongitude(double);
 
         //Getters
-        AirportType getType();
+        Type getType();
         std::string getName();
         short getElevation();
         std::string getContinent();

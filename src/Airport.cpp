@@ -6,7 +6,7 @@ using namespace std;
 
 //Constructor
 Airport::Airport(){
-    type = AirportType::UNKNOWN;
+    type = Type::UNKNOWN;
     name = "";
     continent = "";
     country = "";
@@ -21,6 +21,21 @@ Airport::Airport(){
     longitude = NAN;
 }
 
+
+//Static Methods
+std::string Airport::typeToString(Type type){
+    string map[] = {
+        "Balloonport",
+        "Closed",
+        "Heliport",
+        "Large Airport",
+        "Medium Airport",
+        "Seaplane Base",
+        "Small Airport",
+        ""
+    };
+    return map[static_cast<int>(type)];
+}
 
 //Private Methods
 void Airport::assertNoBackslash(const string& s){
@@ -39,7 +54,7 @@ void Airport::assertLength(const string& s, unsigned int i){
 
 
 //Setters
-void Airport::setType(AirportType type){
+void Airport::setType(Type type){
     this->type = type;
 }
 
@@ -106,7 +121,7 @@ void Airport::setLongitude(double longitude){
 
 
 //Getters
-AirportType Airport::getType(){ return type; }
+Airport::Type Airport::getType(){ return type; }
 string Airport::getName(){ return name; }
 short Airport::getElevation(){return elevation; }
 string Airport::getContinent(){ return continent; }
