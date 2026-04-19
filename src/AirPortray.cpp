@@ -15,14 +15,35 @@ void AirPortray::run(){
 }
 
 void AirPortray::displayAirports(list<Airport*> airports){
-    cout << left << fixed << "Type | " << "Name | " << "Elevation | " << "Continent | "
-         << "ISO Country | " << "ISO Region | " << "Municipality | " << "ICAO Code | "
-         << "IATA Code | " << "GPS Code | " << "Local Code | " << "Latitude | " << "Longitude | "
+    cout << left << fixed
+         << setw(15) << "Type" << "| "
+         << setw(32) << "Name" << "| "
+         << "Elevation (ft) | "
+         << "Continent | "
+         << "Country | " 
+         << "Region | " 
+         << setw(20) << "Municipality" << "| "
+         << "ICAO Code | "
+         << "IATA Code | " 
+         << "GPS Code | " 
+         << "Local Code | " 
+         << "Coordinates"
          << endl;
 
-    cout << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << "Kitchen Creek Helibase Heliport" << "32000ft"
-         << "NA" << "US" << "US-PA-U" << "Altamonte Springs" << "AAAA" << "AAA" << airports.front()->getLatitude()
-         << airports.front()->getLongitude() << endl;
+    cout << setw(15) << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << "| "
+         << setw(32) << "Kitchen Creek Helibase Heliport" << "| "
+         << setw(15) << "32000" << "| "
+         << setw(10) << "NA" << "| "
+         << setw(8) << "US" << "| "
+         << setw(7) << "US-PAU" << "| "
+         << setw(20) << "Altamonte Springs" << "| "
+         << setw(10) << "AAAA" << "| "
+         << setw(10) << "BBB" << "| "
+         << setw(9) << "CCCC" << "| "
+         << setw(11) << "DDDD" << "| "
+         << setprecision(3) << -123.456789 << ", "
+         << setprecision(3) << -123.456789
+         << endl;
     
     /*
     for(Airport* a: airports){
