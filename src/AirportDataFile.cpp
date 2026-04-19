@@ -94,7 +94,7 @@ void AirportDataFile::load(list<Airport>& airports){
 
 void AirportDataFile::save(const list<Airport>& airports){
     //Open file
-    ofstream file("data/new_airports.csv");
+    ofstream file(filePath);
     if(!file.is_open()){
         cout << "Unable to write file: " << filePath << endl;
         return;
