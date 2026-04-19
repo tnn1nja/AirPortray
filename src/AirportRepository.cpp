@@ -21,8 +21,9 @@ bool AirportRepository::saveIfDirty(){
 std::list<Airport*> AirportRepository::getSomeAirports(){
     list<Airport*> output;
     list<Airport>::iterator a = airports.begin();
-    for(int i=0;i<100;i++){
+    for(int i=0;i<10;i++){
         output.push_back(&(*a));
+        a++;
     }
     return output;
 }

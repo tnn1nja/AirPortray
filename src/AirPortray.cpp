@@ -1,5 +1,6 @@
 #include "include/AirPortray.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,5 +15,10 @@ void AirPortray::run(){
 }
 
 void AirPortray::displayAirports(list<Airport*> airports){
-
+    for(Airport* a: airports){
+        cout << static_cast<int>(a->getType()) << " " << a->getName() << " " << a->getElevation()
+            << " " << a->getContinent() << " " << a->getRegion() << " " << a->getMunicipality()
+            << " " << a->getICAOCode() << " " << a->getIATACode() << " " << a->getGPSCode()
+            << " " << a->getLocalCode() << " " << a->getLatitude() << " " << a->getLongitude() << endl;
+    };
 }
