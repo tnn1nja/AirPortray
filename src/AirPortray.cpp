@@ -25,6 +25,7 @@ string AirPortray::truncateString(string s, unsigned int i){
 void AirPortray::displayAirports(vector<Airport*> airports){
     //Draw headers
     cout << left << fixed << endl
+         << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
          << "Elevation | "
@@ -40,15 +41,17 @@ void AirPortray::displayAirports(vector<Airport*> airports){
          << endl;
         
     //Draw Seperator
-    for(int i = 0; i<184; i++){
+    for(int i=0; i<190; i++){
         cout << "-";
     }
     cout << endl;
 
     //Draw Rows
     int count = 0;
-    for(Airport* a: airports){
-        cout << setw(14) << Airport::typeToString(a->getType()) << " | "
+    for(int i=0; i<MAX_RESULTS; i++){
+        Airport* a = airports.at(i);
+        cout << right << setw(2) << i+1 << left << ". | "
+            << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
             << setw(5) << a->getElevation() << setw(4) << "ft" << " | "
             << setw(9) << a->getContinent() << " | "
