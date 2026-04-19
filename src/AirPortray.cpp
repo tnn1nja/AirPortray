@@ -22,7 +22,7 @@ string AirPortray::truncateString(string s, unsigned int i){
     return s;
 }
 
-void AirPortray::displayAirports(list<Airport*> airports){
+void AirPortray::displayAirports(vector<Airport*> airports){
     //Draw headers
     cout << left << fixed << endl
          << setw(14) << "Type" << " | "

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <list>
+#include <vector>
 #include "AirportRepository.h"
 
 #define MAX_RESULTS 32
@@ -11,7 +11,7 @@ class AirPortray{
         AirportRepository* repository;
 
         std::string truncateString(std::string, unsigned int);
-        void displayAirports(std::list<Airport*>);
+        void displayAirports(std::vector<Airport*>);
     public:
         AirPortray(std::string);
         void run();

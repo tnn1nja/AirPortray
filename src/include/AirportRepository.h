@@ -1,8 +1,8 @@
 #pragma once
 
-#include <list>
 #include "Airport.h"
 #include "AirportDataFile.h"
+#include <vector>
 
 class AirportRepository{
     private:
@@ -14,6 +14,6 @@ class AirportRepository{
         AirportRepository(std::string);
         ~AirportRepository();
 
-        std::list<Airport*> getSomeAirports(); //test method for display
+        std::vector<Airport*> getSomeAirports(); //test method for display
         bool saveIfDirty();
 };
