@@ -16,8 +16,10 @@ class AirportDataFile{
         std::string encodeString(std::string);
 
     public:
-        //Public Methods
+        //Contructor(s) and Destructor
         AirportDataFile(std::string);
+
+        //Public Methods
         void load(std::list<Airport>&);
         void save(const std::list<Airport>&);
 };
