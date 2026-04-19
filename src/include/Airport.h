@@ -7,7 +7,7 @@
 
 class Airport {
     public: //statics
-        static enum class Type{
+        enum Type{
             BALLOONPORT,
             CLOSED,
             HELIPORT,
