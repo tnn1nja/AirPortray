@@ -47,10 +47,10 @@ void AirPortray::displayAirports(vector<Airport*> airports){
     cout << endl;
 
     //Draw Rows
-    int count = 0;
-    for(int i=0; i<MAX_RESULTS; i++){
-        Airport* a = airports.at(i);
-        cout << right << setw(2) << i+1 << left << ". | "
+    unsigned int count = 0;
+    for(;count<MAX_RESULTS && count<airports.size(); count++){
+        Airport* a = airports.at(count);
+        cout << right << setw(2) << count+1 << left << ". | "
             << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
             << setw(5) << a->getElevation() << setw(4) << "ft" << " | "
@@ -65,11 +65,6 @@ void AirPortray::displayAirports(vector<Airport*> airports){
             << setprecision(3) << a->getLatitude() << ", "
             << setprecision(3) << a->getLongitude()
             << endl;
-        
-        count ++;
-        if(count==MAX_RESULTS){
-            break;
-        }
     }
 
     //Draw Footer
