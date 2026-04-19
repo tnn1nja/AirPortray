@@ -39,12 +39,12 @@ void AirPortray::displayAirports(list<Airport*> airports){
          << endl;
 
     cout << setw(14) << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << " | "
-         << setw(32) << truncateString("Kitchen Creek Helibase Heliport", 32) << " | "
+         << setw(32) << truncateString("Kitchen Creek Helibase Heliport With too long name", 32) << " | "
          << setw(14) << "32000" << " | "
          << setw(9) << "NA" << " | "
          << setw(7) << "US" << " | "
          << setw(6) << "US-PAU" << " | "
-         << setw(20) << truncateString("Altamonte Springs", 20) << " | "
+         << setw(20) << truncateString("Altamonte Springsfieldshoreship", 20) << " | "
          << setw(9) << "AAAA" << " | "
          << setw(9) << "BBB" << " | "
          << setw(8) << "CCCC" << " | "
