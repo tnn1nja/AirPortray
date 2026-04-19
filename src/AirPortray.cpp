@@ -23,8 +23,8 @@ string AirPortray::truncateString(string s, unsigned int i){
 }
 
 void AirPortray::displayAirports(list<Airport*> airports){
-    //Display headers
-    cout << left << fixed
+    //Draw headers
+    cout << left << fixed << endl
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
          << "Elevation | "
@@ -37,9 +37,16 @@ void AirPortray::displayAirports(list<Airport*> airports){
          << "GPS Code | " 
          << "Local Code | " 
          << "Coordinates"
-         << endl << "-----------------" << endl;
+         << endl;
+        
+    //Draw Seperator
+    for(int i = 0; i<184; i++){
+        cout << "-";
+    }
+    cout << endl;
 
-    //Display rows
+    //Draw Rows
+    int count = 0;
     for(Airport* a: airports){
         cout << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
@@ -55,5 +62,13 @@ void AirPortray::displayAirports(list<Airport*> airports){
             << setprecision(3) << a->getLatitude() << ", "
             << setprecision(3) << a->getLongitude()
             << endl;
+        
+        count ++;
+        if(count==MAX_RESULTS){
+            break;
+        }
     }
+
+    //Draw Footer
+    cout << endl << "[Displaying " << count << " of " << airports.size() << " results]" << endl;
 }

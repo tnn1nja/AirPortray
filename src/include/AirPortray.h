@@ -4,6 +4,8 @@
 #include <list>
 #include "AirportRepository.h"
 
+#define MAX_RESULTS 32
+
 class AirPortray{
     private:
         AirportRepository* repository;
