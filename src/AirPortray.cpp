@@ -23,6 +23,7 @@ string AirPortray::truncateString(string s, unsigned int i){
 }
 
 void AirPortray::displayAirports(list<Airport*> airports){
+    //Display headers
     cout << left << fixed
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
@@ -38,27 +39,21 @@ void AirPortray::displayAirports(list<Airport*> airports){
          << "Coordinates"
          << endl;
 
-    cout << setw(14) << Airport::typeToString(Airport::Type::MEDIUM_AIRPORT) << " | "
-         << setw(32) << truncateString("Kitchen Creek Helibase Heliport With too long name", 32) << " | "
-         << setw(14) << "32000" << " | "
-         << setw(9) << "NA" << " | "
-         << setw(7) << "US" << " | "
-         << setw(6) << "US-PAU" << " | "
-         << setw(20) << truncateString("Altamonte Springsfieldshoreship", 20) << " | "
-         << setw(9) << "AAAA" << " | "
-         << setw(9) << "BBB" << " | "
-         << setw(8) << "CCCC" << " | "
-         << setw(10) << "DDDD" << " | "
-         << setprecision(3) << -123.456789 << ", "
-         << setprecision(3) << -123.456789
-         << endl;
-    
-    /*
+    //Display rows
     for(Airport* a: airports){
-        cout << Airport::typeToString(a->getType()) << " | " << a->getName() << " | " << a->getElevation()
-            << "ft | " << a->getContinent() << " | " << a->getRegion() << " | " << a->getMunicipality()
-            << " | " << a->getICAOCode() << " | " << a->getIATACode() << " | " << a->getGPSCode()
-            << " | " << a->getLocalCode() << " | " << a->getLatitude() << " | " << a->getLongitude() << endl;
+        cout << setw(14) << Airport::typeToString(a->getType()) << " | "
+            << setw(32) << truncateString(a->getName(), 32) << " | "
+            << setw(14) << a->getElevation() << " | "
+            << setw(9) << a->getContinent() << " | "
+            << setw(7) << a->getCountry() << " | "
+            << setw(6) << a->getRegion() << " | "
+            << setw(20) << truncateString(a->getMunicipality(), 20) << " | "
+            << setw(9) << a->getICAOCode() << " | "
+            << setw(9) << a->getIATACode() << " | "
+            << setw(8) << a->getGPSCode() << " | "
+            << setw(10) << a->getLocalCode() << " | "
+            << setprecision(3) << a->getLatitude() << ", "
+            << setprecision(3) << a->getLongitude()
+            << endl;
     }
-    */
 }
