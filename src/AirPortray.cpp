@@ -10,8 +10,7 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     cout << "AirPortray running!\n";
-    repository->saveIfDirty();
-    drawHeader();
+    openRootMenu();
 }
 
 void AirPortray::drawHeader(){
@@ -19,7 +18,16 @@ void AirPortray::drawHeader(){
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
-void openRootMenu(){
+void AirPortray::openRootMenu(){
+    do{
+        drawHeader();
+        cout << "\t1. Search Airport by Country\n"
+             << "\t0. Exit\n"
+             << "\n\t   Choice: ";
+        int choice;
+        cin >> choice;
+        cin.ignore();
+    }while(cin.fail()); 
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
