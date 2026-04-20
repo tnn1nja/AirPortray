@@ -11,6 +11,11 @@ AirPortray::AirPortray(string dataFilePath){
 void AirPortray::run(){
     cout << "AirPortray running!\n";
     repository->saveIfDirty();
+    system("cls");
+}
+
+void openRootMenu(){
+    system("cls");
 }
 
 string AirPortray::truncateString(string s, unsigned int i){

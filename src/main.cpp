@@ -8,6 +8,6 @@ const string dataFilePath = "data/airports.csv";
 int main(){
     AirPortray airPortray(dataFilePath);
     airPortray.run();
-    
+
     return 0;
 }

@@ -12,6 +12,7 @@ class AirPortray{
 
         std::string truncateString(std::string, unsigned int);
         void displayAirports(std::vector<Airport*>);
+        void openRootMenu();
     public:
         AirPortray(std::string);
         void run();
