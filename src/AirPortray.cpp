@@ -10,7 +10,6 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     cout << "AirPortray running!\n";
-    displayAirports(repository->getSomeAirports());
     repository->saveIfDirty();
 }
 
@@ -68,5 +67,6 @@ void AirPortray::displayAirports(vector<Airport*> airports){
     }
 
     //Draw Footer
-    cout << endl << "[Displaying " << count << " of " << airports.size() << " results]" << endl;
+    cout << endl << "[Displaying " << count << " of " << airports.size()
+         << " results]" << endl;
 }

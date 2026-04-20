@@ -16,14 +16,3 @@ bool AirportRepository::saveIfDirty(){
     }
     return dirty;
 }
-
-//TEMPORARY
-std::vector<Airport*> AirportRepository::getSomeAirports(){
-    vector<Airport*> output;
-    list<Airport>::iterator a = airports.begin();
-    for(int i=0;i<100;i++){
-        output.push_back(&(*a));
-        a++;
-    }
-    return output;
-}

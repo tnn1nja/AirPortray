@@ -14,6 +14,5 @@ class AirportRepository{
         AirportRepository(std::string);
         ~AirportRepository();
 
-        std::vector<Airport*> getSomeAirports(); //test method for display
         bool saveIfDirty();
 };
