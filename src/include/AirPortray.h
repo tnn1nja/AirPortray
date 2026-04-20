@@ -10,6 +10,7 @@ class AirPortray{
     private:
         AirportRepository* repository;
 
+        void drawHeader();
         std::string truncateString(std::string, unsigned int);
         void displayAirports(std::vector<Airport*>);
         void openRootMenu();

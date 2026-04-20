@@ -11,11 +11,15 @@ AirPortray::AirPortray(string dataFilePath){
 void AirPortray::run(){
     cout << "AirPortray running!\n";
     repository->saveIfDirty();
+    drawHeader();
+}
+
+void AirPortray::drawHeader(){
     system("cls");
+    cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
 void openRootMenu(){
-    system("cls");
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
