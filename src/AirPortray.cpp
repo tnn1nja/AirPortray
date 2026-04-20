@@ -1,6 +1,7 @@
 #include "include/AirPortray.h"
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 
 using namespace std;
 
@@ -18,21 +19,24 @@ void AirPortray::drawHeader(){
 }
 
 void AirPortray::openRootMenu(){
-    while(true){
+    int choice = -1;
+    bool castable;
+    do{
         drawHeader();
         cout << "\t1. Search Airport by Country\n"
              << "\t0. Exit\n"
              << "\n\t   Choice: ";
-        int choice;
-        cin >> choice;
-
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }else{
-            break;
+        
+        string input;
+        getline(cin, input);
+        
+        try{
+            choice = stoi(input);
+            castable = true;
+        }catch(invalid_argument e){
+            castable = false;
         }
-    }
+    }while(!castable || choice < 0 || choice > 1);
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
