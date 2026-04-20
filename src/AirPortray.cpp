@@ -9,7 +9,6 @@ AirPortray::AirPortray(string dataFilePath){
 }
 
 void AirPortray::run(){
-    cout << "AirPortray running!\n";
     openRootMenu();
 }
 
@@ -19,15 +18,21 @@ void AirPortray::drawHeader(){
 }
 
 void AirPortray::openRootMenu(){
-    do{
+    while(true){
         drawHeader();
         cout << "\t1. Search Airport by Country\n"
              << "\t0. Exit\n"
              << "\n\t   Choice: ";
         int choice;
         cin >> choice;
-        cin.ignore();
-    }while(cin.fail()); 
+
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore();
+        }else{
+            break;
+        }
+    }
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
