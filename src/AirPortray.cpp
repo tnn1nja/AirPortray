@@ -28,7 +28,7 @@ void AirPortray::openRootMenu(){
 
         if(cin.fail()){
             cin.clear();
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }else{
             break;
         }
