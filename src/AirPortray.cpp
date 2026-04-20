@@ -18,25 +18,35 @@ void AirPortray::drawHeader(){
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
-void AirPortray::openRootMenu(){
+int AirPortray::openMenu(string options[], int size){
     int choice = -1;
-    bool castable;
+    bool castable = false;
     do{
+        //Display Options
         drawHeader();
-        cout << "\t1. Search Airport by Country\n"
-             << "\t0. Exit\n"
+        for(int i=0; i<size; i++){
+            cout << "\t" <<  i+1 << ". " << options[i] << endl;
+        }
+        cout << "\t0. Exit\n"
              << "\n\t   Choice: ";
         
+        //Get Input
         string input;
         getline(cin, input);
         
+        //Validate Input
         try{
             choice = stoi(input);
             castable = true;
-        }catch(invalid_argument e){
-            castable = false;
-        }
-    }while(!castable || choice < 0 || choice > 1);
+        }catch(invalid_argument e){}
+    }while(!castable || choice < 0 || choice > size);
+
+    return choice;
+}
+
+void AirPortray::openRootMenu(){
+    string options[] = {"Search Airport by Country"};
+    int choice = openMenu(options, 1);
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
