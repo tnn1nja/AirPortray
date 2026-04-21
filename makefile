@@ -46,4 +46,6 @@ clean:
 .PHONY: run
 run: $(APPNAME)
 	./$(APPNAME).exe
-	
+
+.PHONY: cleanrun
+cleanrun: clean run
