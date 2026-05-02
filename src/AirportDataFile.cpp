@@ -50,12 +50,11 @@ string AirportDataFile::encodeString(string s){
     return s;
 }
 
-void AirportDataFile::load(list<Airport>& airports){
+bool AirportDataFile::load(list<Airport>& airports){
     //Open file
     ifstream file(filePath);
     if(!file.is_open()){
-        cout << "Unable to read file: " << filePath << endl;
-        return;
+        return false;
     }
 
     //Parse file data
@@ -90,14 +89,16 @@ void AirportDataFile::load(list<Airport>& airports){
         }
         lineCount++;
     }
+
+    return true;
 }
 
-void AirportDataFile::save(const list<Airport>& airports){
+bool AirportDataFile::save(const list<Airport>& airports){
     //Open file
     ofstream file(filePath);
     if(!file.is_open()){
         cout << "Unable to write file: " << filePath << endl;
-        return;
+        return false;
     }
 
     //Write data
@@ -121,4 +122,6 @@ void AirportDataFile::save(const list<Airport>& airports){
              << latitude << ","
              << longitude << endl;
     }
+
+    return true;
 }

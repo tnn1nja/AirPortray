@@ -1,17 +1,22 @@
 #include "include/AirportRepository.h"
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
-    dataFile->load(airports);
+    if (!dataFile->load(airports)){
+        throw runtime_error("Data file cannot be opened");
+    }
     dirty = false;
 }
 
 bool AirportRepository::saveIfDirty(){
     if(dirty){
-        dataFile->save(airports);
+        if (!dataFile->save(airports)){
+            throw runtime_error("Data file cannot be opened");
+        }
         cout << "AirportData altered, saving...\n";
     }
     return dirty;
