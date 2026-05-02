@@ -15,7 +15,7 @@ void AirPortray::run(){
     //openRootMenu();
     vector<Airport*> airports = repository->getSomeAirports();
     auto getField = [](Airport* a){return a->getName();};
-    repository->sortByField(airports, getField);
+    repository->sortByField<string>(airports, getField);
 }
 
 void AirPortray::awaitInput(){

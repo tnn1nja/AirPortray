@@ -21,7 +21,8 @@ void AirportRepository::save(){
     dirty = false;
 }
 
-void AirportRepository::sortByField(vector<Airport*>& airports, std::function<std::string(Airport*)> getField){
+template <typename T>
+void AirportRepository::sortByField(vector<Airport*>& airports, std::function<T(Airport*)> getField){
     cout << getField(airports.at(0));
 }
 
