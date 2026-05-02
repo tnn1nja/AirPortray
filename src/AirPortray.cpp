@@ -1,7 +1,6 @@
 #include "include/AirPortray.h"
 #include <iostream>
 #include <iomanip>
-#include <functional>
 #include <stdexcept>
 
 using namespace std;
@@ -15,7 +14,8 @@ void AirPortray::run(){
     //openRootMenu();
     vector<Airport*> airports = repository->getSomeAirports();
     auto getField = [](Airport* a){return a->getName();};
-    repository->sortByField<string>(airports, getField);
+    repository->sortByField(airports, getField);
+    openAirportDisplayMenu(airports);
 }
 
 void AirPortray::awaitInput(){

@@ -1,5 +1,6 @@
 #include "include/AirportRepository.h"
 #include <iostream>
+#include <algorithm>
 #include <stdexcept>
 
 using namespace std;
@@ -21,9 +22,10 @@ void AirportRepository::save(){
     dirty = false;
 }
 
-template <typename T>
-void AirportRepository::sortByField(vector<Airport*>& airports, std::function<T(Airport*)> getField){
-    cout << getField(airports.at(0));
+//template <typename T>
+void AirportRepository::sortByField(vector<Airport*>& airports, std::function<string(Airport*)> getField){
+    auto comparator = [getField](Airport* a1, Airport* a2){return getField(a1) < getField(a2);};
+    sort(airports.begin(), airports.end(), comparator);
 }
 
 //TEMPORARY

@@ -16,8 +16,8 @@ class AirportRepository{
         ~AirportRepository() {};
 
         void save();
-        template <typename T>
-        void sortByField(std::vector<Airport*>&, std::function<T(Airport*)> getField);
+        //template <typename T>
+        void sortByField(std::vector<Airport*>&, std::function<std::string(Airport*)> getField);
 
         std::vector<Airport*> getSomeAirports();
 };
