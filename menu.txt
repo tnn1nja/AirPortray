@@ -1,0 +1,24 @@
+Search Airports				
+	Partial Name			
+	Partial Municipality		
+	IATA Code (inc missing)		
+	Proximity to Coordinates	
+Filter Airports				
+	Type				
+	Coordinates (within Radius)	
+	Country Code			
+Sort Airports				
+	By Name				
+	By Country Code			
+	By Elevation (both ways)	
+Add New Airport				
+Save and Exit				
+Exit					
+
+
+
+
+
+Search by field
+Sort by field
+Find haversine formula 
