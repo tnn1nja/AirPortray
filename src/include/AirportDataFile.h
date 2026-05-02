@@ -20,6 +20,6 @@ class AirportDataFile{
         AirportDataFile(std::string);
 
         //Public Methods
-        void load(std::list<Airport>&);
-        void save(const std::list<Airport>&);
+        bool load(std::list<Airport>&);
+        bool save(const std::list<Airport>&);
 };

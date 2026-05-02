@@ -10,10 +10,17 @@ AirPortray::AirPortray(string dataFilePath){
 }
 
 void AirPortray::run(){
+    awaitInput();
     openRootMenu();
 }
 
-void AirPortray::drawHeader(){
+void AirPortray::awaitInput(){
+    string input;
+    cout << "\nPress ENTER to continue...";
+    getline(cin, input);
+}
+
+void AirPortray::clearConsole(){
     system("cls");
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
@@ -23,7 +30,7 @@ int AirPortray::openMenu(string options[], int size){
     bool castable = false;
     do{
         //Display Options
-        drawHeader();
+        clearConsole();
         for(int i=0; i<size; i++){
             cout << "\t" <<  i+1 << ". " << options[i] << endl;
         }
@@ -57,8 +64,9 @@ string AirPortray::truncateString(string s, unsigned int i){
     return s;
 }
 
-void AirPortray::displayAirports(vector<Airport*> airports){
+void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
+    clearConsole();
     cout << left << fixed << endl
          << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
@@ -105,4 +113,6 @@ void AirPortray::displayAirports(vector<Airport*> airports){
     //Draw Footer
     cout << endl << "[Displaying " << count << " of " << airports.size()
          << " results]" << endl;
+
+    awaitInput();
 }
