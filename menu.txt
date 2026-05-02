@@ -1,16 +1,20 @@
 Search Airports				
 	Partial Name			
 	Partial Municipality		
-	IATA Code (inc missing)		
-	Proximity to Coordinates	
-Filter Airports				
+	IATA Code
 	Type				
 	Coordinates (within Radius)	
 	Country Code			
 Sort Airports				
-	By Name				
-	By Country Code			
-	By Elevation (both ways)	
+	Name
+	Type			
+	Country Code			
+	Elevation
+	Proximity to Coordinates
+Analyse Airports
+	Find Highest and Lowest Elevation
+	Find Missing IATA Codes
+	Find Distance by IATA Code
 Add New Airport				
 Save and Exit				
 Exit					
