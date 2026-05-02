@@ -3,6 +3,7 @@
 #include "Airport.h"
 #include "AirportDataFile.h"
 #include <vector>
+#include <functional>
 
 class AirportRepository{
     private:
@@ -15,4 +16,7 @@ class AirportRepository{
         ~AirportRepository();
 
         void save();
+        std::vector<Airport*> sortByField(vector<Airport*>, function<string> getField);
+
+        std::vector<Airport*> getSomeAirports();
 };

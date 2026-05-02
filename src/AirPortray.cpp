@@ -11,7 +11,9 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     awaitInput();
-    openRootMenu();
+    //openRootMenu();
+
+    repository->getSomeAirports();
 }
 
 void AirPortray::awaitInput(){
