@@ -100,7 +100,7 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
         cout << right << setw(2) << count+1 << left << ". | "
             << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
-            << setw(5) << a->getElevation() << setw(4) << "ft" << " | "
+            << setw(7) << a->getElevation() << setw(1) << "ft" << " | "
             << setw(9) << a->getContinent() << " | "
             << setw(7) << a->getCountry() << " | "
             << setw(6) << a->getRegion() << " | "
