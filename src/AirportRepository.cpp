@@ -26,8 +26,10 @@ void AirportRepository::save(){
 //TEMPORARY
 vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
-    for(Airport a: airports){
-        output.push_back(&a);
+    auto a = airports.begin();
+    while(a != airports.end()){
+        output.push_back(&*a);
+        a++;
     }
     return output;
 }
