@@ -24,5 +24,4 @@ Exit
 
 
 Search by field
-Sort by field
-Find haversine formula 
+Find haversine formula
