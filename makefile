@@ -46,3 +46,7 @@ clean:
 .PHONY: run
 run: $(APPNAME)
 	./$(APPNAME).exe
+
+.PHONY: debug
+debug: $(APPNAME)
+	gdb $(APPNAME)
