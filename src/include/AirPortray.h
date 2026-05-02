@@ -18,6 +18,6 @@ class AirPortray{
         void openRootMenu();
     public:
         AirPortray(std::string);
-        ~AirPortray();
+        ~AirPortray() {};
         void run();
 };

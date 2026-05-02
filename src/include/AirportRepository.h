@@ -13,10 +13,10 @@ class AirportRepository{
 
     public:
         AirportRepository(std::string);
-        ~AirportRepository();
+        ~AirportRepository() {};
 
         void save();
-        std::vector<Airport*> sortByField(vector<Airport*>, function<string> getField);
+        void sortByField(std::vector<Airport*>&, std::function<std::string(Airport*)> getField);
 
         std::vector<Airport*> getSomeAirports();
 };

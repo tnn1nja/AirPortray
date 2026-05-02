@@ -21,6 +21,10 @@ void AirportRepository::save(){
     dirty = false;
 }
 
+void AirportRepository::sortByField(vector<Airport*>& airports, std::function<std::string(Airport*)> getField){
+    cout << getField(airports.at(0));
+}
+
 //TEMPORARY
 vector<Airport*> AirportRepository::getSomeAirports(){
     vector<Airport*> output;
