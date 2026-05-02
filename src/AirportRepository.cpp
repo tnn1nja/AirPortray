@@ -22,13 +22,12 @@ void AirportRepository::save(){
     dirty = false;
 }
 
+
 //TEMPORARY
-vector<Airport*> AirportRepository::getSomeAirports(){
+vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
-    list<Airport>::iterator a = airports.begin();
-    for(int i=0;i<100;i++){
-        output.push_back(&(*a));
-        a++;
+    for(Airport a: airports){
+        output.push_back(&a);
     }
     return output;
 }

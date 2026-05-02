@@ -12,7 +12,7 @@ AirPortray::AirPortray(string dataFilePath){
 void AirPortray::run(){
     awaitInput();
     //openRootMenu();
-    auto airports = repository->getSomeAirports();
+    auto airports = repository->getAirports();
     repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
     openAirportDisplayMenu(airports);
 }
@@ -94,8 +94,11 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
 
     //Draw Rows
     unsigned int count = 0;
+    cout << "1";
     for(;count<MAX_RESULTS && count<airports.size(); count++){
+        cout << "2";
         Airport* a = airports.at(count);
+        cout << "3";
         cout << right << setw(2) << count+1 << left << ". | "
             << setw(14) << Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
