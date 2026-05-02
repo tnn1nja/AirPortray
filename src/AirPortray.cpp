@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
+#include <cmath>
 
 using namespace std;
 
@@ -96,10 +97,14 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     unsigned int count = 0;
     for(;count<MAX_RESULTS && count<airports.size(); count++){
         Airport* a = airports.at(count);
+        string elevation = (a->getElevation() == SHRT_NULL) ? "" : to_string(a->getElevation());
+        string latitude = (a->getLatitude() == NAN) ? "" : to_string(a->getLatitude());
+        string longitude = (a->getLongitude() == NAN) ? "" : to_string(a->getLongitude());
+
         cout << right << setw(2) << count+1 << left << ". | "
             << setw(14)<< Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
-            << setw(7) << a->getElevation() << setw(1) << "ft" << " | "
+            << setw(7) << elevation << setw(1) << "ft" << " | "
             << setw(9) << a->getContinent() << " | "
             << setw(7) << a->getCountry() << " | "
             << setw(6) << a->getRegion() << " | "
@@ -108,8 +113,8 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
             << setw(9) << a->getIATACode() << " | "
             << setw(8) << a->getGPSCode() << " | "
             << setw(10) << a->getLocalCode() << " | "
-            << setprecision(3) << a->getLatitude() << ", "
-            << setprecision(3) << a->getLongitude()
+            << setprecision(3) << latitude << ", "
+            << setprecision(3) << longitude
             << endl;
     }
 
