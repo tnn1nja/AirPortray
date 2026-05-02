@@ -12,9 +12,8 @@ AirPortray::AirPortray(string dataFilePath){
 void AirPortray::run(){
     awaitInput();
     //openRootMenu();
-    vector<Airport*> airports = repository->getSomeAirports();
-    auto getField = [](Airport* a){return a->getName();};
-    repository->sortByField(airports, getField);
+    auto airports = repository->getSomeAirports();
+    repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
     openAirportDisplayMenu(airports);
 }
 

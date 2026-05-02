@@ -22,12 +22,6 @@ void AirportRepository::save(){
     dirty = false;
 }
 
-//template <typename T>
-void AirportRepository::sortByField(vector<Airport*>& airports, std::function<string(Airport*)> getField){
-    auto comparator = [getField](Airport* a1, Airport* a2){return getField(a1) < getField(a2);};
-    sort(airports.begin(), airports.end(), comparator);
-}
-
 //TEMPORARY
 vector<Airport*> AirportRepository::getSomeAirports(){
     vector<Airport*> output;
