@@ -22,8 +22,6 @@ void AirportRepository::save(){
     dirty = false;
 }
 
-
-//TEMPORARY
 vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
     auto a = airports.begin();
