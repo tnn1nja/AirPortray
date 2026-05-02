@@ -12,12 +12,11 @@ AirportRepository::AirportRepository(string dataFilePath){
     dirty = false;
 }
 
-bool AirportRepository::saveIfDirty(){
+void AirportRepository::save(){
     if(dirty){
         if (!dataFile->save(airports)){
             throw runtime_error("Data file cannot be opened");
         }
-        cout << "AirportData altered, saving...\n";
     }
-    return dirty;
+    dirty = false;
 }

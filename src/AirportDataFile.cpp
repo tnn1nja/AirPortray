@@ -98,7 +98,6 @@ bool AirportDataFile::save(const list<Airport>& airports){
     //Open file
     ofstream file(filePath);
     if(!file.is_open()){
-        cout << "Unable to write file: " << filePath << endl;
         return false;
     }
 
