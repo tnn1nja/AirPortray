@@ -14,5 +14,5 @@ class AirportRepository{
         AirportRepository(std::string);
         ~AirportRepository();
 
-        bool save();
+        void save();
 };
