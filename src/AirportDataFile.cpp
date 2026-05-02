@@ -90,7 +90,7 @@ bool AirportDataFile::load(list<Airport>& airports){
         lineCount++;
     }
 
-    cout << "Loaded " << lineCount+1 << " of " << airports.size() << " rows succesfully!\n";
+    cout << "Loaded " << lineCount-1 << " of " << airports.size() << " rows succesfully!\n";
     return true;
 }
 
