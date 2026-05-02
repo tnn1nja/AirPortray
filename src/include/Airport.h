@@ -3,7 +3,7 @@
 #include <string>
 #include <climits>
 
-#define SHRT_NULL SHRT_MIN
+#define SHRT_NULL SHRT_MAX
 
 class Airport {
     public: //statics
