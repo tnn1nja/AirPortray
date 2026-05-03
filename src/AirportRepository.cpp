@@ -23,6 +23,10 @@ void AirportRepository::save(){
     dirty = false;
 }
 
+void AirportRepository::addAirport(Airport a){
+    airports.push_back(a);
+}
+
 vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
     auto i = airports.begin();
@@ -54,6 +58,6 @@ unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Ai
     double deltaLambda = lambda2 - lambda1;
     double haversineTheta = (1-cos(deltaPhi)+cos(phi1)*cos(phi2)*(1-cos(deltaLambda)))/2;
     double theta = 2*asin(sqrt(haversineTheta));
-    
+
     return theta*EARTH_RADIUS;
 }

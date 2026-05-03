@@ -20,6 +20,7 @@ class AirportRepository{
         ~AirportRepository() {};
 
         void save();
+        void addAirport(Airport a);
         std::vector<Airport*> getAirports();
         void filterByField(std::vector<Airport*>&, std::function<bool(Airport*)>);
         unsigned int calculateDistanceBetweenAirports(Airport* a1, Airport* a2);

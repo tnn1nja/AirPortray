@@ -17,11 +17,4 @@ Analyse Airports
 	Find Distance by IATA Code
 Add New Airport				
 Save and Exit				
-Exit					
-
-
-
-
-
-Search by field
-Find haversine formula
+Exit
