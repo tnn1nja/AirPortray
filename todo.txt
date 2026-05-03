@@ -1,6 +1,5 @@
-rearrange methods
-
 clean up
+	remove duplication
 
 Add comments
 

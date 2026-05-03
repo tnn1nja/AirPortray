@@ -26,14 +26,14 @@ string Airport::typeToString(int type){
 //Private Methods
 void Airport::assertNoBackslash(const string& s){
     if(s.find("\\") != string::npos){
-        throw invalid_argument("Cannot contain backslashes");
+        throw invalid_argument("cannot contain backslashes");
     }
 }
 
 void Airport::assertLength(const string& s, unsigned int i){
     if(s.length() != i && s.length() != 0){ //allow 0 length as null value
         throw invalid_argument(
-            string("Must be ") + to_string(i) + " characters long"
+            string("must be ") + to_string(i) + " characters long"
         );
     }
 }
