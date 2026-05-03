@@ -1,8 +1,4 @@
-comment caps
-consistent autos
 single line multi defines
 line lengths
 
 mess with display method/ displays (extra line on reset)
-
-reset console should include drawTitle

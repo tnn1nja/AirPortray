@@ -7,8 +7,7 @@
 class AirportDataFile{
     private:
         //Attributes
-        std::string filePath;
-        std::string headers;
+        std::string filePath, headers;
 
         //Private methods
         void splitCSVLine(std::string(&)[13], std::string);
