@@ -31,7 +31,7 @@ string AirPortray::divider(int size){
     return oss.str();
 }
 
-int AirPortray::openMenu(string title, string options[], int size){
+int AirPortray::openMenu(string title, const string options[], int size){
     int choice = -1;
     bool castable = false;
     do{
@@ -68,7 +68,7 @@ string AirPortray::truncateString(string s, unsigned int i){
     return s;
 }
 
-void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
+void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
     //Draw headers
     resetConsole();
     drawTitle("Results");
