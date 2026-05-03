@@ -317,6 +317,9 @@ void AirPortray::openSearchMenu(){
             }catch(invalid_argument& e){
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
+            }catch(out_of_range& e){
+                cout << endl << "Invalid value, aborting search.\n";
+                awaitInput();
             }
             break;
 
