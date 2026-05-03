@@ -12,6 +12,7 @@ AirPortray::AirPortray(string dataFilePath){
 
 void AirPortray::run(){
     awaitInput();
+    openRootMenu();
 }
 
 void AirPortray::awaitInput(){

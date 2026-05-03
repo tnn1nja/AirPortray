@@ -9,7 +9,7 @@ using namespace std;
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     if (!dataFile->load(airports)){
-        throw runtime_error("Cannot open data file at: " + dataFilePath);
+        throw runtime_error("cannot open data file at: " + dataFilePath + "!");
     }
     dirty = false;
 }
@@ -17,7 +17,7 @@ AirportRepository::AirportRepository(string dataFilePath){
 void AirportRepository::save(){
     if(dirty){
         if (!dataFile->save(airports)){
-             throw runtime_error("Cannot open data file, maybe you already have it open?");
+             throw runtime_error("cannot open data file, maybe you already have it open?");
         }
     }
     dirty = false;
