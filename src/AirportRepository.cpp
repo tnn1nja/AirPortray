@@ -95,6 +95,7 @@ map<Airport::Type, unsigned int> AirportRepository::calculateAirportCountByType(
     auto a = airports.begin();
     while(a != airports.end()){
         counts[static_cast<int>((*a).getType())]++;
+        a++;
     }
 
     map<Airport::Type, unsigned int> output;

@@ -414,6 +414,11 @@ void AirPortray::openAnalyseMenu(){
             break;
 
         case 4:
+            auto countByType = repository->calculateAirportCountByType();
+            for(auto i: countByType){
+                cout << Airport::typeToString(i.first) << "\t" << i.second << endl;
+            }
+            awaitInput();
             break;
     }
 }
