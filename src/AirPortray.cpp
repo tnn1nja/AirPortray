@@ -235,6 +235,7 @@ void AirPortray::openSearchMenu(){
     string input;
     int i;
     double latitude, longitude, radius;
+    
     string options[]{
         "Partial Name",
         "Partial Municipality",
@@ -315,6 +316,7 @@ void AirPortray::openSearchMenu(){
                 radius = stoi(input);
 
                 repository->filterByDistanceFromCoordinates(airports, latitude, longitude, radius);
+                repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
                 openAirportDisplayMenu(airports);
             }catch(invalid_argument& e){
                 cout << endl << INDENT << "Invalid value, aborting search.\n";

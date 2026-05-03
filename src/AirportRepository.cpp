@@ -81,3 +81,11 @@ void AirportRepository::filterByDistanceFromCoordinates(vector<Airport*>& airpor
         }
     }
 }
+
+void AirportRepository::sortByDistanceFromCoordinates(std::vector<Airport*>& airports, double latitude, double longitude){
+    auto comparator = [this, latitude, longitude](Airport* a1, Airport* a2){
+        return calculateDistanceFromCoordinates(a1, latitude, longitude) <
+            calculateDistanceFromCoordinates(a2, latitude, longitude);
+    };
+    sort(airports.begin(), airports.end(), comparator);
+}
