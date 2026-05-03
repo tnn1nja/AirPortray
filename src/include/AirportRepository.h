@@ -6,6 +6,9 @@
 #include <functional>
 #include <algorithm>
 
+#define DEG_TO_RAD_CONST 3.14159/180
+#define EARTH_RADIUS 6371000
+
 class AirportRepository{
     private:
         std::list<Airport> airports;

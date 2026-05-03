@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
+#include <cmath>
 
 using namespace std;
 
@@ -44,4 +45,15 @@ void AirportRepository::filterByField(std::vector<Airport*>& airports, std::func
 }
 
 unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Airport* a2){
+    double phi1 = a1->getLatitude()*PI/180;
+    double lambda1 = a1->getLongitude()*PI/180;
+    double phi2 = a2->getLatitude()*PI/180;
+    double lambda2 = a2->getLongitude()*PI/180;
+
+    double deltaPhi = phi2 - phi1;
+    double deltaLambda = lambda2 - lambda1;
+    double haversineTheta = (1-cos(deltaPhi)+cos(phi1)*cos(phi2)*(1-cos(deltaLambda)))/2;
+    double theta = 2*asin(sqrt(haversineTheta));
+    
+    return theta*EARTH_RADIUS;
 }
