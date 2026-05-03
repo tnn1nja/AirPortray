@@ -15,12 +15,16 @@ AirportRepository::AirportRepository(string dataFilePath){
 }
 
 AirportRepository::~AirportRepository(){
+    delete(dataFile);
+}
+
+void AirportRepository::save(){
     if(dirty){
         if (!dataFile->save(airports)){
              throw runtime_error("cannot open data file, maybe you already have it open?");
         }
     }
-    delete(dataFile);
+    dirty = false;
 }
 
 void AirportRepository::addAirport(Airport a){

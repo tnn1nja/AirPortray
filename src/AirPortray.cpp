@@ -26,7 +26,7 @@ void AirPortray::resetConsole(){
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
-int AirPortray::openMenu(string options[], int size){
+int AirPortray::openMenu(string options[], int size, string exitPrompt){
     int choice = -1;
     bool castable = false;
     do{
@@ -35,7 +35,7 @@ int AirPortray::openMenu(string options[], int size){
         for(int i=0; i<size; i++){
             cout << "\t" <<  i+1 << ". " << options[i] << endl;
         }
-        cout << "\t0. Exit\n"
+        cout << "\t0. " << exitPrompt << "\n"
              << "\n\t   Choice: ";
         
         //Get Input
@@ -60,8 +60,9 @@ void AirPortray::openRootMenu(){
             "Sort Airports",
             "Analyse Airports",
             "Add Airport",
+            "Save and Exit"
         };
-        switch(openMenu(options, 4)){
+        switch(openMenu(options, 5)){
             case 0:
                 exit = true;
                 break;
@@ -76,6 +77,9 @@ void AirPortray::openRootMenu(){
                 break;
             case 4:
                 cout << "Add\n";
+                break;
+            case 5:
+                cout << "Save\n";
                 break;
         }
     }
