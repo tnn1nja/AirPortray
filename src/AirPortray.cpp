@@ -172,6 +172,7 @@ void AirPortray::openMainMenu(){
                 break;
         }
     }
+    awaitInput();
 }
 
 void AirPortray::openAddAirportMenu(){
