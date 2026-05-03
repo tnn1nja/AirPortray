@@ -42,3 +42,6 @@ void AirportRepository::filterByField(std::vector<Airport*>& airports, std::func
         }
     }
 }
+
+unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Airport* a2){
+}
