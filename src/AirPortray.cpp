@@ -235,7 +235,7 @@ void AirPortray::openSearchMenu(){
     string input;
     int i;
     double latitude, longitude, radius;
-    
+
     string options[]{
         "Partial Name",
         "Partial Municipality",
@@ -296,7 +296,7 @@ void AirPortray::openSearchMenu(){
                 });
                 openAirportDisplayMenu(airports);
             }catch(invalid_argument& e){
-                cout << endl << INDENT << "Invalid Type, aborting search.\n";
+                cout << endl << "Invalid Type, aborting search.\n";
                 awaitInput();
             }
             break;
@@ -319,7 +319,8 @@ void AirPortray::openSearchMenu(){
                 repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
                 openAirportDisplayMenu(airports);
             }catch(invalid_argument& e){
-                cout << endl << INDENT << "Invalid value, aborting search.\n";
+                cout << endl << "Invalid value, aborting search.\n";
+                awaitInput();
             }
             break;
 
