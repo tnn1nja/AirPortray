@@ -273,7 +273,7 @@ void AirPortray::openSearchMenu(){
             openAirportDisplayMenu(airports);
             break;
 
-        case 4:
+        case 4:{
             cout << INDENT << divider(25) << endl;
             int i = 0;
             for(; i < NUM_AP_TYPES-1; i++){
@@ -294,7 +294,7 @@ void AirPortray::openSearchMenu(){
                 awaitInput();
             }
             break;
-
+        }
         case 5:
             try{
                 double latitude, longitude, radius;
@@ -415,7 +415,8 @@ void AirPortray::openAnalyseMenu(){
         case 4:
             auto countByType = repository->calculateAirportCountByType();
             for(auto i: countByType){
-                //cout << (Airport::typeToString(i.first) ? "" : ) << "\t" << i.second << endl;
+                cout << (Airport::typeToString(i.first) == "" ? "Unknown" : Airport::typeToString(i.first))
+                     << "\t" << i.second << endl;
             }
             awaitInput();
             break;
