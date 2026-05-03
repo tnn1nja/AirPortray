@@ -394,20 +394,25 @@ void AirPortray::openAnalyseMenu(){
     };
     switch(openMenu("Analyse Airports", options, 5)){
         case 1:
+            drawTitle("Highest and Lowest Elevations");
             repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
             repository->filterByField(airports, [](Airport* a){return a->getElevation() != SHRT_NULL;});
             resetConsole();
-            drawTitle("Highest and Lowest Elevations");
             cout << INDENT << INDENT << "The highest airport is \"" << airports.back()->getName()
                  << "\" which is " << airports.back()->getElevation() << "ft above sea-level." << endl;
             cout << INDENT << INDENT << "The lowest airport is \"" << airports.front()->getName()
                  << "\" which is " << airports.front()->getElevation() << "ft above sea-level." << endl;
             awaitInput();
             break;
+
         case 2:
+            repository->filterByField(airports, [](Airport* a){return a->getIATACode() == "";});
+            openAirportDisplayMenu(airports);
             break;
+
         case 3:
             break;
+
         case 4:
             break;
     }

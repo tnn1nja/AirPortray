@@ -1,5 +1,3 @@
 Analyse Airports
-	Find Highest and Lowest Elevation
-	Find Missing IATA Codes
 	Calculate Distance Between Airports
 	Calculate Airport Count by Type

@@ -3,6 +3,7 @@
 #include "Airport.h"
 #include "AirportDataFile.h"
 #include <vector>
+#include <map>
 #include <functional>
 #include <algorithm>
 
@@ -27,6 +28,7 @@ class AirportRepository{
         unsigned int calculateDistanceBetweenAirports(Airport*, Airport*);
         void filterByDistanceFromCoordinates(std::vector<Airport*>&, double, double, unsigned int);
         void sortByDistanceFromCoordinates(std::vector<Airport*>&, double, double);
+        std::map<Airport::Type, unsigned int> calculateAirportCountByType();
 
         //Template methods (must be implemented in header)
         template <typename FieldType>

@@ -89,3 +89,17 @@ void AirportRepository::sortByDistanceFromCoordinates(std::vector<Airport*>& air
     };
     sort(airports.begin(), airports.end(), comparator);
 }
+
+map<Airport::Type, unsigned int> AirportRepository::calculateAirportCountByType(){
+    int counts[NUM_AP_TYPES];
+    auto a = airports.begin();
+    while(a != airports.end()){
+        counts[static_cast<int>((*a).getType())]++;
+    }
+
+    map<Airport::Type, unsigned int> output;
+    for(int i =0; i<NUM_AP_TYPES; i++){
+        output[static_cast<Airport::Type>(i)] = counts[i];
+    }
+    return output;
+}
