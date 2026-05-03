@@ -231,6 +231,8 @@ void AirPortray::openAddAirportMenu(){
 }
 
 void AirPortray::openSearchMenu(){
+    auto airports = repository->getAirports();
+    string input;
     string options[]{
         "Partial Name",
         "Partial Municipality",
@@ -242,6 +244,15 @@ void AirPortray::openSearchMenu(){
     };
     switch(openMenu("Search Airports", options, 7)){
         case 1:
+            cout << INDENT << "Enter Partial Name: ";
+            getline(cin, input);
+            repository->filterByField(airports, [input](Airport* a){
+                return (a->getName().find(input)!= string::npos);
+            });
+            repository->sortByField<int>(airports, [input](Airport* a){
+                return a->getName().find(input);
+            });
+            openAirportDisplayMenu(airports);
             break;
         case 2:
             break;
