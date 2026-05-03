@@ -4,24 +4,6 @@
 
 using namespace std;
 
-//Constructor
-Airport::Airport(){
-    type = Type::UNKNOWN;
-    name = "";
-    continent = "";
-    country = "";
-    region = "";
-    municipality = "";
-    ICAOCode = "";
-    IATACode = "";
-    GPSCode = "";
-    localCode = "";
-    elevation = SHRT_NULL;
-    latitude = NAN;
-    longitude = NAN;
-}
-
-
 //Static Methods
 string Airport::typeToString(Type type){
     string map[] = {
@@ -56,6 +38,22 @@ void Airport::assertLength(const string& s, unsigned int i){
     }
 }
 
+//Constructor
+Airport::Airport(){
+    type = Type::UNKNOWN;
+    name = "";
+    continent = "";
+    country = "";
+    region = "";
+    municipality = "";
+    ICAOCode = "";
+    IATACode = "";
+    GPSCode = "";
+    localCode = "";
+    elevation = SHRT_NULL;
+    latitude = NAN;
+    longitude = NAN;
+}
 
 //Setters
 void Airport::setType(Type type){
@@ -122,7 +120,6 @@ void Airport::setLatitude(double latitude){
 void Airport::setLongitude(double longitude){
     this->longitude = longitude;
 }
-
 
 //Getters
 Airport::Type Airport::getType(){ return type; }

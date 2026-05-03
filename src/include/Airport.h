@@ -7,7 +7,8 @@
 #define NUM_AP_TYPES 8
 
 class Airport {
-    public: //statics
+    public:
+        //Statics
         enum Type{
             BALLOONPORT,
             CLOSED,

@@ -1,11 +1,10 @@
 #include "include/AirportRepository.h"
-#include <iostream>
 #include <algorithm>
 #include <stdexcept>
-#include <cmath>
 
 using namespace std;
 
+//Constructor and Destructor
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     if (!dataFile->load(airports)){
@@ -18,6 +17,7 @@ AirportRepository::~AirportRepository(){
     delete(dataFile);
 }
 
+//Public Methods
 void AirportRepository::save(){
     if(dirty){
         if (!dataFile->save(airports)){

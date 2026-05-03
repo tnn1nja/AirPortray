@@ -3,12 +3,10 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-#include <cmath>
 
 using namespace std;
 
-AirportDataFile::AirportDataFile(string filePath) : filePath(filePath) {}
-
+//Private Methods
 void AirportDataFile::splitCSVLine(string(&fields)[13], string line){
     int fieldIndex = 0;
     ostringstream field;
@@ -50,6 +48,10 @@ string AirportDataFile::encodeString(string s){
     return s;
 }
 
+//Constructor
+AirportDataFile::AirportDataFile(string filePath) : filePath(filePath) {}
+
+//Public Methods
 bool AirportDataFile::load(list<Airport>& airports){
     //Open file
     ifstream file(filePath);

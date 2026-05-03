@@ -2,11 +2,11 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
-#include <cmath>
 #include <sstream>
 
 using namespace std;
 
+//Private Methods
 void AirPortray::awaitInput(){
     string input;
     cout << "\nPress ENTER to continue...";
@@ -67,16 +67,6 @@ string AirPortray::truncateString(string s, unsigned int i){
     return s;
 }
 
-
-AirPortray::AirPortray(string dataFilePath){
-    repository = new AirportRepository(dataFilePath);
-}
-
-AirPortray::~AirPortray(){
-    delete(repository);
-}
-
-
 void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
     resetConsole();
@@ -132,6 +122,16 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     awaitInput();
 }
 
+//Constructor and Destructor
+AirPortray::AirPortray(string dataFilePath){
+    repository = new AirportRepository(dataFilePath);
+}
+
+AirPortray::~AirPortray(){
+    delete(repository);
+}
+
+//Public Methods
 void AirPortray::openMainMenu(){
     awaitInput();
     bool exit = false;

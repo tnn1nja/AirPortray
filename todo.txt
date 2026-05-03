@@ -1,9 +1,6 @@
-
-nan displays uncleanly in display
-
 rearrange methods
 
-clean things up
+clean up
 
 Add comments
 

@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Airport.h"
 #include <list>
 #include <string>
-#include "Airport.h"
 
 class AirportDataFile{
     private:
