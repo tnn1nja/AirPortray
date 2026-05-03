@@ -76,16 +76,14 @@ void AirPortray::openRootMenu(){
                 openSearchMenu();
                 break;
             case 2:
-                cout << "Sort\n";
+                openSortMenu();
                 break;
             case 3:
-                cout << "Analyse\n";
+                openAnalyseMenu();
                 break;
             case 4:
-                cout << "Add\n";
                 break;
             case 5:
-                cout << "Save\n";
                 break;
             case 0:
                 exit = true;
@@ -96,19 +94,73 @@ void AirPortray::openRootMenu(){
 
 void AirPortray::openSearchMenu(){
     string options[]{
-            "Partial Name",
-            "Partial Municipality",
-            "IATA Code",
-            "Type",
-            "Coordinates within Radius",
-            "Country Code",
-            "Return to Main Menu"
-        };
-        switch(openMenu("Search Airports", options, 7)){
-            case 0:
-                break;
-        }
+        "Partial Name",
+        "Partial Municipality",
+        "IATA Code",
+        "Type",
+        "Coordinates within Radius",
+        "Country Code",
+        "Return to Main Menu"
+    };
+    switch(openMenu("Search Airports", options, 7)){
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+    }
 }
+
+void AirPortray::openSortMenu(){
+    string options[]{
+        "Name",
+        "Type",
+        "Country Code",
+        "Elevation",
+        "Proximity to Coordinates",
+        "Return to Main Menu"
+    };
+    switch(openMenu("Sort Airports", options, 6)){
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+    }
+}
+
+void AirPortray::openAnalyseMenu(){
+    string options[]{
+        "Find Highest and Lowest Elevations",
+        "Find Airports with Missing IATA Codes",
+        "Calculate Distance Between Airports",
+        "Calculate Airport Count by Type",
+        "Return to Main Menu"
+    };
+    switch(openMenu("Analyse Airports", options, 5)){
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+    }
+}
+
 
 string AirPortray::truncateString(string s, unsigned int i){
     if(s.length() > i){
