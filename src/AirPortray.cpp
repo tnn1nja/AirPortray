@@ -15,8 +15,9 @@ void AirPortray::run(){
     //openRootMenu();
     auto airports = repository->getAirports();
     //repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
-    repository->filterByField(airports, [](Airport* a){return a->getElevation() == 5;});
-    openAirportDisplayMenu(airports);
+    //repository->filterByField(airports, [](Airport* a){return a->getElevation() == 5;});
+    cout << repository->calculateDistanceBetweenAirports(airports.at(0), airports.at(1));
+    //openAirportDisplayMenu(airports);
 }
 
 void AirPortray::awaitInput(){
