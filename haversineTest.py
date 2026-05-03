@@ -1,5 +1,5 @@
 from math import sin, cos, asin, sqrt, pi
-earthRadius = 6378000
+earthRadius = 6371000
 
 def distance(phi1, lambda1, phi2, lambda2):
     phi1 = phi1 * pi/180
