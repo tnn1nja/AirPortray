@@ -236,10 +236,10 @@ void AirPortray::openSearchMenu(){
     string options[]{
         "Partial Name",
         "Partial Municipality",
-        "IATA Code",
+        "Full IATA Code",
         "Type",
         "Coordinates within Radius",
-        "Country Code",
+        "Full Country Code",
         "Return to Main Menu"
     };
     switch(openMenu("Search Airports", options, 7)){
@@ -255,8 +255,23 @@ void AirPortray::openSearchMenu(){
             openAirportDisplayMenu(airports);
             break;
         case 2:
+            cout << INDENT << "Enter Partial Municipality: ";
+            getline(cin, input);
+            repository->filterByField(airports, [input](Airport* a){
+                return (a->getMunicipality().find(input)!= string::npos);
+            });
+            repository->sortByField<int>(airports, [input](Airport* a){
+                return a->getMunicipality().find(input);
+            });
+            openAirportDisplayMenu(airports);
             break;
         case 3:
+            cout << INDENT << "Enter Full IATA Code: ";
+            getline(cin, input);
+            repository->filterByField(airports, [input](Airport* a){
+                return (a->getIATACode() == input);
+            });
+            openAirportDisplayMenu(airports);
             break;
         case 4:
             break;
