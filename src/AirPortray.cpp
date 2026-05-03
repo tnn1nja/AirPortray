@@ -223,7 +223,7 @@ void AirPortray::openAddAirportMenu(){
         repository->addAirport(a);
         cout << endl << "Airport successfully added!" << endl;
     }catch (invalid_argument& e){
-        cout << endl << "Failed to add airport, invalid " << titles[field] << ": " << e.what() << endl;
+        cout << endl << "Failed to add airport, invalid " << titles[field] << ": " << e.what() << "." << endl;
     }
 
     //Pause
