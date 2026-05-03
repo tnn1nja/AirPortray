@@ -409,9 +409,27 @@ void AirPortray::openAnalyseMenu(){
             openAirportDisplayMenu(airports);
             break;
 
-        case 3:
-            break;
+        case 3:{
+            resetConsole();
+            drawTitle("Highest and Lowest Elevations");
+            string input;
+            cout << INDENT << INDENT << "Enter First Airport IATA Code: ";
+            getline(cin, input);
+            Airport* a1 = repository->getAirportByIATA(input);
 
+            cout << INDENT << INDENT << "Enter Second Airport IATA Code: ";
+            getline(cin, input);
+            Airport* a2 = repository->getAirportByIATA(input);
+
+            if(a1 == nullptr || a2 == nullptr){
+                cout << endl << "Invalid IATA Code, aborting search.\n";
+            }else{
+                cout << endl << INDENT << INDENT << "Distance: " << repository->calculateDistanceBetweenAirports(a1, a2) << "m" << endl;
+            }
+                
+            awaitInput();
+            break;
+        }
         case 4:
             resetConsole();
             drawTitle("Airport Count By Type");
