@@ -35,7 +35,7 @@ class AirportRepository{
         }
         unsigned int calculateDistanceFromCoordinates(Airport*, double, double);
         unsigned int calculateDistanceBetweenAirports(Airport*, Airport*);
-        //Seperated filter and sort to use local private calculate methods
+        //Abstracted coordinate filter and sort as they are more complex
         void filterByDistanceFromCoordinates(std::vector<Airport*>&, double, double, unsigned int);
         void sortByDistanceFromCoordinates(std::vector<Airport*>&, double, double);
         std::map<Airport::Type, unsigned int> calculateAirportCountByType();
