@@ -34,10 +34,8 @@ void AirportRepository::addAirport(Airport a){
 
 vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
-    auto i = airports.begin();
-    while(i != airports.end()){
+    for(auto i = airports.begin(); i != airports.end(); i++){
         output.push_back(&*i);
-        i++;
     }
     return output;
 }
@@ -97,9 +95,8 @@ map<Airport::Type, unsigned int> AirportRepository::calculateAirportCountByType(
     }
 
     auto a = airports.begin();
-    while(a != airports.end()){
+    for(auto a = airports.begin(); a != airports.end(); a++){
         counts[static_cast<int>((*a).getType())]++;
-        a++;
     }
 
     map<Airport::Type, unsigned int> output;
@@ -110,12 +107,10 @@ map<Airport::Type, unsigned int> AirportRepository::calculateAirportCountByType(
 }
 
 Airport* AirportRepository::getAirportByIATA(string IATA){
-    auto a = airports.begin();
-    while(a != airports.end()){
-        if((*a).getIATACode() == IATA){
-            return &(*a);
+    for(auto i = airports.begin(); i != airports.end(); i++){
+        if((*i).getIATACode() == IATA){
+            return &(*i);
         }
-        a++;
     }
     return nullptr;
 }
