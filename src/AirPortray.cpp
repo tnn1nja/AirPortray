@@ -186,9 +186,9 @@ void AirPortray::openAddAirportMenu(){
          << INDENT << "Airport Types:\n";
     int i = 0;
     for(; i < NUM_AP_TYPES-1; i++){
-        cout << INDENT << INDENT << i << ". " << Airport::typeToString(i) << endl;
+        cout << INDENT << INDENT << i+1 << ". " << Airport::typeToString(i) << endl;
     }
-    cout << INDENT << INDENT << i << ". Unknown" << endl;
+    cout << INDENT << INDENT << i+1 << ". Unknown" << endl;
     cout << INDENT << divider(35) << endl << endl;
 
     //Get Inputs
@@ -207,7 +207,7 @@ void AirPortray::openAddAirportMenu(){
     //Try to Create Airport
     try{
         Airport a;
-        a.setType(static_cast<Airport::Type>(stoi(fields[field]))); field++;
+        a.setType(static_cast<Airport::Type>(stoi(fields[field])-1)); field++;
         a.setName(fields[field]); field++;
         if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
         a.setContinent(fields[field]); field++;
@@ -233,6 +233,7 @@ void AirPortray::openAddAirportMenu(){
 void AirPortray::openSearchMenu(){
     auto airports = repository->getAirports();
     string input;
+    int i;
     string options[]{
         "Partial Name",
         "Partial Municipality",
@@ -277,12 +278,29 @@ void AirPortray::openSearchMenu(){
             break;
 
         case 4:
-            int i = 0;
+            cout << INDENT << divider(25) << endl;
+            i = 0;
             for(; i < NUM_AP_TYPES-1; i++){
-                cout << INDENT << INDENT << i << ". " << Airport::typeToString(i) << endl;
+                cout << INDENT << INDENT << i+1 << ". " << Airport::typeToString(i) << endl;
+            }
+            cout << INDENT << INDENT << i+1 << ". Unknown" << endl;
+            cout << INDENT << divider(25) << endl << endl;
+
+            cout << INDENT << "Enter Type: ";
+            getline(cin, input);
+            try{
+                repository->filterByField(airports, [input](Airport* a){
+                    return (a->getType() == static_cast<Airport::Type>(stoi(input)-1));
+                });
+                openAirportDisplayMenu(airports);
+            }catch(invalid_argument& e){
+                cout << endl << INDENT << "Invalid Type, aborting search.\n";
+                awaitInput();
             }
             break;
+
         case 5:
+            //repository->filterByDistanceFromCoordinates(lat, long, rad)
             break;
 
         case 6:

@@ -42,7 +42,7 @@ vector<Airport*> AirportRepository::getAirports(){
     return output;
 }
 
-void AirportRepository::filterByField(std::vector<Airport*>& airports, std::function<bool(Airport*)> isValid){
+void AirportRepository::filterByField(vector<Airport*>& airports, std::function<bool(Airport*)> isValid){
     auto i = airports.begin();
     while(i != airports.end()){
         if (isValid(*i)){
@@ -69,4 +69,15 @@ unsigned int AirportRepository::calculateDistanceFromCoordinates(Airport* a, dou
 
 unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Airport* a2){
     return calculateDistanceFromCoordinates(a1, a2->getLatitude(), a2->getLongitude());
+}
+
+void AirportRepository::filterByDistanceFromCoordinates(vector<Airport*>& airports, double latitude, double longitiude, int radius){
+    auto i = airports.begin();
+    while(i != airports.end()){
+        if (calculateDistanceFromCoordinates((*i), latitude, longitiude) <= radius){
+            i++;
+        }else{
+            airports.erase(i);
+        }
+    }
 }
