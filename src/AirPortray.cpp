@@ -55,7 +55,7 @@ int AirPortray::openMenu(string title, const string options[], int size){
         }catch(out_of_range& e){}
     }while(!castable || choice < 0 || choice > size-1);
 
-    cout << "\n";
+    if(choice!=0){ cout << "\n"; } //awaitInput already pads
     return choice;
 }
 
