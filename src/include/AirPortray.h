@@ -18,15 +18,14 @@ class AirPortray{
         int openMenu(std::string, std::string[], int);
         std::string truncateString(std::string, unsigned int);
 
+    public:
+        AirPortray(std::string);
+        ~AirPortray();
+        
+        void openMainMenu();
         void openAirportDisplayMenu(std::vector<Airport*>);
-        void openRootMenu();
         void openAddAirportMenu();
         void openSearchMenu();
         void openSortMenu();
         void openAnalyseMenu();
-
-    public:
-        AirPortray(std::string);
-        ~AirPortray();
-        void run();
 };

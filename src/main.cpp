@@ -10,7 +10,7 @@ const string dataFilePath = "data/airports.csv";
 int main(){
     try{
         AirPortray airPortray(dataFilePath);
-        airPortray.run();
+        airPortray.openMainMenu();
         return EXIT_SUCCESS;
     }catch (runtime_error& e){
         cout << "Unable to start program, " << e.what() << endl;

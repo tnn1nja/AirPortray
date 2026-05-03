@@ -7,20 +7,6 @@
 
 using namespace std;
 
-AirPortray::AirPortray(string dataFilePath){
-    repository = new AirportRepository(dataFilePath);
-}
-
-AirPortray::~AirPortray(){
-    delete(repository);
-}
-
-void AirPortray::run(){
-    awaitInput();
-    openRootMenu();
-}
-
-
 void AirPortray::awaitInput(){
     string input;
     cout << "\nPress ENTER to continue...";
@@ -81,6 +67,15 @@ string AirPortray::truncateString(string s, unsigned int i){
 }
 
 
+AirPortray::AirPortray(string dataFilePath){
+    repository = new AirportRepository(dataFilePath);
+}
+
+AirPortray::~AirPortray(){
+    delete(repository);
+}
+
+
 void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
     resetConsole();
@@ -136,7 +131,8 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     awaitInput();
 }
 
-void AirPortray::openRootMenu(){
+void AirPortray::openMainMenu(){
+    awaitInput();
     bool exit = false;
     while(!exit){
         string options[]{
