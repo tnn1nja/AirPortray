@@ -19,6 +19,7 @@ class AirportRepository{
         void save();
         std::vector<Airport*> getAirports();
         void filterByField(std::vector<Airport*>&, std::function<bool(Airport*)>);
+        unsigned int calculateDistanceBetweenAirports(Airport* a1, Airport* a2);
 
         //Template methods (must be implemented in header)
         template <typename FieldType>
