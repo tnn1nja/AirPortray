@@ -71,7 +71,7 @@ unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Ai
     return calculateDistanceFromCoordinates(a1, a2->getLatitude(), a2->getLongitude());
 }
 
-void AirportRepository::filterByDistanceFromCoordinates(vector<Airport*>& airports, double latitude, double longitiude, int radius){
+void AirportRepository::filterByDistanceFromCoordinates(vector<Airport*>& airports, double latitude, double longitiude, unsigned int radius){
     auto i = airports.begin();
     while(i != airports.end()){
         if (calculateDistanceFromCoordinates((*i), latitude, longitiude) <= radius){
