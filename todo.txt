@@ -13,3 +13,7 @@ prettier numbers?
 clean things up
 
 comments
+
+cant add fully empty type
+
+pause when closing
