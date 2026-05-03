@@ -12,10 +12,16 @@ class AirPortray{
 
         void awaitInput();
         void resetConsole();
+
         std::string truncateString(std::string, unsigned int);
         void openAirportDisplayMenu(std::vector<Airport*>);
+
         int openMenu(std::string[], int);
         void openRootMenu();
+        void openSearchMenu();
+        void openSortMenu();
+        void openAnalyseMenu();
+
     public:
         AirPortray(std::string);
         ~AirPortray();

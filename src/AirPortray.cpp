@@ -14,10 +14,12 @@ AirPortray::~AirPortray(){
     delete(repository);
 }
 
+
 void AirPortray::run(){
     awaitInput();
     openRootMenu();
 }
+
 
 void AirPortray::awaitInput(){
     string input;
@@ -29,6 +31,7 @@ void AirPortray::resetConsole(){
     system("cls");
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
+
 
 int AirPortray::openMenu(string options[], int size){
     int choice = -1;
@@ -69,7 +72,7 @@ void AirPortray::openRootMenu(){
         };
         switch(openMenu(options, 6)){
             case 1:
-                cout << "Search\n";
+                openSearchMenu();
                 break;
             case 2:
                 cout << "Sort\n";
@@ -88,6 +91,22 @@ void AirPortray::openRootMenu(){
                 break;
         }
     }
+}
+
+void AirPortray::openSearchMenu(){
+    string options[]{
+            "Partial Name",
+            "Partial Municipality",
+            "IATA Code",
+            "Type",
+            "Coordinates within Radius",
+            "Country Code",
+            "Return to Main Menu"
+        };
+        switch(openMenu(options, 6)){
+            case 0:
+                break;
+        }
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
