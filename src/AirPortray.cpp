@@ -11,17 +11,13 @@ AirPortray::AirPortray(string dataFilePath){
 }
 
 void AirPortray::run(){
-    awaitInput();
     openRootMenu();
 }
 
-void AirPortray::awaitInput(){
+void AirPortray::resetConsole(){
     string input;
     cout << "\nPress ENTER to continue...";
     getline(cin, input);
-}
-
-void AirPortray::clearConsole(){
     system("cls");
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
@@ -31,7 +27,7 @@ int AirPortray::openMenu(string options[], int size){
     bool castable = false;
     do{
         //Display Options
-        clearConsole();
+        resetConsole();
         for(int i=0; i<size; i++){
             cout << "\t" <<  i+1 << ". " << options[i] << endl;
         }
@@ -53,8 +49,36 @@ int AirPortray::openMenu(string options[], int size){
 }
 
 void AirPortray::openRootMenu(){
-    string options[] = {"Search Airport by Country"};
-    int choice = openMenu(options, 1);
+    bool exit = false;
+    while(!exit){
+        string options[]{
+            "Search Airport",
+            "Sort Airports",
+            "Analyse Airports",
+            "Add Airport",
+            "Save and Exit"
+        };
+        switch(openMenu(options, 5)){
+            case 0:
+                exit = true;
+                break;
+            case 1:
+                cout << "Search\n";
+                break;
+            case 2:
+                cout << "Sort\n";
+                break;
+            case 3:
+                cout << "Analyse\n";
+                break;
+            case 4:
+                cout << "Add\n";
+                break;
+            case 5:
+                cout << "Save\n";
+                break;
+        }
+    }
 }
 
 string AirPortray::truncateString(string s, unsigned int i){
@@ -67,7 +91,7 @@ string AirPortray::truncateString(string s, unsigned int i){
 
 void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
-    clearConsole();
+    resetConsole();
     cout << left << fixed << endl
          << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
@@ -118,6 +142,4 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw Footer
     cout << endl << "[Displaying " << count << " of " << airports.size()
          << " results]" << endl;
-
-    awaitInput();
 }
