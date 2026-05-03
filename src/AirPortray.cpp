@@ -14,7 +14,6 @@ AirPortray::~AirPortray(){
     delete(repository);
 }
 
-
 void AirPortray::run(){
     awaitInput();
     openRootMenu();
@@ -30,6 +29,33 @@ void AirPortray::awaitInput(){
 void AirPortray::resetConsole(){
     system("cls");
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
+}
+
+int AirPortray::openMenu(string title, string options[], int size){
+    int choice = -1;
+    bool castable = false;
+    do{
+        //Display Options
+        resetConsole();
+        cout << "    -+= " << title << " =+-\n\n";
+        for(int i=0; i<size-1; i++){
+            cout << "\t" <<  i+1 << ". " << options[i] << endl;
+        }
+        cout << "\t0. " << options[size-1] << "\n"
+             << "\n    Choice: ";
+        
+        //Get Input
+        string input;
+        getline(cin, input);
+        
+        //Validate Input
+        try{
+            choice = stoi(input);
+            castable = true;
+        }catch(invalid_argument e){}
+    }while(!castable || choice < 0 || choice > size-1);
+
+    return choice;
 }
 
 
@@ -98,33 +124,6 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     awaitInput();
 }
 
-
-int AirPortray::openMenu(string title, string options[], int size){
-    int choice = -1;
-    bool castable = false;
-    do{
-        //Display Options
-        resetConsole();
-        cout << "    -+= " << title << " =+-\n\n";
-        for(int i=0; i<size-1; i++){
-            cout << "\t" <<  i+1 << ". " << options[i] << endl;
-        }
-        cout << "\t0. " << options[size-1] << "\n"
-             << "\n    Choice: ";
-        
-        //Get Input
-        string input;
-        getline(cin, input);
-        
-        //Validate Input
-        try{
-            choice = stoi(input);
-            castable = true;
-        }catch(invalid_argument e){}
-    }while(!castable || choice < 0 || choice > size-1);
-
-    return choice;
-}
 
 void AirPortray::openRootMenu(){
     bool exit = false;

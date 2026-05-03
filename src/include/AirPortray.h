@@ -15,8 +15,8 @@ class AirPortray{
 
         std::string truncateString(std::string, unsigned int);
         void openAirportDisplayMenu(std::vector<Airport*>);
-
         int openMenu(std::string, std::string[], int);
+        
         void openRootMenu();
         void openSearchMenu();
         void openSortMenu();
