@@ -229,8 +229,6 @@ void AirPortray::openAddAirportMenu(){
 void AirPortray::openSearchMenu(){
     auto airports = repository->getAirports();
     string input;
-    int i;
-    double latitude, longitude, radius;
 
     string options[]{
         "Partial Name",
@@ -277,7 +275,7 @@ void AirPortray::openSearchMenu(){
 
         case 4:
             cout << INDENT << divider(25) << endl;
-            i = 0;
+            int i = 0;
             for(; i < NUM_AP_TYPES-1; i++){
                 cout << INDENT << INDENT << i+1 << ". " << Airport::typeToString(i) << endl;
             }
@@ -299,6 +297,8 @@ void AirPortray::openSearchMenu(){
 
         case 5:
             try{
+                double latitude, longitude, radius;
+
                 cout << INDENT << "Enter Latitude: ";
                 getline(cin, input);
                 latitude = stod(input);
@@ -334,8 +334,6 @@ void AirPortray::openSearchMenu(){
 void AirPortray::openSortMenu(){
     auto airports = repository->getAirports();
     string input;
-    double latitude;
-    double longitude;
 
     string options[]{
         "Name",
@@ -363,6 +361,7 @@ void AirPortray::openSortMenu(){
             openAirportDisplayMenu(airports);
             break;
         case 5:
+            double latitude, longitude;
             try{
                 cout << INDENT << "Enter Latitude: ";
                 getline(cin, input);
@@ -416,7 +415,7 @@ void AirPortray::openAnalyseMenu(){
         case 4:
             auto countByType = repository->calculateAirportCountByType();
             for(auto i: countByType){
-                cout << Airport::typeToString(i.first) << "\t" << i.second << endl;
+                //cout << (Airport::typeToString(i.first) ? "" : ) << "\t" << i.second << endl;
             }
             awaitInput();
             break;
