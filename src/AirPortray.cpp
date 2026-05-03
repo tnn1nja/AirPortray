@@ -254,6 +254,7 @@ void AirPortray::openSearchMenu(){
             });
             openAirportDisplayMenu(airports);
             break;
+
         case 2:
             cout << INDENT << "Enter Partial Municipality: ";
             getline(cin, input);
@@ -265,6 +266,7 @@ void AirPortray::openSearchMenu(){
             });
             openAirportDisplayMenu(airports);
             break;
+
         case 3:
             cout << INDENT << "Enter Full IATA Code: ";
             getline(cin, input);
@@ -273,11 +275,19 @@ void AirPortray::openSearchMenu(){
             });
             openAirportDisplayMenu(airports);
             break;
+
         case 4:
             break;
         case 5:
             break;
+            
         case 6:
+            cout << INDENT << "Enter Full Country Code: ";
+            getline(cin, input);
+            repository->filterByField(airports, [input](Airport* a){
+                return (a->getCountry() == input);
+            });
+            openAirportDisplayMenu(airports);
             break;
     }
 }
