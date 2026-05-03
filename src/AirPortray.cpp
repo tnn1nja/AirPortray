@@ -15,10 +15,8 @@ AirPortray::~AirPortray(){
 }
 
 void AirPortray::run(){
-    auto airports = repository->getAirports();
-    openAirportDisplayMenu(airports);
-    //awaitInput();
-    //openRootMenu();
+    awaitInput();
+    openRootMenu();
 }
 
 
@@ -35,6 +33,13 @@ void AirPortray::resetConsole(){
 
 void AirPortray::drawTitle(string title){
     cout << INDENT << "-+= " << title << " =+-\n\n";
+}
+
+void AirPortray::drawDivider(int size){
+    for(int i=0;i<size;i++){
+        cout << "-";
+    }
+    cout << endl;
 }
 
 int AirPortray::openMenu(string title, string options[], int size){
@@ -175,8 +180,13 @@ void AirPortray::openRootMenu(){
 }
 
 void AirPortray::openAddAirportMenu(){
-    cout << INDENT << "Add new Airport\n";
+    resetConsole();
+    drawTitle("Add Airport");
+
+    cout << INDENT;
+    drawDivider(15);
     awaitInput();
+
 }
 
 void AirPortray::openSearchMenu(){
