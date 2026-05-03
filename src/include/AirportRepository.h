@@ -18,10 +18,11 @@ class AirportRepository{
 
         void save();
         std::vector<Airport*> getAirports();
+        void filterByField(std::vector<Airport*>&, std::function<bool(Airport*)>);
 
         //Template methods (must be implemented in header)
-        template <typename SortType>
-        void sortByField(std::vector<Airport*>& airports, std::function<SortType(Airport*)> getField){
+        template <typename FieldType>
+        void sortByField(std::vector<Airport*>& airports, std::function<FieldType(Airport*)> getField){
             auto comparator = [getField](Airport* a1, Airport* a2){return getField(a1) < getField(a2);};
             sort(airports.begin(), airports.end(), comparator);
         }

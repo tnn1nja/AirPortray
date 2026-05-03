@@ -24,10 +24,21 @@ void AirportRepository::save(){
 
 vector<Airport*> AirportRepository::getAirports(){
     vector<Airport*> output;
-    auto a = airports.begin();
-    while(a != airports.end()){
-        output.push_back(&*a);
-        a++;
+    auto i = airports.begin();
+    while(i != airports.end()){
+        output.push_back(&*i);
+        i++;
     }
     return output;
+}
+
+void AirportRepository::filterByField(std::vector<Airport*>& airports, std::function<bool(Airport*)> isValid){
+    auto i = airports.begin();
+    while(i != airports.end()){
+        if (isValid(*i)){
+            i++;
+        }else{
+            airports.erase(i);
+        }
+    }
 }

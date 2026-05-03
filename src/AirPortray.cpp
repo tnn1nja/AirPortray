@@ -14,7 +14,8 @@ void AirPortray::run(){
     awaitInput();
     //openRootMenu();
     auto airports = repository->getAirports();
-    repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
+    //repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
+    repository->filterByField(airports, [](Airport* a){return a->getElevation() == 5;});
     openAirportDisplayMenu(airports);
 }
 
