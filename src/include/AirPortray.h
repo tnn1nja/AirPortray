@@ -10,10 +10,11 @@ class AirPortray{
     private:
         AirportRepository* repository;
 
+        void awaitInput();
         void resetConsole();
         std::string truncateString(std::string, unsigned int);
         void openAirportDisplayMenu(std::vector<Airport*>);
-        int openMenu(std::string[], int, std::string);
+        int openMenu(std::string[], int);
         void openRootMenu();
     public:
         AirPortray(std::string);
