@@ -51,7 +51,8 @@ int AirPortray::openMenu(string title, string options[], int size){
         try{
             choice = stoi(input);
             castable = true;
-        }catch(invalid_argument e){}
+        }catch(invalid_argument& e){
+        }catch(out_of_range& e){}
     }while(!castable || choice < 0 || choice > size-1);
 
     cout << "\n";
@@ -220,6 +221,8 @@ void AirPortray::openAddAirportMenu(){
         cout << endl << "Airport successfully added!" << endl;
     }catch (invalid_argument& e){
         cout << endl << "Failed to add airport, invalid " << titles[field] << ": " << e.what() << "." << endl;
+    }catch (out_of_range& e){
+        cout << endl << "Failed to add airport, invalid " << titles[field] << ": value out of range." << endl;
     }
 
     //Pause
@@ -290,6 +293,9 @@ void AirPortray::openSearchMenu(){
                 });
                 openAirportDisplayMenu(airports);
             }catch(invalid_argument& e){
+                cout << endl << "Invalid Type, aborting search.\n";
+                awaitInput();
+            }catch(out_of_range& e){
                 cout << endl << "Invalid Type, aborting search.\n";
                 awaitInput();
             }
@@ -377,6 +383,9 @@ void AirPortray::openSortMenu(){
                 repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
                 openAirportDisplayMenu(airports);
             }catch(invalid_argument& e){
+                cout << endl << "Invalid value, aborting search.\n";
+                awaitInput();
+            }catch(out_of_range& e){
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
             }

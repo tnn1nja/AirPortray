@@ -86,6 +86,10 @@ bool AirportDataFile::load(list<Airport>& airports){
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
                  << ") : " << e.what() << "!\n";
+        }catch (out_of_range& e){
+            cout << "Failed to read Airport at line " << lineCount 
+                 << ", field " << field << " (" << fields[field]
+                 << ") : " << e.what() << "!\n";
         }
         lineCount++;
     }
