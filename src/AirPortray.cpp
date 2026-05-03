@@ -84,6 +84,14 @@ void AirPortray::openRootMenu(){
             case 4:
                 break;
             case 5:
+                try{
+                    repository->save();
+                    cout << "\nAll changes succesfully saved!";
+                    exit = true;
+                }catch(runtime_error& e){
+                    cout << "\nUnable to save, " << e.what() << "\nAborting exit...\n";
+                    awaitInput();
+                }
                 break;
             case 0:
                 exit = true;
