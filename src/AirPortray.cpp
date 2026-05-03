@@ -427,7 +427,8 @@ void AirPortray::openAnalyseMenu(){
             if(a1 == nullptr || a2 == nullptr){
                 cout << endl << "Invalid IATA Code, aborting search.\n";
             }else{
-                cout << endl << INDENT << INDENT << "Distance: " << repository->calculateDistanceBetweenAirports(a1, a2) << "m" << endl;
+                cout << endl << INDENT << INDENT << "Distance: "
+                    << repository->calculateDistanceBetweenAirports(a1, a2) << " m" << endl;
             }
                 
             awaitInput();

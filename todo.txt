@@ -1,0 +1,15 @@
+out_of_range errors on every int input
+
+rearrange methods
+
+Add comments
+
+for (it = table.begin(); it != table.end(); it++){}
+
+mess with display method
+
+prettier numbers?
+
+clean things up
+
+comments
