@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-#define MAX_RESULTS 40
-#define INDENT "    "
+#define MAX_RESULTS 40 //Max results in a display panel
+#define INDENT "    " //Half the size of \t
 
 class AirPortray{
     private:

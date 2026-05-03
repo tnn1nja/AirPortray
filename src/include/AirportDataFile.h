@@ -12,8 +12,8 @@ class AirportDataFile{
 
         //Private Methods
         void splitCSVLine(std::string(&)[13], std::string);
-        std::string decodeString(std::string);
-        std::string encodeString(std::string);
+        std::string decodeString(std::string); //remove escape characters
+        std::string encodeString(std::string); //add escape characters
 
     public:
         //Contructor(s)

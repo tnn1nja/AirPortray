@@ -7,6 +7,7 @@
 #include <functional>
 #include <algorithm>
 
+//Defines for haversine formula
 #define PI 3.14159
 #define EARTH_RADIUS 6371000
 
@@ -15,7 +16,7 @@ class AirportRepository{
         //Attributes
         std::list<Airport> airports;
         AirportDataFile* dataFile;
-        bool dirty;
+        bool dirty; //track if file needs saving
 
     public:
         //Constructor and Destructor
@@ -34,6 +35,7 @@ class AirportRepository{
         }
         unsigned int calculateDistanceFromCoordinates(Airport*, double, double);
         unsigned int calculateDistanceBetweenAirports(Airport*, Airport*);
+        //Seperated filter and sort to use local private calculate methods
         void filterByDistanceFromCoordinates(std::vector<Airport*>&, double, double, unsigned int);
         void sortByDistanceFromCoordinates(std::vector<Airport*>&, double, double);
         std::map<Airport::Type, unsigned int> calculateAirportCountByType();

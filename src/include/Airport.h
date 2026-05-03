@@ -3,8 +3,8 @@
 #include <string>
 #include <climits>
 
-#define SHRT_NULL SHRT_MAX
-#define NUM_AP_TYPES 8
+#define SHRT_NULL SHRT_MAX //use max value for short null
+#define NUM_AP_TYPES 8 // num of Types for iteration
 
 class Airport {
     public:
