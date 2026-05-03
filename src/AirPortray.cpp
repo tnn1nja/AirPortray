@@ -33,17 +33,18 @@ void AirPortray::resetConsole(){
 }
 
 
-int AirPortray::openMenu(string options[], int size){
+int AirPortray::openMenu(string title, string options[], int size){
     int choice = -1;
     bool castable = false;
     do{
         //Display Options
         resetConsole();
+        cout << "    -+= " << title << " =+-\n\n";
         for(int i=0; i<size-1; i++){
             cout << "\t" <<  i+1 << ". " << options[i] << endl;
         }
         cout << "\t0. " << options[size-1] << "\n"
-             << "\n\t   Choice: ";
+             << "\n    Choice: ";
         
         //Get Input
         string input;
@@ -70,7 +71,7 @@ void AirPortray::openRootMenu(){
             "Save and Exit",
             "Exit Without Saving"
         };
-        switch(openMenu(options, 6)){
+        switch(openMenu("Main Menu", options, 6)){
             case 1:
                 openSearchMenu();
                 break;
@@ -103,7 +104,7 @@ void AirPortray::openSearchMenu(){
             "Country Code",
             "Return to Main Menu"
         };
-        switch(openMenu(options, 6)){
+        switch(openMenu("Search Airports", options, 7)){
             case 0:
                 break;
         }
