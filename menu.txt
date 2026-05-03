@@ -1,21 +1,5 @@
-Search Airports				
-	Partial Name			
-	Partial Municipality		
-	IATA Code
-	Type			
-	Coordinates (within Radius)	
-	Country Code			
-Sort Airports				
-	Name
-	Type			
-	Country Code			
-	Elevation
-	Proximity to Coordinates
 Analyse Airports
 	Find Highest and Lowest Elevation
 	Find Missing IATA Codes
 	Calculate Distance Between Airports
 	Calculate Airport Count by Type
-Add New Airport				
-Save and Exit			
-Exit

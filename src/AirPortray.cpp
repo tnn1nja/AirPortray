@@ -383,6 +383,8 @@ void AirPortray::openSortMenu(){
 }
 
 void AirPortray::openAnalyseMenu(){
+    auto airports = repository->getAirports();
+
     string options[]{
         "Find Highest and Lowest Elevations",
         "Find Airports with Missing IATA Codes",
@@ -392,6 +394,15 @@ void AirPortray::openAnalyseMenu(){
     };
     switch(openMenu("Analyse Airports", options, 5)){
         case 1:
+            repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
+            repository->filterByField(airports, [](Airport* a){return a->getElevation() != SHRT_NULL;});
+            resetConsole();
+            drawTitle("Highest and Lowest Elevations");
+            cout << INDENT << INDENT << "The highest airport is \"" << airports.back()->getName()
+                 << "\" which is " << airports.back()->getElevation() << "ft above sea-level." << endl;
+            cout << INDENT << INDENT << "The lowest airport is \"" << airports.front()->getName()
+                 << "\" which is " << airports.front()->getElevation() << "ft above sea-level." << endl;
+            awaitInput();
             break;
         case 2:
             break;
