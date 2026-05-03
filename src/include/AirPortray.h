@@ -14,6 +14,7 @@ class AirPortray{
         void awaitInput();
         void resetConsole();
         void drawTitle(std::string);
+        std::string divider(int);
         int openMenu(std::string, std::string[], int);
         std::string truncateString(std::string, unsigned int);
 

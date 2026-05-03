@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <stdexcept>
 #include <cmath>
+#include <sstream>
 
 using namespace std;
 
@@ -35,11 +36,12 @@ void AirPortray::drawTitle(string title){
     cout << INDENT << "-+= " << title << " =+-\n\n";
 }
 
-void AirPortray::drawDivider(int size){
+string AirPortray::divider(int size){
+    ostringstream oss;
     for(int i=0;i<size;i++){
-        cout << "-";
+        oss << "-";
     }
-    cout << endl;
+    return oss.str();
 }
 
 int AirPortray::openMenu(string title, string options[], int size){
@@ -100,11 +102,7 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
          << endl;
         
     //Draw Seperator
-    cout << INDENT;
-    for(int i=0; i<190; i++){
-        cout << "-";
-    }
-    cout << endl;
+    cout << INDENT << divider(190) << endl;
 
     //Draw Rows
     unsigned int count = 0;
@@ -183,8 +181,7 @@ void AirPortray::openAddAirportMenu(){
     resetConsole();
     drawTitle("Add Airport");
 
-    cout << INDENT;
-    drawDivider(15);
+    cout << INDENT << divider(15) << endl;
     awaitInput();
 
 }
