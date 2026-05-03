@@ -13,7 +13,7 @@ int main(){
         airPortray.run();
         return EXIT_SUCCESS;
     }catch (runtime_error& e){
-        cout << "Unable to start program, cannot find file at: " << dataFilePath << endl;
+        cout << "Unable to start program, " << e.what() << endl;
         return EXIT_FAILURE;
     }
 }
