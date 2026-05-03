@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Private Methods
+//Private methods
 void AirportDataFile::splitCSVLine(string(&fields)[13], string line){
     int fieldIndex = 0;
     ostringstream field;
@@ -58,7 +58,7 @@ string AirportDataFile::encodeString(string s){
 //Constructor
 AirportDataFile::AirportDataFile(string filePath) : filePath(filePath) {}
 
-//Public Methods
+//Public methods
 bool AirportDataFile::load(list<Airport>& airports){
     //Open file
     ifstream file(filePath);
@@ -95,11 +95,11 @@ bool AirportDataFile::load(list<Airport>& airports){
             if(fields[field] != ""){ a.setLatitude(stod(fields[field])); } field++;
             if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
             airports.push_back(a);
-        }catch (invalid_argument& e){ // erroneous
+        }catch (invalid_argument& e){ //erroneous
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
                  << ") : " << e.what() << "!\n";
-        }catch (out_of_range& e){ // too small/large
+        }catch (out_of_range& e){ //too small/large
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
                  << ") : " << e.what() << "!\n";

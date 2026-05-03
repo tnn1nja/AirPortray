@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Private Methods
+//Private methods
 void AirPortray::awaitInput(){
     cout << "\nPress ENTER to continue...";
     string input;
@@ -35,7 +35,7 @@ int AirPortray::openMenu(string title, const string options[], int size){
     int choice = -1;
     bool castable = false;
     do{
-        //Display Options
+        //Display options
         resetConsole();
         drawTitle(title);
         for(int i=0; i<size; i++){
@@ -43,11 +43,11 @@ int AirPortray::openMenu(string title, const string options[], int size){
         }
         cout << "\n" << INDENT << "Choice: ";
         
-        //Get Input
+        //Get input
         string input;
         getline(cin, input);
         
-        //Validate Input
+        //Validate input
         try{
             choice = stoi(input);
             castable = true;
@@ -61,7 +61,7 @@ int AirPortray::openMenu(string title, const string options[], int size){
 
 string AirPortray::truncateString(string s, unsigned int i){
     if(s.length() > i){
-        //replace final 3 chars with ...
+        //Replace final 3 chars with ...
         s.erase(i-3);
         s = s + "...";
     }
@@ -124,7 +124,7 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
     awaitInput();
 }
 
-//Constructor and Destructor
+//Constructor and destructor
 AirPortray::AirPortray(string dataFilePath){
     repository = new AirportRepository(dataFilePath);
 }
@@ -133,7 +133,7 @@ AirPortray::~AirPortray(){
     delete(repository); //created with new so lasts out of scope
 }
 
-//Public Methods
+//Public methods
 void AirPortray::openMainMenu(){
     awaitInput(); //allow user to read read info
     bool exit = false;
@@ -147,19 +147,19 @@ void AirPortray::openMainMenu(){
             "Exit Without Saving"
         };
         switch(openMenu("Main Menu", options, 6)){
-            case 1:
+            case 1: //Search Airports
                 openSearchMenu();
                 break;
-            case 2:
+            case 2: //Sort Airports
                 openSortMenu();
                 break;
-            case 3:
+            case 3: //Analyse Airports
                 openAnalyseMenu();
                 break;
-            case 4:
+            case 4: //Add Airport
                 openAddAirportMenu();
                 break;
-            case 5:
+            case 5: //Save and Exit
                 try{
                     repository->save();
                     cout << "All changes succesfully saved!";
@@ -169,7 +169,7 @@ void AirPortray::openMainMenu(){
                     awaitInput(); //wait for user to read before reset
                 }
                 break;
-            case 0:
+            case 0: //Exit without Saving
                 exit = true;
                 break;
         }
@@ -179,7 +179,7 @@ void AirPortray::openMainMenu(){
 }
 
 void AirPortray::openAddAirportMenu(){
-    //Draw Title and Instructions
+    //Draw title and instructions
     resetConsole();
     drawTitle("Add Airport");
     cout << INDENT << divider(35) << endl
@@ -205,7 +205,7 @@ void AirPortray::openAddAirportMenu(){
         getline(cin, fields[i]);
     }
 
-    //Try to Create Airport
+    //Try to create airport
     int field = 0; //track which field fails
     try{
         Airport a;
@@ -338,7 +338,7 @@ void AirPortray::openSearchMenu(){
             }
             break;
 
-        case 6: //Full Country Code
+        case 6: //Full country code
             cout << INDENT << "Enter Full Country Code: ";
             getline(cin, input);
             repository->filterByField(airports, [input](Airport* a){
@@ -459,7 +459,7 @@ void AirPortray::openCalculateDistanceMenu(){
     resetConsole();
     drawTitle("Highest and Lowest Elevations");
 
-    //Get Inputs
+    //Get inputs
     string input;
     cout << INDENT << INDENT << "Enter First Airport IATA Code: ";
     getline(cin, input);

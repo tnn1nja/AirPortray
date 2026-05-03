@@ -5,15 +5,15 @@
 #include <string>
 #include <vector>
 
-#define MAX_RESULTS 40 //Max results in a display panel
-#define INDENT "    " //Half the size of \t
+#define MAX_RESULTS 40 //max results in a display panel
+#define INDENT "    " //malf the size of \t
 
 class AirPortray{
     private:
         //Attributes
         AirportRepository* repository;
 
-        //Private Methods
+        //Private methods
         void awaitInput();
         void resetConsole();
         void drawTitle(std::string);
@@ -23,11 +23,11 @@ class AirPortray{
         void openAirportDisplayMenu(const std::vector<Airport*>&);
 
     public:
-        //Contructor and Destructor
+        //Contructor and destructor
         AirPortray(std::string);
         ~AirPortray();
 
-        //Public Methods
+        //Public methods
         void openMainMenu();
         void openAddAirportMenu();
         void openSearchMenu();

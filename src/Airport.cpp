@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//Static Methods
+//Static methods
 string Airport::typeToString(Type type){
     string map[] = {
         "Balloonport",

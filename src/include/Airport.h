@@ -30,7 +30,7 @@ class Airport {
         short elevation;
         double latitude, longitude;
 
-        //Private Methods
+        //Private methods
         void assertNoBackslash(const std::string&);
         void assertLength(const std::string&, unsigned int);
 

@@ -19,18 +19,18 @@ class AirportRepository{
         bool dirty; //track if file needs saving
 
     public:
-        //Constructor and Destructor
+        //Constructor and destructor
         AirportRepository(std::string);
         ~AirportRepository();
 
-        //Public Methods
+        //Public methods
         void save();
         void addAirport(Airport);
         std::vector<Airport*> getAirports();
         void filterByField(std::vector<Airport*>&, std::function<bool(Airport*)>);
         template <typename FieldType> //template method must be implemented in header
         void sortByField(std::vector<Airport*>& airports, std::function<FieldType(Airport*)> getField){
-            auto comparator = [getField](Airport* a1, Airport* a2){return getField(a1) < getField(a2);};
+            auto comparator = [getField](Airport* a1, Airport* a2){return getField(a1) < getField(a2);}; //ascending
             sort(airports.begin(), airports.end(), comparator);
         }
         unsigned int calculateDistanceFromCoordinates(Airport*, double, double);

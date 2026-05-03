@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//Constructor and Destructor
+//Constructor and destructor
 AirportRepository::AirportRepository(string dataFilePath){
     dataFile = new AirportDataFile(dataFilePath);
     if (!dataFile->load(airports)){ //load automatically on init
@@ -18,7 +18,7 @@ AirportRepository::~AirportRepository(){
     delete(dataFile); //created with new so lasts out of scope
 }
 
-//Public Methods
+//Public methods
 void AirportRepository::save(){
     if(dirty){
         if (!dataFile->save(airports)){
@@ -90,7 +90,7 @@ void AirportRepository::filterByDistanceFromCoordinates(vector<Airport*>& airpor
 void AirportRepository::sortByDistanceFromCoordinates(std::vector<Airport*>& airports, double latitude, double longitude){
     auto comparator = [this, latitude, longitude](Airport* a1, Airport* a2){
         return calculateDistanceFromCoordinates(a1, latitude, longitude) <
-            calculateDistanceFromCoordinates(a2, latitude, longitude);
+            calculateDistanceFromCoordinates(a2, latitude, longitude); //ascending
     };
     sort(airports.begin(), airports.end(), comparator);
 }
