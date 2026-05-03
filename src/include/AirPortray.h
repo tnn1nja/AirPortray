@@ -33,4 +33,7 @@ class AirPortray{
         void openSearchMenu();
         void openSortMenu();
         void openAnalyseMenu();
+        void openHighestAndLowestElevationMenu();
+        void openCalculateDistanceMenu();
+        void openCountByTypeMenu();
 };

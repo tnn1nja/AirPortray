@@ -1,8 +1,6 @@
-clean up
-	remove duplication
-
-Add comments
-
-
+header comments
+consistent autos
+single line multi defines
+line lengths
 
 mess with display method/ displays

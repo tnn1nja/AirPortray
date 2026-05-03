@@ -9,13 +9,13 @@ using namespace std;
 
 //Private Methods
 void AirPortray::awaitInput(){
-    string input;
     cout << "\nPress ENTER to continue...";
-    getline(cin, input);
+    string input;
+    getline(cin, input); //disregard enter
 }
 
 void AirPortray::resetConsole(){
-    system("cls");
+    system("cls"); //NT specific console clear
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
@@ -38,11 +38,10 @@ int AirPortray::openMenu(string title, const string options[], int size){
         //Display Options
         resetConsole();
         drawTitle(title);
-        for(int i=0; i<size-1; i++){
-            cout << INDENT << INDENT <<  i+1 << ". " << options[i] << endl;
+        for(int i=0; i<size; i++){
+            cout << INDENT << INDENT << ((i==size-1) ? 0 : i+1) << ". " << options[i] << endl;
         }
-        cout << INDENT << INDENT << "0. " << options[size-1] << "\n"
-             << "\n" << INDENT << "Choice: ";
+        cout << "\n" << INDENT << "Choice: ";
         
         //Get Input
         string input;
@@ -62,6 +61,7 @@ int AirPortray::openMenu(string title, const string options[], int size){
 
 string AirPortray::truncateString(string s, unsigned int i){
     if(s.length() > i){
+        //replace final 3 chars with ...
         s.erase(i-3);
         s = s + "...";
     }
@@ -69,7 +69,7 @@ string AirPortray::truncateString(string s, unsigned int i){
 }
 
 void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
-    //Draw headers
+    //Draw header
     resetConsole();
     drawTitle("Results");
     cout << left << fixed << INDENT
@@ -88,11 +88,11 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
          << "Coordinates"
          << endl;
         
-    //Draw Seperator
+    //Draw divider
     cout << INDENT << divider(190) << endl;
 
-    //Draw Rows
-    unsigned int count = 0;
+    //Draw rows
+    unsigned int count = 0; //declared in higher scope for footer
     for(;count<MAX_RESULTS && count<airports.size(); count++){
         Airport* a = airports.at(count);
         string elevation = (a->getElevation() == SHRT_NULL) ? "" : to_string(a->getElevation());
@@ -116,10 +116,11 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
             << endl;
     }
 
-    //Draw Footer
+    //Draw footer
     cout << endl << "[Displaying " << count << " of " << airports.size()
          << " results]" << endl;
-        
+    
+    //Pause
     awaitInput();
 }
 
@@ -129,14 +130,14 @@ AirPortray::AirPortray(string dataFilePath){
 }
 
 AirPortray::~AirPortray(){
-    delete(repository);
+    delete(repository); //created with new so lasts out of scope
 }
 
 //Public Methods
 void AirPortray::openMainMenu(){
-    awaitInput();
+    awaitInput(); //allow user to read read info
     bool exit = false;
-    while(!exit){
+    while(!exit){ //main app loop
         string options[]{
             "Search Airports",
             "Sort Airports",
@@ -162,10 +163,10 @@ void AirPortray::openMainMenu(){
                 try{
                     repository->save();
                     cout << "All changes succesfully saved!";
-                    exit = true;
-                }catch(runtime_error& e){
+                    exit = true; //exit if save succeeds
+                }catch(runtime_error& e){ //can't open file
                     cout << "Unable to save, " << e.what() << "\nAborting exit...\n";
-                    awaitInput();
+                    awaitInput(); //wait for user to read before reset
                 }
                 break;
             case 0:
@@ -173,7 +174,8 @@ void AirPortray::openMainMenu(){
                 break;
         }
     }
-    awaitInput();
+
+    awaitInput(); //pause
 }
 
 void AirPortray::openAddAirportMenu(){
@@ -183,14 +185,15 @@ void AirPortray::openAddAirportMenu(){
     cout << INDENT << divider(35) << endl
          << INDENT << "Enter nothing for missing values.\n"
          << INDENT << "Airport Types:\n";
-    int i = 0;
-    for(; i < NUM_AP_TYPES-1; i++){
-        cout << INDENT << INDENT << i+1 << ". " << Airport::typeToString(i) << endl;
+    int i = 0; //iteratively display types
+    for(; i < NUM_AP_TYPES; i++){
+        cout << INDENT << INDENT << i+1 << ". " << ((i==NUM_AP_TYPES-1) ? "Unknown" : Airport::typeToString(i)) << endl;
     }
-    cout << INDENT << INDENT << i+1 << ". Unknown" << endl;
+
+    //Draw divider
     cout << INDENT << divider(35) << endl << endl;
 
-    //Get Inputs
+    //Get inputs
     string titles[13] = {
         "Type", "Name", "Elevation (ft)", "Continent", "Country Code",
         "Region", "Municipality", "ICAO Code", "IATA Code", "GPS Code",
@@ -201,9 +204,9 @@ void AirPortray::openAddAirportMenu(){
         cout << INDENT << titles[i] << ": ";
         getline(cin, fields[i]);
     }
-    int field = 0;
 
     //Try to Create Airport
+    int field = 0; //track which field fails
     try{
         Airport a;
         if(fields[field] != ""){ a.setType(static_cast<Airport::Type>(stoi(fields[field])-1)); } field++;
@@ -221,9 +224,9 @@ void AirPortray::openAddAirportMenu(){
         if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
         repository->addAirport(a);
         cout << endl << "Airport successfully added!" << endl;
-    }catch (invalid_argument& e){
+    }catch (invalid_argument& e){ //erroneous
         cout << endl << "Failed to add airport, invalid " << titles[field] << ": " << e.what() << "." << endl;
-    }catch (out_of_range& e){
+    }catch (out_of_range& e){ //too small/large
         cout << endl << "Failed to add airport, invalid " << titles[field] << ": value out of range." << endl;
     }
 
@@ -233,8 +236,7 @@ void AirPortray::openAddAirportMenu(){
 
 void AirPortray::openSearchMenu(){
     auto airports = repository->getAirports();
-    string input;
-
+    string input; //used by nearly all options
     string options[]{
         "Partial Name",
         "Partial Municipality",
@@ -245,7 +247,7 @@ void AirPortray::openSearchMenu(){
         "Return to Main Menu"
     };
     switch(openMenu("Search Airports", options, 7)){
-        case 1:
+        case 1: //Partial Name
             cout << INDENT << "Enter Partial Name: ";
             getline(cin, input);
             repository->filterByField(airports, [input](Airport* a){
@@ -257,7 +259,7 @@ void AirPortray::openSearchMenu(){
             openAirportDisplayMenu(airports);
             break;
 
-        case 2:
+        case 2: //Partial Municipality
             cout << INDENT << "Enter Partial Municipality: ";
             getline(cin, input);
             repository->filterByField(airports, [input](Airport* a){
@@ -269,7 +271,7 @@ void AirPortray::openSearchMenu(){
             openAirportDisplayMenu(airports);
             break;
 
-        case 3:
+        case 3: //Full IATA Code
             cout << INDENT << "Enter Full IATA Code: ";
             getline(cin, input);
             repository->filterByField(airports, [input](Airport* a){
@@ -278,60 +280,65 @@ void AirPortray::openSearchMenu(){
             openAirportDisplayMenu(airports);
             break;
 
-        case 4:{
+        case 4:{ //Type
+            //Draw infomation box
             cout << INDENT << divider(25) << endl;
-            int i = 0;
-            for(; i < NUM_AP_TYPES-1; i++){
-                cout << INDENT << INDENT << i+1 << ". " << Airport::typeToString(i) << endl;
+            int i = 0; //protected by case scope {}
+            for(; i < NUM_AP_TYPES; i++){
+                cout << INDENT << INDENT << i+1 << ". " << ((i==NUM_AP_TYPES-1) ? "Unknown" : Airport::typeToString(i)) << endl;
             }
-            cout << INDENT << INDENT << i+1 << ". Unknown" << endl;
             cout << INDENT << divider(25) << endl << endl;
 
+            //Get input
             cout << INDENT << "Enter Type: ";
             getline(cin, input);
-            try{
+
+            //Try to process
+            try{ //stoi fails on invalid input
                 repository->filterByField(airports, [input](Airport* a){
                     return (a->getType() == static_cast<Airport::Type>(stoi(input)-1));
                 });
                 openAirportDisplayMenu(airports);
-            }catch(invalid_argument& e){
+            }catch(invalid_argument& e){ //erroneous
                 cout << endl << "Invalid Type, aborting search.\n";
                 awaitInput();
-            }catch(out_of_range& e){
+            }catch(out_of_range& e){ //too small/large
                 cout << endl << "Invalid Type, aborting search.\n";
                 awaitInput();
             }
             break;
         }
-        case 5:
+
+        case 5: //Coordinates within Radius
             try{
                 double latitude, longitude, radius;
 
+                //Get input
                 cout << INDENT << "Enter Latitude: ";
                 getline(cin, input);
                 latitude = stod(input);
-
                 cout << INDENT << "Enter Longitude: ";
                 getline(cin, input);
                 longitude = stod(input);
-
                 cout << INDENT << "Enter Radius (m): ";
                 getline(cin, input);
                 radius = stoi(input);
 
+                //Filter and output
                 repository->filterByDistanceFromCoordinates(airports, latitude, longitude, radius);
                 repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
                 openAirportDisplayMenu(airports);
-            }catch(invalid_argument& e){
+
+            }catch(invalid_argument& e){ //erroneous input
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
-            }catch(out_of_range& e){
+            }catch(out_of_range& e){ //too small/large input
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
             }
             break;
 
-        case 6:
+        case 6: //Full Country Code
             cout << INDENT << "Enter Full Country Code: ";
             getline(cin, input);
             repository->filterByField(airports, [input](Airport* a){
@@ -344,8 +351,7 @@ void AirPortray::openSearchMenu(){
 
 void AirPortray::openSortMenu(){
     auto airports = repository->getAirports();
-    string input;
-
+    string input; //used by nearly all options
     string options[]{
         "Name",
         "Type",
@@ -355,39 +361,40 @@ void AirPortray::openSortMenu(){
         "Return to Main Menu"
     };
     switch(openMenu("Sort Airports", options, 6)){
-        case 1:
+        case 1: //Name
             repository->sortByField<string>(airports, [](Airport* a){return a->getName();});
             openAirportDisplayMenu(airports);
             break;
-        case 2:
+        case 2: //Type
             repository->sortByField<Airport::Type>(airports, [](Airport* a){return a->getType();});
             openAirportDisplayMenu(airports);
             break;
-        case 3:
+        case 3: //Country Code
             repository->sortByField<string>(airports, [](Airport* a){return a->getCountry();});
             openAirportDisplayMenu(airports);
             break;
-        case 4:
+        case 4: //Elevation
             repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
             openAirportDisplayMenu(airports);
             break;
-        case 5:
+        case 5: //Proximity to Coordinates
             double latitude, longitude;
             try{
+                //Get input
                 cout << INDENT << "Enter Latitude: ";
                 getline(cin, input);
                 latitude = stod(input);
-
                 cout << INDENT << "Enter Longitude: ";
                 getline(cin, input);
                 longitude = stod(input);
 
+                //Sort and display
                 repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
                 openAirportDisplayMenu(airports);
-            }catch(invalid_argument& e){
+            }catch(invalid_argument& e){ //erroneous input
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
-            }catch(out_of_range& e){
+            }catch(out_of_range& e){ //too small/large input
                 cout << endl << "Invalid value, aborting search.\n";
                 awaitInput();
             }
@@ -396,8 +403,6 @@ void AirPortray::openSortMenu(){
 }
 
 void AirPortray::openAnalyseMenu(){
-    auto airports = repository->getAirports();
-
     string options[]{
         "Find Highest and Lowest Elevations",
         "Find Airports with Missing IATA Codes",
@@ -406,55 +411,88 @@ void AirPortray::openAnalyseMenu(){
         "Return to Main Menu"
     };
     switch(openMenu("Analyse Airports", options, 5)){
-        case 1:
-            resetConsole();
-            drawTitle("Highest and Lowest Elevations");
-            repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
-            repository->filterByField(airports, [](Airport* a){return a->getElevation() != SHRT_NULL;});
-            cout << INDENT << INDENT << "The highest airport is \"" << airports.back()->getName()
-                 << "\" which is " << airports.back()->getElevation() << "ft above sea-level." << endl;
-            cout << INDENT << INDENT << "The lowest airport is \"" << airports.front()->getName()
-                 << "\" which is " << airports.front()->getElevation() << "ft above sea-level." << endl;
-            awaitInput();
+        case 1: //Highest and Lowest Elevation
+            openHighestAndLowestElevationMenu();
             break;
 
-        case 2:
+        case 2:{ //Missing IATA Codes
+            auto airports = repository->getAirports(); //protected by case scope
             repository->filterByField(airports, [](Airport* a){return a->getIATACode() == "";});
             openAirportDisplayMenu(airports);
             break;
+        }
 
-        case 3:{
-            resetConsole();
-            drawTitle("Highest and Lowest Elevations");
-            string input;
-            cout << INDENT << INDENT << "Enter First Airport IATA Code: ";
-            getline(cin, input);
-            Airport* a1 = repository->getAirportByIATA(input);
-
-            cout << INDENT << INDENT << "Enter Second Airport IATA Code: ";
-            getline(cin, input);
-            Airport* a2 = repository->getAirportByIATA(input);
-
-            if(a1 == nullptr || a2 == nullptr){
-                cout << endl << "Invalid IATA Code, aborting search.\n";
-            }else{
-                cout << endl << INDENT << INDENT << "Distance: "
-                    << repository->calculateDistanceBetweenAirports(a1, a2) << " m" << endl;
-            }
-                
-            awaitInput();
+        case 3:{ //Distance
+            openCalculateDistanceMenu();
             break;
         }
-        case 4:
-            resetConsole();
-            drawTitle("Airport Count By Type");
-            auto countByType = repository->calculateAirportCountByType();
-            for(auto i: countByType){
-                cout << INDENT << INDENT << left << setw(17)
-                     << ((Airport::typeToString(i.first) == "" ? "Unknown" : Airport::typeToString(i.first)) + ":")
-                     << i.second << endl;
-            }
-            awaitInput();
+
+        case 4: //Count by Type
+            openCountByTypeMenu();
             break;
+
     }
+}
+
+void AirPortray::openHighestAndLowestElevationMenu(){
+    //Draw title
+    resetConsole();
+    drawTitle("Highest and Lowest Elevations");
+
+    //Sort by elevation
+    auto airports = repository->getAirports();
+    repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
+    repository->filterByField(airports, [](Airport* a){return a->getElevation() != SHRT_NULL;});
+
+    //Output first and last
+    cout << INDENT << INDENT << "The highest airport is \"" << airports.back()->getName()
+            << "\" which is " << airports.back()->getElevation() << "ft above sea-level." << endl;
+    cout << INDENT << INDENT << "The lowest airport is \"" << airports.front()->getName()
+            << "\" which is " << airports.front()->getElevation() << "ft above sea-level." << endl;
+
+    //Pause
+    awaitInput();
+}
+
+void AirPortray::openCalculateDistanceMenu(){
+    //Draw title
+    resetConsole();
+    drawTitle("Highest and Lowest Elevations");
+
+    //Get Inputs
+    string input;
+    cout << INDENT << INDENT << "Enter First Airport IATA Code: ";
+    getline(cin, input);
+    Airport* a1 = repository->getAirportByIATA(input);
+    cout << INDENT << INDENT << "Enter Second Airport IATA Code: ";
+    getline(cin, input);
+    Airport* a2 = repository->getAirportByIATA(input);
+
+    //Try and calculate and output
+    if(a1 == nullptr || a2 == nullptr){ //if either input is invalid
+        cout << endl << "Invalid IATA Code, aborting search.\n";
+    }else{
+        cout << endl << INDENT << INDENT << "Distance: "
+            << repository->calculateDistanceBetweenAirports(a1, a2) << " m" << endl;
+    }
+    
+    //Pause
+    awaitInput();
+}
+
+void AirPortray::openCountByTypeMenu(){
+    //Draw title
+    resetConsole();
+    drawTitle("Airport Count By Type");
+
+    //Output counts
+    auto countByType = repository->calculateAirportCountByType();
+    for(auto i: countByType){
+        cout << INDENT << INDENT << left << setw(17)
+                << ((Airport::typeToString(i.first) == "" ? "Unknown" : Airport::typeToString(i.first)) + ":")
+                << i.second << endl;
+    }
+
+    //Pause
+    awaitInput();
 }

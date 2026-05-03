@@ -25,12 +25,15 @@ void AirportDataFile::splitCSVLine(string(&fields)[13], string line){
             field << c;
         }
     }
-    fields[fieldIndex] = field.str();
+    fields[fieldIndex] = field.str(); //add final field
 }
 
 string AirportDataFile::decodeString(string s){
+    //Remove opening and closing quotes
     s.erase(0, 1);
     s.erase(s.length()-1, 1);
+
+    //Remove one of each set of two quotes
     while(int i = s.find("\"\"") != string::npos){
         s.erase(i, 1);
     }
@@ -38,12 +41,15 @@ string AirportDataFile::decodeString(string s){
 }
 
 string AirportDataFile::encodeString(string s){
+    //Add additional quotes to escape quote character
     for(unsigned int i=0; i<s.size(); i++){
         if(s.at(i)=='\"'){
             s.insert(i, "\"");
-            i++;
+            i++; //account for insert
         }
     }
+
+    //Add opening and closing quotes
     s.insert(0, "\"");
     s.insert(s.size(), "\"");
     return s;
@@ -60,15 +66,19 @@ bool AirportDataFile::load(list<Airport>& airports){
         return false;
     }
 
-    //Parse file data
-    getline(file, headers);
+    //Extract header
+    getline(file, headers); //save header for writing
 
+    //Parse file data
     string line;
     int lineCount = 1;
     while(getline(file, line)){
+        //Read line
         string fields[13];
         splitCSVLine(fields, line);
-        int field = 0;
+
+        //Attempt to create Airport
+        int field = 0; //track which field fails
         try{
             Airport a;
             a.setType(static_cast<Airport::Type>(stoi(fields[field]))); field++;
@@ -85,11 +95,11 @@ bool AirportDataFile::load(list<Airport>& airports){
             if(fields[field] != ""){ a.setLatitude(stod(fields[field])); } field++;
             if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
             airports.push_back(a);
-        }catch (invalid_argument& e){
+        }catch (invalid_argument& e){ // erroneous
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
                  << ") : " << e.what() << "!\n";
-        }catch (out_of_range& e){
+        }catch (out_of_range& e){ // too small/large
             cout << "Failed to read Airport at line " << lineCount 
                  << ", field " << field << " (" << fields[field]
                  << ") : " << e.what() << "!\n";
@@ -97,7 +107,7 @@ bool AirportDataFile::load(list<Airport>& airports){
         lineCount++;
     }
 
-    cout << "Loaded " << lineCount-1 << " of " << airports.size() << " rows succesfully!\n";
+    cout << "Succesfully loaded " << lineCount-1 << " of " << airports.size() << " rows!\n";
     return true;
 }
 
@@ -109,12 +119,14 @@ bool AirportDataFile::save(const list<Airport>& airports){
     }
 
     //Write data
-    file << headers << endl;
+    file << headers << endl; //write saved header
     for(Airport a: airports){
+        //Ternaries for complex fields
         string elevation = (a.getElevation() == SHRT_NULL) ? "" : to_string(a.getElevation());
         string latitude = isnan(a.getLatitude()) ? "" : to_string(a.getLatitude());
         string longitude = isnan(a.getLongitude()) ? "" : to_string(a.getLongitude());
 
+        //Write airport
         file << static_cast<int>(a.getType()) << ","
              << encodeString(a.getName()) << ","
              << elevation << ","
