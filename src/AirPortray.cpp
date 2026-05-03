@@ -336,6 +336,11 @@ void AirPortray::openSearchMenu(){
 }
 
 void AirPortray::openSortMenu(){
+    auto airports = repository->getAirports();
+    string input;
+    double latitude;
+    double longitude;
+
     string options[]{
         "Name",
         "Type",
@@ -346,14 +351,37 @@ void AirPortray::openSortMenu(){
     };
     switch(openMenu("Sort Airports", options, 6)){
         case 1:
+            repository->sortByField<string>(airports, [](Airport* a){return a->getName();});
+            openAirportDisplayMenu(airports);
             break;
         case 2:
+            repository->sortByField<Airport::Type>(airports, [](Airport* a){return a->getType();});
+            openAirportDisplayMenu(airports);
             break;
         case 3:
+            repository->sortByField<string>(airports, [](Airport* a){return a->getCountry();});
+            openAirportDisplayMenu(airports);
             break;
         case 4:
+            repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
+            openAirportDisplayMenu(airports);
             break;
         case 5:
+            try{
+                cout << INDENT << "Enter Latitude: ";
+                getline(cin, input);
+                latitude = stod(input);
+
+                cout << INDENT << "Enter Longitude: ";
+                getline(cin, input);
+                longitude = stod(input);
+
+                repository->sortByDistanceFromCoordinates(airports, latitude, longitude);
+                openAirportDisplayMenu(airports);
+            }catch(invalid_argument& e){
+                cout << endl << "Invalid value, aborting search.\n";
+                awaitInput();
+            }
             break;
     }
 }
