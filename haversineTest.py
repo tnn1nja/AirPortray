@@ -1,9 +1,17 @@
-from math import sin, cos
+from math import sin, cos, asin, sqrt, pi
+earthRadius = 6378000
 
-def distance(pi1, lambda1, pi2, lambda2):
-    earthRadius = 6378000
-    deltaPi = pi2 - pi1
+def distance(phi1, lambda1, phi2, lambda2):
+    phi1 = phi1 * pi/180
+    lambda1 = lambda1 * pi/180
+    phi2 = phi2 * pi/180
+    lambda2 = lambda2 * pi/180
+
+    deltaphi = phi2 - phi1
     deltaLambda = lambda2 - lambda1
-    theta = (1 - cos(deltaPi) + cos(pi1)*cos(pi2)*(1 - cos(deltaLambda)))/2
-    return theta * earthRadius
+    haversineTheta = (1 - cos(deltaphi) + cos(phi1)*cos(phi2)*(1 - cos(deltaLambda)))/2
+    theta = 2*asin(sqrt(haversineTheta))
+    print(theta * earthRadius)
+
+distance(50, -100, 30, -90)
 
