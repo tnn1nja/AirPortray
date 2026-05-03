@@ -105,8 +105,8 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     for(;count<MAX_RESULTS && count<airports.size(); count++){
         Airport* a = airports.at(count);
         string elevation = (a->getElevation() == SHRT_NULL) ? "" : to_string(a->getElevation());
-        string latitude = (a->getLatitude() == NAN) ? "" : to_string(a->getLatitude());
-        string longitude = (a->getLongitude() == NAN) ? "" : to_string(a->getLongitude());
+        string latitude = isnan(a->getLatitude()) ? "" : to_string(a->getLatitude());
+        string longitude = isnan(a->getLongitude()) ? "" : to_string(a->getLongitude());
 
         cout << INDENT << right << setw(2) << count+1 << left << ". | "
             << setw(14)<< Airport::typeToString(a->getType()) << " | "

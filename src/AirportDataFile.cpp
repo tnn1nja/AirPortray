@@ -109,8 +109,8 @@ bool AirportDataFile::save(const list<Airport>& airports){
     file << headers << endl;
     for(Airport a: airports){
         string elevation = (a.getElevation() == SHRT_NULL) ? "" : to_string(a.getElevation());
-        string latitude = (a.getLatitude() == NAN) ? "" : to_string(a.getLatitude());
-        string longitude = (a.getLongitude() == NAN) ? "" : to_string(a.getLongitude());
+        string latitude = isnan(a.getLatitude()) ? "" : to_string(a.getLatitude());
+        string longitude = isnan(a.getLongitude()) ? "" : to_string(a.getLongitude());
 
         file << static_cast<int>(a.getType()) << ","
              << encodeString(a.getName()) << ","
