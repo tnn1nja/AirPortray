@@ -55,7 +55,7 @@ int AirPortray::openMenu(string title, string options[], int size){
         }catch(invalid_argument e){}
     }while(!castable || choice < 0 || choice > size-1);
 
-    cout << "\n\n";
+    cout << "\n";
     return choice;
 }
 
@@ -152,10 +152,10 @@ void AirPortray::openRootMenu(){
             case 5:
                 try{
                     repository->save();
-                    cout << "\nAll changes succesfully saved!";
+                    cout << "All changes succesfully saved!";
                     exit = true;
                 }catch(runtime_error& e){
-                    cout << "\nUnable to save, " << e.what() << "\nAborting exit...\n";
+                    cout << "Unable to save, " << e.what() << "\nAborting exit...\n";
                     awaitInput();
                 }
                 break;

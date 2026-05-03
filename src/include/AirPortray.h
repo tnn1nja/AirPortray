@@ -5,7 +5,7 @@
 #include "AirportRepository.h"
 
 #define MAX_RESULTS 32
-#define IDENT "    "
+#define INDENT "    "
 
 class AirPortray{
     private:
