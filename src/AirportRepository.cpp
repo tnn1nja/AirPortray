@@ -108,3 +108,14 @@ map<Airport::Type, unsigned int> AirportRepository::calculateAirportCountByType(
     }
     return output;
 }
+
+Airport* AirportRepository::getAirportByIATA(string IATA){
+    auto a = airports.begin();
+    while(a != airports.end()){
+        if((*a).getIATACode() == IATA){
+            return &(*a);
+        }
+        a++;
+    }
+    return nullptr;
+}

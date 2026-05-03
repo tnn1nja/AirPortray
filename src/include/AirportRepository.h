@@ -29,6 +29,7 @@ class AirportRepository{
         void filterByDistanceFromCoordinates(std::vector<Airport*>&, double, double, unsigned int);
         void sortByDistanceFromCoordinates(std::vector<Airport*>&, double, double);
         std::map<Airport::Type, unsigned int> calculateAirportCountByType();
+        Airport* getAirportByIATA(std::string);
 
         //Template methods (must be implemented in header)
         template <typename FieldType>

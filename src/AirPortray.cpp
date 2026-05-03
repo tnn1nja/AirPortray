@@ -393,10 +393,10 @@ void AirPortray::openAnalyseMenu(){
     };
     switch(openMenu("Analyse Airports", options, 5)){
         case 1:
+            resetConsole();
             drawTitle("Highest and Lowest Elevations");
             repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
             repository->filterByField(airports, [](Airport* a){return a->getElevation() != SHRT_NULL;});
-            resetConsole();
             cout << INDENT << INDENT << "The highest airport is \"" << airports.back()->getName()
                  << "\" which is " << airports.back()->getElevation() << "ft above sea-level." << endl;
             cout << INDENT << INDENT << "The lowest airport is \"" << airports.front()->getName()
@@ -413,10 +413,13 @@ void AirPortray::openAnalyseMenu(){
             break;
 
         case 4:
+            resetConsole();
+            drawTitle("Airport Count By Type");
             auto countByType = repository->calculateAirportCountByType();
             for(auto i: countByType){
-                cout << (Airport::typeToString(i.first) == "" ? "Unknown" : Airport::typeToString(i.first))
-                     << "\t" << i.second << endl;
+                cout << INDENT << INDENT << left << setw(17)
+                     << ((Airport::typeToString(i.first) == "" ? "Unknown" : Airport::typeToString(i.first)) + ":")
+                     << i.second << endl;
             }
             awaitInput();
             break;
