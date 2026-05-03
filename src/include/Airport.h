@@ -4,6 +4,7 @@
 #include <climits>
 
 #define SHRT_NULL SHRT_MAX
+#define NUM_AP_TYPES 8
 
 class Airport {
     public: //statics

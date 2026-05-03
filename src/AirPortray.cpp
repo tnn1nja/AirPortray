@@ -178,12 +178,56 @@ void AirPortray::openRootMenu(){
 }
 
 void AirPortray::openAddAirportMenu(){
+    //Draw Title and Instructions
     resetConsole();
     drawTitle("Add Airport");
+    cout << INDENT << divider(35) << endl
+         << INDENT << "Enter nothing for missing values.\n"
+         << INDENT << "Airport Types:\n";
+    int i = 0;
+    for(; i < NUM_AP_TYPES-1; i++){
+        cout << INDENT << INDENT << i << ". " << Airport::typeToString(static_cast<Airport::Type>(i)) << endl;
+    }
+    cout << INDENT << INDENT << i << ". Unknown" << endl;
+    cout << INDENT << divider(35) << endl << endl;
 
-    cout << INDENT << divider(15) << endl;
+    //Get Inputs
+    string titles[13] = {
+        "Type", "Name", "Elevation (ft)", "Continent", "Country Code",
+        "Region", "Municipality", "ICAO Code", "IATA Code", "GPS Code",
+        "Local Code", "Latitude", "Longitude"
+    };
+    string fields[13];
+    for(int i=0; i< 13; i++){
+        cout << INDENT << titles[i] << ": ";
+        getline(cin, fields[i]);
+    }
+    int field = 0;
+
+    //Try to Create Airport
+    try{
+        Airport a;
+        a.setType(static_cast<Airport::Type>(stoi(fields[field]))); field++;
+        a.setName(fields[field]); field++;
+        if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
+        a.setContinent(fields[field]); field++;
+        a.setCountry(fields[field]); field++;
+        a.setRegion(fields[field]); field++;
+        a.setMunicipality(fields[field]); field++;
+        a.setICAOCode(fields[field]); field++;
+        a.setIATACode(fields[field]); field++;
+        a.setGPSCode(fields[field]); field++;
+        a.setLocalCode(fields[field]); field++;
+        if(fields[field] != ""){ a.setLatitude(stod(fields[field])); } field++;
+        if(fields[field] != ""){ a.setLongitude(stod(fields[field])); } field++;
+        repository->addAirport(a);
+        cout << endl << "Airport successfully added!" << endl;
+    }catch (invalid_argument& e){
+        cout << endl << "Failed to add airport, invalid " << titles[field] << ": " << e.what() << endl;
+    }
+
+    //Pause
     awaitInput();
-
 }
 
 void AirPortray::openSearchMenu(){
