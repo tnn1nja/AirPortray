@@ -14,17 +14,18 @@ AirportRepository::AirportRepository(string dataFilePath){
     dirty = false;
 }
 
-void AirportRepository::save(){
+AirportRepository::~AirportRepository(){
     if(dirty){
         if (!dataFile->save(airports)){
              throw runtime_error("cannot open data file, maybe you already have it open?");
         }
     }
-    dirty = false;
+    delete(dataFile);
 }
 
 void AirportRepository::addAirport(Airport a){
     airports.push_back(a);
+    dirty = true;
 }
 
 vector<Airport*> AirportRepository::getAirports(){

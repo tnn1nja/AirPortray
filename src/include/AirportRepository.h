@@ -17,9 +17,8 @@ class AirportRepository{
 
     public:
         AirportRepository(std::string);
-        ~AirportRepository() {};
+        ~AirportRepository();
 
-        void save();
         void addAirport(Airport);
         std::vector<Airport*> getAirports();
         void filterByField(std::vector<Airport*>&, std::function<bool(Airport*)>);

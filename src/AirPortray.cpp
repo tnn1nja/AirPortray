@@ -10,6 +10,10 @@ AirPortray::AirPortray(string dataFilePath){
     repository = new AirportRepository(dataFilePath);
 }
 
+AirPortray::~AirPortray(){
+    delete(repository);
+}
+
 void AirPortray::run(){
     openRootMenu();
 }
@@ -56,9 +60,8 @@ void AirPortray::openRootMenu(){
             "Sort Airports",
             "Analyse Airports",
             "Add Airport",
-            "Save and Exit"
         };
-        switch(openMenu(options, 5)){
+        switch(openMenu(options, 4)){
             case 0:
                 exit = true;
                 break;
@@ -73,9 +76,6 @@ void AirPortray::openRootMenu(){
                 break;
             case 4:
                 cout << "Add\n";
-                break;
-            case 5:
-                cout << "Save\n";
                 break;
         }
     }
