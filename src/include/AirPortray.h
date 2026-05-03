@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#define MAX_RESULTS 32
+#define MAX_RESULTS 40
 #define INDENT "    "
 
 class AirPortray{
