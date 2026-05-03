@@ -203,7 +203,7 @@ void AirPortray::openAddAirportMenu(){
     //Try to Create Airport
     try{
         Airport a;
-        a.setType(static_cast<Airport::Type>(stoi(fields[field])-1)); field++;
+        if(fields[field] != ""){ a.setType(static_cast<Airport::Type>(stoi(fields[field])-1)); } field++;
         a.setName(fields[field]); field++;
         if(fields[field] != ""){ a.setElevation(stoi(fields[field])); } field++;
         a.setContinent(fields[field]); field++;
