@@ -37,12 +37,12 @@ int AirPortray::openMenu(string title, string options[], int size){
     do{
         //Display Options
         resetConsole();
-        cout << "    -+= " << title << " =+-\n\n";
+        cout << INDENT << "-+= " << title << " =+-\n\n";
         for(int i=0; i<size-1; i++){
-            cout << "\t" <<  i+1 << ". " << options[i] << endl;
+            cout << INDENT << INDENT <<  i+1 << ". " << options[i] << endl;
         }
-        cout << "\t0. " << options[size-1] << "\n"
-             << "\n    Choice: ";
+        cout << INDENT << INDENT << "0. " << options[size-1] << "\n"
+             << "\n" << INDENT << "Choice: ";
         
         //Get Input
         string input;
@@ -55,9 +55,9 @@ int AirPortray::openMenu(string title, string options[], int size){
         }catch(invalid_argument e){}
     }while(!castable || choice < 0 || choice > size-1);
 
+    cout << "\n\n";
     return choice;
 }
-
 
 string AirPortray::truncateString(string s, unsigned int i){
     if(s.length() > i){
@@ -66,6 +66,7 @@ string AirPortray::truncateString(string s, unsigned int i){
     }
     return s;
 }
+
 
 void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
@@ -124,7 +125,6 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     awaitInput();
 }
 
-
 void AirPortray::openRootMenu(){
     bool exit = false;
     while(!exit){
@@ -147,6 +147,7 @@ void AirPortray::openRootMenu(){
                 openAnalyseMenu();
                 break;
             case 4:
+                openAddAirportMenu();
                 break;
             case 5:
                 try{
@@ -163,6 +164,11 @@ void AirPortray::openRootMenu(){
                 break;
         }
     }
+}
+
+void AirPortray::openAddAirportMenu(){
+    cout << INDENT << "Add new Airport\n";
+    awaitInput();
 }
 
 void AirPortray::openSearchMenu(){

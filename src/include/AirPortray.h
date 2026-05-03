@@ -5,6 +5,7 @@
 #include "AirportRepository.h"
 
 #define MAX_RESULTS 32
+#define IDENT "    "
 
 class AirPortray{
     private:
@@ -12,12 +13,12 @@ class AirPortray{
 
         void awaitInput();
         void resetConsole();
-
-        std::string truncateString(std::string, unsigned int);
-        void openAirportDisplayMenu(std::vector<Airport*>);
         int openMenu(std::string, std::string[], int);
-        
+        std::string truncateString(std::string, unsigned int);
+
+        void openAirportDisplayMenu(std::vector<Airport*>);
         void openRootMenu();
+        void openAddAirportMenu();
         void openSearchMenu();
         void openSortMenu();
         void openAnalyseMenu();
