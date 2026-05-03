@@ -186,7 +186,7 @@ void AirPortray::openAddAirportMenu(){
          << INDENT << "Airport Types:\n";
     int i = 0;
     for(; i < NUM_AP_TYPES-1; i++){
-        cout << INDENT << INDENT << i << ". " << Airport::typeToString(static_cast<Airport::Type>(i)) << endl;
+        cout << INDENT << INDENT << i << ". " << Airport::typeToString(i) << endl;
     }
     cout << INDENT << INDENT << i << ". Unknown" << endl;
     cout << INDENT << divider(35) << endl << endl;
@@ -277,10 +277,14 @@ void AirPortray::openSearchMenu(){
             break;
 
         case 4:
+            int i = 0;
+            for(; i < NUM_AP_TYPES-1; i++){
+                cout << INDENT << INDENT << i << ". " << Airport::typeToString(i) << endl;
+            }
             break;
         case 5:
             break;
-            
+
         case 6:
             cout << INDENT << "Enter Full Country Code: ";
             getline(cin, input);

@@ -23,7 +23,7 @@ Airport::Airport(){
 
 
 //Static Methods
-std::string Airport::typeToString(Type type){
+string Airport::typeToString(Type type){
     string map[] = {
         "Balloonport",
         "Closed",
@@ -35,6 +35,10 @@ std::string Airport::typeToString(Type type){
         ""
     };
     return map[static_cast<int>(type)];
+}
+
+string Airport::typeToString(int type){
+    return typeToString(static_cast<Airport::Type>(type));
 }
 
 //Private Methods

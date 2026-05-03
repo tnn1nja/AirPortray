@@ -2,7 +2,7 @@ Search Airports
 	Partial Name			
 	Partial Municipality		
 	IATA Code
-	Type				
+	Type			
 	Coordinates (within Radius)	
 	Country Code			
 Sort Airports				

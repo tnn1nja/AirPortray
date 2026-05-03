@@ -19,6 +19,7 @@ class Airport {
             UNKNOWN
         };
         static std::string typeToString(Type);
+        static std::string typeToString(int);
 
     private:
         //Attributes
