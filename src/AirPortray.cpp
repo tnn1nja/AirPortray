@@ -15,8 +15,10 @@ AirPortray::~AirPortray(){
 }
 
 void AirPortray::run(){
-    awaitInput();
-    openRootMenu();
+    auto airports = repository->getAirports();
+    openAirportDisplayMenu(airports);
+    //awaitInput();
+    //openRootMenu();
 }
 
 
@@ -31,13 +33,17 @@ void AirPortray::resetConsole(){
     cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
 }
 
+void AirPortray::drawTitle(string title){
+    cout << INDENT << "-+= " << title << " =+-\n\n";
+}
+
 int AirPortray::openMenu(string title, string options[], int size){
     int choice = -1;
     bool castable = false;
     do{
         //Display Options
         resetConsole();
-        cout << INDENT << "-+= " << title << " =+-\n\n";
+        drawTitle(title);
         for(int i=0; i<size-1; i++){
             cout << INDENT << INDENT <<  i+1 << ". " << options[i] << endl;
         }
@@ -71,7 +77,8 @@ string AirPortray::truncateString(string s, unsigned int i){
 void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
     //Draw headers
     resetConsole();
-    cout << left << fixed << endl
+    drawTitle("Results");
+    cout << left << fixed << INDENT
          << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
@@ -88,6 +95,7 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
          << endl;
         
     //Draw Seperator
+    cout << INDENT;
     for(int i=0; i<190; i++){
         cout << "-";
     }
@@ -101,7 +109,7 @@ void AirPortray::openAirportDisplayMenu(vector<Airport*> airports){
         string latitude = (a->getLatitude() == NAN) ? "" : to_string(a->getLatitude());
         string longitude = (a->getLongitude() == NAN) ? "" : to_string(a->getLongitude());
 
-        cout << right << setw(2) << count+1 << left << ". | "
+        cout << INDENT << right << setw(2) << count+1 << left << ". | "
             << setw(14)<< Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
             << setw(7) << elevation << setw(1) << "ft" << " | "
@@ -129,7 +137,7 @@ void AirPortray::openRootMenu(){
     bool exit = false;
     while(!exit){
         string options[]{
-            "Search Airport",
+            "Search Airports",
             "Sort Airports",
             "Analyse Airports",
             "Add Airport",
