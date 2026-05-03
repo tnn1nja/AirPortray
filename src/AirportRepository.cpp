@@ -48,11 +48,11 @@ void AirportRepository::filterByField(std::vector<Airport*>& airports, std::func
     }
 }
 
-unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Airport* a2){
-    double phi1 = a1->getLatitude()*PI/180;
-    double lambda1 = a1->getLongitude()*PI/180;
-    double phi2 = a2->getLatitude()*PI/180;
-    double lambda2 = a2->getLongitude()*PI/180;
+unsigned int AirportRepository::calculateDistanceFromCoordinates(Airport* a, double latitude, double longitude){
+    double phi1 = a->getLatitude()*PI/180;
+    double lambda1 = a->getLongitude()*PI/180;
+    double phi2 = latitude*PI/180;
+    double lambda2 = longitude*PI/180;
 
     double deltaPhi = phi2 - phi1;
     double deltaLambda = lambda2 - lambda1;
@@ -60,4 +60,8 @@ unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Ai
     double theta = 2*asin(sqrt(haversineTheta));
 
     return theta*EARTH_RADIUS;
+}
+
+unsigned int AirportRepository::calculateDistanceBetweenAirports(Airport* a1, Airport* a2){
+    return calculateDistanceFromCoordinates(a1, a2->getLatitude(), a2->getLongitude());
 }
