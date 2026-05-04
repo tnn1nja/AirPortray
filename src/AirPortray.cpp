@@ -72,7 +72,7 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
     //Draw header
     resetConsole();
     drawTitle("Results");
-    cout << left << fixed << INDENT
+    cout << left << fixed << INDENT << INDENT
          << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
          << setw(32) << "Name" << " | "
@@ -89,7 +89,7 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
          << endl;
         
     //Draw divider
-    cout << INDENT << divider(190) << endl;
+    cout << INDENT << INDENT << divider(196) << endl;
 
     //Draw rows
     unsigned int count = 0; //declared in higher scope for footer
@@ -99,7 +99,7 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
         string latitude = isnan(a->getLatitude()) ? "" : to_string(a->getLatitude());
         string longitude = isnan(a->getLongitude()) ? "" : to_string(a->getLongitude());
 
-        cout << INDENT << right << setw(2) << count+1 << left << ". | "
+        cout << INDENT << INDENT << right << setw(2) << count+1 << left << ". | "
             << setw(14)<< Airport::typeToString(a->getType()) << " | "
             << setw(32) << truncateString(a->getName(), 32) << " | "
             << setw(7) << elevation << setw(1) << "ft" << " | "
@@ -117,7 +117,7 @@ void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
     }
 
     //Draw footer
-    cout << endl << "[Displaying " << count << " of " << airports.size()
+    cout << endl << INDENT << "[Displaying " << count << " of " << airports.size()
          << " results]" << endl;
     
     //Pause
@@ -283,6 +283,7 @@ void AirPortray::openSearchMenu(){
         case 4:{ //Type
             //Draw infomation box
             cout << INDENT << divider(25) << endl;
+            cout << INDENT << "Airport Types:" << endl;
             int i = 0; //protected by case scope {}
             for(; i < NUM_AP_TYPES; i++){
                 cout << INDENT << INDENT << i+1 << ". " << ((i==NUM_AP_TYPES-1) ? "Unknown" : Airport::typeToString(i)) << endl;
