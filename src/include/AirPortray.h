@@ -6,7 +6,7 @@
 #include <vector>
 
 #define MAX_RESULTS 40 //max results in a display panel
-#define INDENT "    " //malf the size of \t
+#define INDENT "    " //half the size of \t
 
 class AirPortray{
     private:
