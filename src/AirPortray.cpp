@@ -14,13 +14,10 @@ void AirPortray::awaitInput(){
     getline(cin, input); //disregard enter
 }
 
-void AirPortray::resetConsole(){
+void AirPortray::resetConsole(string title){
     system("cls"); //NT specific console clear
-    cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n";
-}
-
-void AirPortray::drawTitle(string title){
-    cout << INDENT << "-+= " << title << " =+-\n\n";
+    cout << "-+= N.S.E. AirPortray: Airport Search Engine =+-\n\n"
+        << INDENT << "-+= " << title << " =+-\n\n";
 }
 
 string AirPortray::divider(int size){
@@ -36,8 +33,7 @@ int AirPortray::openMenu(string title, const string options[], int size){
     bool castable = false;
     do{
         //Display options
-        resetConsole();
-        drawTitle(title);
+        resetConsole(title);
         for(int i=0; i<size; i++){
             cout << INDENT << INDENT << ((i==size-1) ? 0 : i+1) << ". " << options[i] << endl;
         }
@@ -70,8 +66,7 @@ string AirPortray::truncateString(string s, unsigned int i){
 
 void AirPortray::openAirportDisplayMenu(const vector<Airport*>& airports){
     //Draw header
-    resetConsole();
-    drawTitle("Results");
+    resetConsole("Results");
     cout << left << fixed << INDENT << INDENT
          << setw(3) << "" << " | " //index
          << setw(14) << "Type" << " | "
@@ -180,8 +175,7 @@ void AirPortray::openMainMenu(){
 
 void AirPortray::openAddAirportMenu(){
     //Draw title and instructions
-    resetConsole();
-    drawTitle("Add Airport");
+    resetConsole("Add Airport");
     cout << INDENT << divider(35) << endl
          << INDENT << "Enter nothing for missing values.\n"
          << INDENT << "Airport Types:\n";
@@ -442,8 +436,7 @@ void AirPortray::openAnalyseMenu(){
 
 void AirPortray::openHighestAndLowestElevationMenu(){
     //Draw title
-    resetConsole();
-    drawTitle("Highest and Lowest Elevations");
+    resetConsole("Highest and Lowest Elevations");
 
     //Sort by elevation
     auto airports = repository->getAirports();
@@ -462,8 +455,7 @@ void AirPortray::openHighestAndLowestElevationMenu(){
 
 void AirPortray::openCalculateDistanceMenu(){
     //Draw title
-    resetConsole();
-    drawTitle("Highest and Lowest Elevations");
+    resetConsole("Highest and Lowest Elevations");
 
     //Get inputs
     string input;
@@ -488,8 +480,7 @@ void AirPortray::openCalculateDistanceMenu(){
 
 void AirPortray::openCountByTypeMenu(){
     //Draw title
-    resetConsole();
-    drawTitle("Airport Count By Type");
+    resetConsole("Airport Count By Type");
 
     //Output counts
     auto countByType = repository->calculateAirportCountByType();
