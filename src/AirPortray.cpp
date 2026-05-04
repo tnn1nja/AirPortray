@@ -162,7 +162,7 @@ void AirPortray::openMainMenu(){
             case 5: //Save and Exit
                 try{
                     repository->save();
-                    cout << "All changes succesfully saved!";
+                    cout << "All changes succesfully saved!\n";
                     exit = true; //exit if save succeeds
                 }catch(runtime_error& e){ //can't open file
                     cout << "Unable to save, " << e.what() << "\nAborting exit...\n";
