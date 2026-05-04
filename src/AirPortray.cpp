@@ -358,10 +358,11 @@ void AirPortray::openSortMenu(){
         "Type",
         "Country Code",
         "Elevation",
+        "Municipality",
         "Proximity to Coordinates",
         "Return to Main Menu"
     };
-    switch(openMenu("Sort Airports", options, 6)){
+    switch(openMenu("Sort Airports", options, 7)){
         case 1: //Name
             repository->sortByField<string>(airports, [](Airport* a){return a->getName();});
             openAirportDisplayMenu(airports);
@@ -378,7 +379,11 @@ void AirPortray::openSortMenu(){
             repository->sortByField<short>(airports, [](Airport* a){return a->getElevation();});
             openAirportDisplayMenu(airports);
             break;
-        case 5: //Proximity to Coordinates
+        case 5: //Municipality
+            repository->sortByField<string>(airports, [](Airport* a){return a->getMunicipality();});
+            openAirportDisplayMenu(airports);
+            break;
+        case 6: //Proximity to Coordinates
             double latitude, longitude;
             try{
                 //Get input
