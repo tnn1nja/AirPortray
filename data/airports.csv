@@ -85146,3 +85146,4 @@ type,name,elevation_ft,continent,iso_country,iso_region,municipality,icao_code,i
 6,"Glorioso Islands Airstrip",11,AF,TF,TF-U-A,"Grande Glorieuse",,,,,-11.584278,47.296389
 6,"Fainting Goat Airport",690,NA,US,US-TX,"Blum",,,87TX,87TX,32.110587,-97.356312
 2,"(Bogus)Jezero Crater(Location is India not Planet Mars)",8530,AF,ZZ,ZZ-U-A,"",JZRO,,,,18.440000,77.450000
+4,"John Airports",550,NA,,,"",,,,,-100.000000,100.000000

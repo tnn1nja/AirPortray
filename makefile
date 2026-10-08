@@ -18,7 +18,7 @@ AP_SRC = $(SRCDIR)/AirPortray.cpp
 AP_OBJ = $(BUILDDIR)/AirPortray.o
 
 #Complier settings
-CXXWFLAGS = $(CXX) -std=c++17 -Wall
+CXXWFLAGS = $(CXX) -std=c++17 -Wall -I src/include
 
 #Recipes
 $(APPNAME): $(BUILDDIR) $(M_OBJ) $(A_OBJ) $(ADF_OBJ) $(AR_OBJ) $(AP_OBJ)
